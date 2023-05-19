@@ -1,5 +1,16 @@
 import styles from './page.module.scss';
 import { InternalPageLayout } from '../../shared/layouts/internal-page-layout/internal-page-layout';
+import { config } from '../../config';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: config.pageTitle('It\'s me, Daniel!'),
+  description:
+    'Daniel\'s pointless page',
+  robots: {
+    index: false
+  }
+};
 
 export default function MePage() {
   return (

@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTags, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { useDate } from '../../../hooks/useDate';
 import { Markdown } from '../../../components/markdown/markdown';
+import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   return getArticleMetadataList().map(({ slug, tags }) => ({
@@ -24,7 +25,6 @@ export default function ArticlePage({
   const markdown = getArticleContent(params.article);
   const { tags, date } = getArticleMetadata(params.article);
   const { toDate } = useDate();
-  console.log({ tags });
   return (
     <>
       <BackButton path={config.urls.blog} text={'Blog'} />

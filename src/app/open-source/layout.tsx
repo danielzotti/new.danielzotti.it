@@ -1,10 +1,11 @@
 import { ReactNode } from 'react';
 import { config } from '../../config';
 import { InternalPageLayout } from '../../shared/layouts/internal-page-layout/internal-page-layout';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: config.pageTitle('Open Source'),
-  description: 'Daniel Zotti Open source repositories',
+  description: 'Daniel Zotti\'s open source repositories',
 };
 
 export default function OpenSourceLayout({ children }: { children: ReactNode }) {
