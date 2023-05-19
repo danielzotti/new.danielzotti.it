@@ -1,0 +1,37 @@
+.intro {
+  & > h1 {
+    margin-top: 0;
+  }
+}
+
+.ambigramContainer {
+  position: fixed;
+  width: 100vw;
+  height: 100dvh;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambigramGroup {
+  transform-origin: center;
+
+  &.filled {
+    .letter {
+      transition: stroke-width 1s ease-in-out, fill 1s ease-in-out;
+      fill: var(--accent-color);
+      stroke-width: 2px;
+      stroke-linecap: round;
+      stroke-linejoin: bevel;
+    }
+  }
+
+}
+
+.letter {
+  fill: transparent;
+  stroke: var(--text-color);
+  stroke-width: 1px;
+  transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+}
+

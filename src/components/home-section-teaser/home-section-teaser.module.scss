@@ -1,0 +1,44 @@
+$transition-duration: .2s !default;
+
+.teaserContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: center;
+  transition: color $transition-duration ease-in-out, background-color $transition-duration ease-in-out, transform .2s ease-in-out, outline-color .2s ease-in-out;
+  padding: 1vw;
+  border: 1px solid var(--text-color);
+  border-radius: var(--border-radius);
+  outline: 2px solid transparent;
+  color: var(--text-color);
+
+  &:hover, &:focus, &:active {
+    outline: 2px solid var(--accent-color);
+    transform: rotate(-2deg);
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+
+    .icon {
+      svg {
+        transition: fill $transition-duration ease-in-out;
+        fill: var(--accent-color);
+      }
+    }
+  }
+}
+
+
+.icon {
+  svg {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    fill: var(--text-color);
+    transition: fill $transition-duration ease-in-out;
+  }
+}
+
+.title {
+  margin: 0;
+}

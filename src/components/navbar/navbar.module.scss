@@ -1,0 +1,118 @@
+@use "@scss/variables";
+@use "@scss/mixins/button";
+
+.navbar {
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-text-color);
+  padding: variables.$margin-default;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  @media(max-width: variables.$container-sm-min) {
+    .wrapper {
+      align-items: flex-start;
+    }
+    .itemsContainer {
+      display: none;
+    }
+  }
+  &.isOpen {
+    .itemsContainer {
+      @media(max-width: variables.$container-sm-min) {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--navbar-bg-color);
+        position: absolute;
+        left:0;
+        right: 0;
+        top:50px;
+        border-bottom: 1px solid white;
+        padding: variables.$margin-default;
+        padding-bottom: variables.$margin-medium;
+      }
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  transition: transform .2s ease-in-out;
+  z-index: 100;
+
+  a {
+    border: none;
+    display: inline-block;
+
+    &:hover, &:focus, &:active {
+      transform: rotate(-3deg);
+    }
+  }
+
+  img {
+    max-width: clamp(40px, 7vw, 80px);
+  }
+}
+
+.itemsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(20px, 4vw, 45px);
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.item {
+  color: inherit;
+  border: 0;
+  text-decoration: none;
+  font-size: clamp(25px, 4vw, 25px);
+  transition: transform .2s ease-in-out;
+
+  &:hover {
+    color: var(--navbar-text-active-color);
+    cursor: pointer;
+    text-decoration: none;
+    transform: rotate(-3deg);
+  }
+
+  &:focus, &:active {
+    color: inherit;
+    text-decoration: none;
+  }
+
+
+  &:global(.active) {
+    color: var(--navbar-text-active-color);
+    border-bottom: 1px solid var(--navbar-text-active-color);
+    transform: rotate(-3deg);
+  }
+}
+
+.themeSelector {
+  width: 80px;
+}
+
+.hamburger {
+  @include button.reset;
+  outline:none !important;
+  color: var(--navbar-text-color);
+  font-size: 30px;
+  z-index: 100;
+
+  svg {
+    background-color: transparent;
+  }
+
+  @media(min-width: variables.$container-sm-min) {
+    display: none;
+  }
+}

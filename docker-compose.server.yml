@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - configuration=${CONFIGURATION}
+    container_name: danielzotti-next_${CONFIGURATION}
+    image: dz/danielzotti-next_${CONFIGURATION}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped

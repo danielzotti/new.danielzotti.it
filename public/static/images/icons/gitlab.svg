@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="gitlab" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fca326;
+      }
+
+      .cls-2 {
+        fill: #fc6d26;
+      }
+
+      .cls-3 {
+        fill: #e24329;
+      }
+    </style>
+  </defs>
+  <g id="gitlab-2" data-name="gitlab">
+    <path id="bottom-right" class="cls-1" d="m445.29,203.13h0l24.68,76.03c2.24,6.9-.18,14.52-6.1,18.83l-213.89,155.39,195.3-250.24h0Z"/>
+    <polygon id="bottom-center-right" class="cls-2" points="249.99 453.36 331.34 203.13 445.29 203.13 249.99 453.36"/>
+    <path id="bottom-center" class="cls-3" d="m249.99,453.36h0l81.35-250.24h-162.59l81.24,250.24h0Z"/>
+    <polygon id="bottom-center-left" class="cls-2" points="249.99 453.36 54.8 203.13 168.75 203.13 249.99 453.36"/>
+    <path id="bottom-left" class="cls-1" d="m54.8,203.13h0l-24.77,76.03c-2.24,6.9.18,14.52,6.1,18.83l213.86,155.38L54.8,203.13h0Z"/>
+    <path id="top-left" class="cls-3" d="m54.8,203.13h113.95L119.71,52.42c-2.51-7.71-13.45-7.71-16.05,0l-48.86,150.71h0Z"/>
+    <path id="top-right" class="cls-3" d="m445.29,203.13h-113.95l48.95-150.71c2.51-7.71,13.45-7.71,16.05,0l48.95,150.71h0Z"/>
+  </g>
+</svg>

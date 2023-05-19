@@ -1,0 +1,36 @@
+@use "@scss/variables";
+
+.contentWrapper {
+  display: grid;
+  gap: 3vw;
+  grid-template-areas:
+          "metadata"
+          "content";
+  @media(min-width: variables.$container-md-min) {
+    grid-template-areas: "content metadata";
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.metadata {
+  grid-area: metadata;
+}
+
+.content {
+  grid-area: content;
+
+  & > h1:first-child {
+    margin-top: 0;
+  }
+}
+
+.tags, .date {
+  font-size: clamp(0.75em, 2vw, 25px);
+  margin-bottom: 1vw;
+  word-break: break-word;
+
+  @media(max-width: variables.$container-sm-max) {
+    display: inline-block;
+    margin-right: 5px
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "daniel-zotti-next",
+  "version": "2.3.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "build-and-start": "npm run build && npm run start",
+    "docker:start:local": "docker-compose --file docker-compose.local.yml up --build nextjs",
+    "docker:start:server": "CONFIGURATION=production docker-compose --file docker-compose.server.yml up --build nextjs",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next/font": "^13.3.0",
+    "@types/qrcode-svg": "^1.1.1",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "gray-matter": "^4.0.3",
+    "markdown-to-jsx": "^7.2.0",
+    "next": "13.3.0",
+    "octokit": "^2.0.14",
+    "qrcode-svg": "^1.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.61.0",
+    "sharp": "^0.32.1",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "0.0.12",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.33",
+    "@types/react-dom": "18.0.11",
+    "http-server": "^14.1.1",
+    "next-pwa": "^5.6.0"
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="facebook" xmlns="http://www.w3.org/2000/svg" width="500" height="500" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="480.1" y1="-372.84" x2="480.1" y2="-383.62" gradientTransform="translate(-18954 15287.45) scale(40 39.78)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0062e0"/>
+      <stop offset="1" stop-color="#19afff"/>
+    </linearGradient>
+  </defs>
+  <g id="facebook-2" data-name="facebook">
+    <path id="background" class="cls-1" d="m213.33,469.99c-105.55-18.89-185.55-110-185.55-219.99C27.78,127.78,127.78,27.78,250,27.78s222.22,100,222.22,222.22c0,110-80,201.11-185.55,219.99l-12.22-10h-48.89s-12.22,10-12.22,10Z"/>
+    <path id="letter-f" class="cls-2" d="m336.66,312.22l10-62.22h-58.89v-43.33c0-17.78,6.67-31.11,33.33-31.11h28.89v-56.67c-15.56-2.22-33.33-4.44-48.89-4.44-51.11,0-86.66,31.11-86.66,86.66v48.89h-55.55v62.22h55.55v156.66c12.22,2.22,24.44,3.33,36.67,3.33s24.44-1.11,36.67-3.33v-156.66h48.89Z"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="angular" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #c3002f;
+      }
+
+      .cls-3 {
+        fill: #dd0031;
+      }
+    </style>
+  </defs>
+  <g id="angular-2" data-name="angular">
+    <polygon id="background" class="cls-3" points="250 46.2 250 46.2 250 46.2 60.26 113.86 89.2 364.74 250 453.8 250 453.8 250 453.8 410.8 364.74 439.74 113.86 250 46.2"/>
+    <polygon id="shadow" class="cls-2" points="250 46.2 250 91.44 250 91.24 250 297.69 250 297.69 250 453.8 250 453.8 410.8 364.74 439.74 113.86 250 46.2"/>
+    <path id="letter-a" class="cls-1" d="m250,91.24l-118.61,265.96h44.22l23.84-59.51h100.68l23.84,59.51h44.22L250,91.24h0Zm34.65,169.77h-69.29l34.65-83.35,34.65,83.35Z"/>
+  </g>
+</svg>

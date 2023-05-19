@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="vue" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #41b883;
+      }
+
+      .cls-2 {
+        fill: #34495e;
+      }
+    </style>
+  </defs>
+  <g id="vue-2" data-name="vue">
+    <path id="letter-v-light" class="cls-1" d="m300.24,61.61l-50.24,87.01-50.24-87.01H32.47l217.53,376.77L467.53,61.61h-167.29Z"/>
+    <path id="letter-v-dark" class="cls-2" d="m300.24,61.61l-50.24,87.01-50.24-87.01h-80.28l130.52,226.06L380.52,61.61h-80.28Z"/>
+  </g>
+</svg>

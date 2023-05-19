@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="react" xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-miterlimit: 4;
+        stroke-width: 20.07px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #61dafb;
+      }
+
+      .cls-3 {
+        fill: #61dafb;
+      }
+
+      .cls-2 {
+        stroke-width: 20.07px;
+      }
+    </style>
+  </defs>
+  <g id="react-2" data-name="react">
+    <circle id="dot" class="cls-3" cx="250" cy="250" r="41.15"/>
+    <ellipse id="horizontal" class="cls-2" cx="250" cy="250" rx="220.8" ry="84.3"/>
+    <ellipse id="oblique-left" class="cls-1" cx="250" cy="250" rx="84.3" ry="220.8" transform="translate(-91.51 158.49) rotate(-30)"/>
+    <ellipse id="oblique-right" class="cls-1" cx="250" cy="250" rx="220.8" ry="84.3" transform="translate(-91.51 341.51) rotate(-60)"/>
+  </g>
+</svg>

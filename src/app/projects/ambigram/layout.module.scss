@@ -1,0 +1,14 @@
+.pageContainer {
+  max-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  position: relative;
+  flex-grow: 1;
+  max-height: 100%;
+  overflow: hidden;
+}

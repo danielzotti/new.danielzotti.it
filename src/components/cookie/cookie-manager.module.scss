@@ -1,0 +1,65 @@
+@use '@scss/variables';
+@use '@scss/common';
+@use '@scss/layout';
+
+.pageContainer {
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  inset: 0;
+}
+
+.cookiePolicyContainer {
+  @extend .container;
+  background-color: var(--text-bg-color);
+  color: var(--text-color);
+  z-index: 101;
+  display: block;
+  position: fixed;
+  overflow: auto;
+  border-radius: 10px;
+  inset: clamp(10px, 1vw, #{variables.$margin-medium});
+  padding: clamp(10px, 1vw, #{variables.$margin-medium});
+}
+
+.cookiePolicyContentContainer {
+
+}
+
+.closeButton {
+  position: sticky;
+  top:0;
+  right:0;
+  z-index: 101;
+  text-align: right;
+}
+
+.cookiePolicyContent {
+  :global(h1):first-child {
+    margin-top: 0;
+  }
+}
+
+.bannerContainer {
+  background-color: var(--cookie-banner-bg-color);
+  color: var(--cookie-banner-text-color);
+  z-index: 100;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: clamp(10px, 1vw, #{variables.$margin-medium});
+}
+
+.buttonContainer {
+  margin-top: variables.$margin-default;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.policyLink {
+  @extend .link;
+}

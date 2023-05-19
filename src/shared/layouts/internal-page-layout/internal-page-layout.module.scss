@@ -1,0 +1,10 @@
+@use "@scss/layout";
+
+.pageContainer {
+  min-height: calc(100dvh - 50px);
+  padding-bottom: 50px;
+}
+
+.contentContainer {
+  @extend .container;
+}

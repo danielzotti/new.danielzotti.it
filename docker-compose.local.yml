@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nextjs:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    container_name: danielzotti-next_local
+    image: dz/danielzotti-next_local
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - /app/node_modules

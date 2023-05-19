@@ -1,0 +1,18 @@
+@use "@scss/mixins/button";
+
+.themeSelector {
+  @include button.reset;
+  color: var(--navbar-text-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 5px;
+  align-items: center;
+  margin:0 auto;
+}
+
+.theme {
+  font-size: 0.75em;
+  line-height: 1em;
+  text-transform: uppercase;
+}

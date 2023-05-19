@@ -1,0 +1,27 @@
+$icon-size: 100px !default;
+
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //position: absolute;
+  //inset: 0;
+  padding-top:50px;
+
+  svg {
+    width: $icon-size;
+    height: $icon-size;
+    animation: rotation 2s infinite ease-in-out;
+    transform-origin: center;
+    fill: var(--text-color)
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

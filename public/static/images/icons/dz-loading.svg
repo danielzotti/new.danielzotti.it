@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="dz-loading" xmlns="http://www.w3.org/2000/svg" width="500" height="500" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #009ee2;
+      }
+
+      .cls-2 {
+        fill: url(#Sfumatura_senza_nome_341);
+      }
+
+      .cls-3 {
+        fill: url(#Sfumatura_senza_nome_340);
+      }
+
+      .cls-4 {
+        fill: url(#Sfumatura_senza_nome_268);
+      }
+
+      .cls-5 {
+        fill: url(#Sfumatura_senza_nome_341-2);
+      }
+
+      .cls-6 {
+        fill: url(#Sfumatura_senza_nome_13);
+      }
+    </style>
+    <linearGradient id="Sfumatura_senza_nome_341" data-name="Sfumatura senza nome 341" x1="271.28" y1="336.36" x2="402.28" y2="253.48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#009ee2"/>
+      <stop offset=".3" stop-color="#0093d0"/>
+      <stop offset=".9" stop-color="#0078a2"/>
+      <stop offset="1" stop-color="#00749b"/>
+    </linearGradient>
+    <linearGradient id="Sfumatura_senza_nome_13" data-name="Sfumatura senza nome 13" x1="287.44" y1="186.45" x2="287.44" y2="284.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00749b"/>
+      <stop offset=".1" stop-color="#0078a2"/>
+      <stop offset=".7" stop-color="#0093d0"/>
+      <stop offset="1" stop-color="#009ee2"/>
+    </linearGradient>
+    <linearGradient id="Sfumatura_senza_nome_341-2" data-name="Sfumatura senza nome 341" x1="119.26" y1="311.49" x2="274.07" y2="307.68" xlink:href="#Sfumatura_senza_nome_341"/>
+    <linearGradient id="Sfumatura_senza_nome_340" data-name="Sfumatura senza nome 340" x1="240.41" y1="178" x2="132.76" y2="286.61" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#009ee2"/>
+      <stop offset=".3" stop-color="#0094d0"/>
+      <stop offset=".65" stop-color="#0086b7"/>
+      <stop offset="1" stop-color="#00749b"/>
+    </linearGradient>
+    <linearGradient id="Sfumatura_senza_nome_268" data-name="Sfumatura senza nome 268" x1="109.2" y1="172.62" x2="230.67" y2="173.58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#009ee2"/>
+      <stop offset="1" stop-color="#00749b"/>
+    </linearGradient>
+  </defs>
+  <g id="zd">
+    <polyline id="letter-d-bottom" class="cls-2" points="381.31 242.35 424.62 267.43 313.16 336.02 227.42 336.02 381.75 241.71"/>
+    <polygon id="letter-d-top" class="cls-1" points="424.62 215.98 424.62 267.43 381.31 242.35 313.16 202.89 306.15 198.84 261.71 173.11 313.16 147.39 424.62 215.98"/>
+    <polygon id="letter-d-left" class="cls-6" points="313.16 202.89 313.16 283.84 311.93 284.58 261.71 284.58 261.71 173.11 306.15 198.84 313.16 202.89"/>
+    <polyline id="letter-z-bottom" class="cls-5" points="227.42 336.02 124.53 336.02 107.38 284.58 311.93 284.58"/>
+    <polygon id="letter-z-center" class="cls-3" points="244.57 198.84 169.54 284.58 107.38 284.58 187.77 198.84 235.99 147.39 244.57 198.84"/>
+    <polygon id="letter-z-top" class="cls-4" points="235.99 147.39 187.77 198.84 107.38 198.84 107.38 147.39 235.99 147.39"/>
+  </g>
+  <path id="circle" d="m257.46,22.34c-121.16,0-219.36,98.21-219.36,219.36s98.21,219.36,219.36,219.36,219.36-98.21,219.36-219.36S378.61,22.34,257.46,22.34Zm0,404.45c-102.22,0-185.09-82.86-185.09-185.09S155.23,56.62,257.46,56.62s185.09,82.86,185.09,185.09-82.86,185.09-185.09,185.09Z"/>
+</svg>

@@ -1,0 +1,16 @@
+@use "@scss/variables";
+.wrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: variables.$margin-default;
+  background-color: var(--footer-bg-color);
+  color: var(--footer-text-color);
+  height: 50px;
+
+  a {
+    color: inherit;
+  }
+
+}
+

@@ -1,0 +1,21 @@
+cache:
+  paths:
+    - node_modules/
+
+deploy_test:
+  stage: deploy
+  environment: Dev
+  script: "CONFIGURATION=dev docker-compose -f docker-compose.deploy.yml -p danielzotti-next_dev up -d --build"
+  only:
+    - deploy_dev
+  tags:
+    - "contabo"
+
+deploy_prod:
+  stage: deploy
+  environment: Production
+  script: "CONFIGURATION=production docker-compose -f docker-compose.deploy.yml -p danielzotti-next_production up -d --build"
+  only:
+    - deploy_prod
+  tags:
+    - "contabo"

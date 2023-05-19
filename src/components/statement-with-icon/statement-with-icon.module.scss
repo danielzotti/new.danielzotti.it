@@ -1,0 +1,16 @@
+.icon {
+  font-size: clamp(50px, 5vw, 100px);
+  text-align: center;
+
+  & > :global(.material-symbols-outlined) {
+    font-size: inherit;
+    line-height: inherit;
+    vertical-align: bottom;
+  }
+}
+
+.statement {
+  font-size: clamp(20px, 2.5vw, 35px);
+  line-height: 1.3;
+  text-align: center;
+}

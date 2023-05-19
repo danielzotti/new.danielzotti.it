@@ -1,0 +1,8 @@
+p  {
+  & > .material-icons,
+  & > .material-symbols-outlined {
+    font-size: inherit;
+    line-height: inherit;
+    vertical-align: bottom;
+  }
+}

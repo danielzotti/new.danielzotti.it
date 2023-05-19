@@ -1,0 +1,134 @@
+@use "@scss/layout";
+@use "@scss/variables";
+
+.pageContainer {
+  min-height: calc(100dvh - 50px);
+  padding-bottom: 50px;
+}
+
+.contentContainer {
+  @extend .container;
+}
+
+.section {
+  margin-block: clamp(70px, 6vw, 150px);
+  text-align: center;
+}
+
+.statementsContainer {
+  @extend .section;
+  margin-top: 20px;
+
+  > h2 {
+    margin-top: 0;
+  }
+}
+
+.statementContainer {
+  margin-bottom: clamp(35px, 5vw, 100px);
+
+  & :global(.svg-inline--fa) {
+    margin-inline: 5px;
+  }
+}
+
+.item {
+  white-space: nowrap;
+}
+
+.sections {
+  @extend .section;
+}
+
+.sectionList {
+  display: grid;
+  gap: 3vw;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 150px;
+  @media(min-width: 500px) {
+    max-width: clamp(500px, 45vw, 800px);
+    grid-template-columns: 150px 150px 150px;
+  }
+  @media(min-width: variables.$container-sm-min) {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: stretch;
+    align-items: stretch;
+    //font-size: clamp(25px, 3vw, 40px);
+  }
+}
+
+.cvSection {
+  @extend .section;
+}
+
+.cvList {
+  max-width: clamp(250px, 40vw, 600px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3vw;
+}
+
+.cv {
+  display: flex;
+  position: relative;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  overflow: hidden;
+  outline: 2px solid transparent;
+  transition: outline-color .2s ease-in-out, transform .2s ease-in-out;
+
+  &:hover {
+    outline: 2px solid var(--accent-color);
+    transform: rotate(-3deg);
+  }
+}
+
+.cvLanguage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 200%;
+  padding: 10px;
+  border: 1px solid;
+  background: var(--cv-language-bg-color);
+  color: var(--cv-language-text-color);
+  text-align: center;
+  font-size: clamp(20px, 3vw, 40px);
+  font-family: var(--font-family-text);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.stalkingSection {
+  @extend .section;
+}
+
+.stalkingList {
+  display: grid;
+  justify-items: center;
+  gap: 4vw;
+  max-width: 80%;
+  margin: 0 auto;
+
+  @media(min-width: 400px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media(min-width: 500px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.themeContainer {
+  @extend .section;
+}
+
+.theme {
+  margin: variables.$margin-default auto;
+  display: inline-block;
+  font-size: clamp(55px, 5vw, 80px);
+}

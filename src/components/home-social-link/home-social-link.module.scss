@@ -1,0 +1,25 @@
+$transition-duration: .2s !default;
+
+.social {
+  font-size: clamp(60px, 4vw, 120px);
+  margin-bottom: 30px;
+  border:0;
+
+  @media(min-width: 400px) {
+    margin-bottom: 0;
+    //display: flex;
+    //flex-direction: column;
+    //align-content: center;
+    //justify-content: center;
+  }
+}
+
+
+.icon {
+  margin-bottom: 1vw;
+}
+
+.name {
+  font-size: clamp(13px, 2vw, 25px);
+  margin: 0;
+}

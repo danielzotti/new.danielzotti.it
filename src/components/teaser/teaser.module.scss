@@ -1,0 +1,39 @@
+.wrapper {
+  position: relative;
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  padding: clamp(15px, 1vw, 35px);
+  outline: 2px solid transparent;
+  transition: outline-color .2s ease-in-out, transform .2s ease-in-out;
+  max-width: 800px;
+
+  &:hover, &:focus, &:active {
+    color: inherit;
+    outline: 2px solid var(--accent-color);
+    transform: rotate(-2deg);
+  }
+}
+
+.newWindow {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.title {
+  margin: 0;
+}
+
+.description {
+
+}
+
+.tags {
+  font-size: clamp(0.75em, 1vw, 20px);
+}
+
+.date {
+  font-size: clamp(0.75em, 1vw, 20px);
+  text-align: right;
+  margin: 0;
+}

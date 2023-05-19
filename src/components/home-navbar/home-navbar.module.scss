@@ -1,0 +1,16 @@
+.navbar {
+  position: sticky;
+  top: -1px;
+  z-index: 1;
+  transition: opacity 0s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+
+  &:global(.is-visible) {
+    opacity: 1;
+    pointer-events: all;
+    user-select: unset;
+    transition: opacity 0.6s ease-in-out;
+  }
+}

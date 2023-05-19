@@ -1,0 +1,102 @@
+@use "@scss/variables";
+@use "@scss/animations/shake";
+
+.banner {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--home-banner-bg-color);
+  color: var(--home-banner-text-color);
+  font-size: 0;
+  padding: 5px;
+  text-align: center;
+  @media(min-width: variables.$sm-min) {
+    padding: 50px 0;
+    text-align: left;
+  }
+}
+
+.videoprofile {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+  max-width: 220px;
+  @media(min-width: variables.$sm-min) {
+    width: 40%;
+  }
+  @media(min-width: variables.$md-min) {
+    width: 50%;
+  }
+
+  video {
+    max-width: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.brand {
+  display: inline-block;
+  vertical-align: middle;
+  @media(min-width: variables.$sm-min) {
+    width: 60%;
+  }
+  @media(min-width: variables.$md-min) {
+    width: 50%;
+  }
+  @media(min-width: variables.$xs-min) and (max-width: variables.$xs-max) {
+    margin-bottom: 20px;
+  }
+
+}
+
+.logo, .name {
+  position: relative;
+  vertical-align: middle;
+  padding: 10px;
+  line-height: 1;
+  @media(min-width: variables.$sm-min) {
+    display: inline-block;
+  }
+}
+
+.logo {
+  display: inline-block;
+  vertical-align: middle;
+
+  img {
+    max-width: 200px;
+    @media(min-width: variables.$sm-min) {
+      max-width: 300px;
+    }
+  }
+}
+
+.name {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 60px;
+  font-weight: 200;
+  margin: 0;
+  border: 0;
+  animation-name: shake;
+  animation-duration: 15s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+
+  @media(max-width: variables.$xs-max) {
+    font-size: 40px;
+  }
+
+  .firstLastName {
+    display: block;
+  }
+
+  .work {
+    display: block;
+    font-size: 30px;
+    font-weight: 100;
+  }
+}
