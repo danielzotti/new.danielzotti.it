@@ -1,7 +1,6 @@
 import styles from './cookie-policy-content.module.scss';
 import { getMarkdownContentByPath } from '../../utils/markdown';
 import { config } from '../../config';
-// import Markdown from 'markdown-to-jsx';
 import { Markdown } from '../markdown/markdown';
 
 export const CookiePolicyContent = () => {

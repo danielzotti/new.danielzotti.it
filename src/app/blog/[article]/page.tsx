@@ -8,7 +8,6 @@ import { BackButton } from '../../../components/back-button/back-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTags, faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { useDate } from '../../../hooks/useDate';
-// import Markdown from 'markdown-to-jsx';
 import { Markdown } from '../../../components/markdown/markdown';
 
 export async function generateStaticParams() {
