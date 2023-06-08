@@ -1,6 +1,6 @@
 {
   "name": "daniel-zotti-next",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
@@ -24,11 +24,12 @@
     "eslint-config-next": "13.3.0",
     "gray-matter": "^4.0.3",
     "markdown-to-jsx": "^7.2.0",
-    "next": "13.3.0",
+    "next": "^13.4.4",
     "octokit": "^2.0.14",
     "qrcode-svg": "^1.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.61.0",
     "sharp": "^0.32.1",
     "typescript": "5.0.4"

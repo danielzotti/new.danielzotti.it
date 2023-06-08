@@ -18,10 +18,12 @@
 
 .content {
   grid-area: content;
+  overflow-x: hidden;
 
   & > h1:first-child {
     margin-top: 0;
   }
+
 }
 
 .tags, .date {

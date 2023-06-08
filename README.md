@@ -27,9 +27,9 @@ I also use this website for testing and trying new technologies (which can be fo
 # TL;DR
 
 - Local development (**without docker**) with "classic" NextJS CLI
-  - `npm run dev` aka `next dev`
+    - `npm run dev` aka `next dev`
 - Local development: one every change to code, it refreshes
-  - `npm run docker:start:local`
+    - `npm run docker:start:local`
 
 ## Steps to create & run the project
 
@@ -42,13 +42,13 @@ I also use this website for testing and trying new technologies (which can be fo
 ## Roadmap
 
 - [x] Home page
-  - [x] Introduction
-  - [x] Social links
-  - [x] CV download
+    - [x] Introduction
+    - [x] Social links
+    - [x] CV download
 - [x] Sections
-  - [x] Blog
-  - [x] Projects
-  - [x] Selected open source repo from GitHub
+    - [x] Blog
+    - [x] Projects
+    - [x] Selected open source repo from GitHub
 - [x] Font Awesome Icons
 - [x] PWA (workaround)
 - [x] 404 page (workaround using `pages` folder since `app` folder doesn't support it yet)
@@ -56,13 +56,14 @@ I also use this website for testing and trying new technologies (which can be fo
 - [x] Google Analytics
 - [x] CSS variables instead of SCSS
 - [x] Theme dark/light
+- [x] Syntax Highlight for code
+- [x] Sort articles by date ASC
 - [ ] Improve Open source section with preview
 - [ ] Easter egg: coffee
-- [ ] Sort articles by date ASC
 - [ ] Filter articles by category
 - [ ] Offline status
 - [ ] New UI graphic
- 
+
 ## Thanks to
 
 ### Dependencies
@@ -72,6 +73,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - [octokit](https://github.com/octokit): SDK for GitHub API
 - [FontAwesome](https://fontawesome.com/): Icon fonts
 - [qrcode-svg](https://github.com/papnkukn/qrcode-svg): QR Code generator
+- [react-syntax-highlighter](https://github.com/react-syntax-highlighter): Code Syntax Highlighter
 
 ### Blog articles
 

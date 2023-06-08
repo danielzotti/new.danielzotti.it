@@ -7,7 +7,7 @@ import { config } from '../../config';
 import styles from './navbar.module.scss';
 import logo from '../../../public/static/images/brand/danielzotti-logo-medium.webp';
 import { ThemeSelector } from '../theme-selector/theme-selector';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useState } from 'react';
 
@@ -32,7 +32,6 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleMenu = useCallback(() => {
     setIsOpen((open) => !open);
-    console.log(isOpen)
   }, [setIsOpen, isOpen]);
 
   return (
@@ -67,7 +66,8 @@ export const Navbar = () => {
             </div>
           </div>
           <button className={styles.hamburger} onClick={toggleMenu}>
-            <FontAwesomeIcon icon={faBars} />
+            {!isOpen && <FontAwesomeIcon icon={faBars} />}
+            {isOpen && <FontAwesomeIcon icon={faTimes} />}
           </button>
         </div>
       </div>

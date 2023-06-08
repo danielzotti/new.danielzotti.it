@@ -3,7 +3,7 @@ import styles from './page.module.scss';
 import { Teaser } from '../../components/teaser/teaser';
 
 export default function BlogPage() {
-  const articleMetadataList = getArticleMetadataList();
+  const articleMetadataList = getArticleMetadataList().sort((a, b) => a.date > b.date ? -1 : 1);
   return (
     <>
       <h1>Blog</h1>

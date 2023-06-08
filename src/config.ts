@@ -1,11 +1,13 @@
 import path from 'path';
 
-const baseUrl = 'https://danielzotti.it';
+const baseUrl = 'https://www.danielzotti.it';
 
 export const config = {
   baseUrl,
   title: 'Daniel Zotti | Creative Web developer',
   pageTitle: (title: string) => `${title} | Daniel Zotti`,
+  blogPageTitle: (title: string = 'Blog') => `${title} | Daniel Zotti's blog`,
+  openSourcePageTitle: (title: string = 'Open Source') => `${title} | Daniel Zotti's open source project`,
   description:
     'Daniel Zotti is a creative computer engineer, professor and a web developer with more than 10 years of experience in creating tailor made software.',
   twitterId: '@daniel_zotti',
@@ -56,8 +58,8 @@ export const config = {
   },
   assetsUrl: {
     cv: {
-      italian: '/cv/Daniel Zotti Curriculum Italiano.pdf',
-      english: '/cv/Daniel Zotti Curriculum English.pdf'
+      italian: '/cv/Daniel Zotti Curriculum Italiano.pdf?v=1',
+      english: '/cv/Daniel Zotti Curriculum English.pdf?v=1'
     }
   },
   imageUrls: {

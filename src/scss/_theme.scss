@@ -29,6 +29,10 @@
 
   --cv-language-bg-color: #2daae1aa;
   --cv-language-text-color: var(--black-light);
+
+  --code-bg-color: var(--black);
+  --code-color: var(--white-dark);
+  --code-border-color: transparent;
 }
 
 @mixin light {
@@ -62,4 +66,8 @@
 
   --cv-language-bg-color: #2daae1aa;
   --cv-language-text-color: var(--black-light);
+
+  --code-bg-color: var(--white);
+  --code-color: var(--gray-dark);
+  --code-border-color: var(--gray-dark);
 }

@@ -3,6 +3,12 @@ import { InternalPageLayout } from '../../shared/layouts/internal-page-layout/in
 import styles from './page.module.scss';
 import { Teaser } from '../../components/teaser/teaser';
 
+export const metadata = {
+  title: config.pageTitle('Projects'),
+  description:
+    'Daniel Zotti\'s projects',
+};
+
 export default async function ProjectsPage() {
   return (
     <InternalPageLayout>
