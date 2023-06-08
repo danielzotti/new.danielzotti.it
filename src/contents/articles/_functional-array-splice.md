@@ -1,5 +1,5 @@
 ---
-title: Functional splice()
+title: Functional Array.splice()
 description: Add/Remove items in array without changing the original one
 date: "2023-06-08"
 tags: [ "javascript" ]

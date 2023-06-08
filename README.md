@@ -37,7 +37,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - `npx create-next-app@latest`
 - `npm install` (see `package.jon` for dependencies)
 - `npm run dev`
-- Open `[http://localhost:3001]`(http://localhost:3001)
+- Open [http://localhost:3001](http://localhost:3001)
 
 ## Roadmap
 
