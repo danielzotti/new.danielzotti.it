@@ -1,7 +1,11 @@
 import { config } from '../config';
 import { Metadata } from 'next';
 
-export const buildMetadata = ({ title, description, url }: { title: string; description?: string, url: string }): Metadata => {
+export const buildMetadata = ({ title, description, url }: {
+  title: string;
+  description?: string,
+  url: string,
+}): Metadata => {
   return {
     title,
     description,
@@ -9,6 +13,7 @@ export const buildMetadata = ({ title, description, url }: { title: string; desc
       title: title,
       siteName: config.title,
       url,
+      type: 'article',
       images: [
         {
           url: config.websiteImage.url,

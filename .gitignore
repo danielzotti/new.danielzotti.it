@@ -47,6 +47,3 @@ dist
 # PWA
 public/sw.js
 public/workbox-*.js
-
-# Unpublishe articles
-src/contents/articles/_*.md

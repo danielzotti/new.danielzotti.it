@@ -12,7 +12,7 @@ export const config = {
     'Daniel Zotti is a creative computer engineer, professor and a web developer with more than 10 years of experience in creating tailor made software.',
   twitterId: '@daniel_zotti',
   websiteImage: {
-    url: `${baseUrl}/static/images/brand/danielzotti.it-banner.png`,
+    url: `${baseUrl}/static/images/brand/danielzotti-banner.png`,
     width: 1200,
     height: 627,
     alt: 'Daniel Zotti\'s website'

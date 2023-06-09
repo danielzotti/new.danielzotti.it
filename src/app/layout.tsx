@@ -21,6 +21,7 @@ export const metadata = {
     title: config.title,
     siteName: config.title,
     url: config.baseUrl,
+    type: 'website',
     images: [
       {
         url: config.websiteImage.url,
