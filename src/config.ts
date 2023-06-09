@@ -44,8 +44,8 @@ export const config = {
     user: 'danielzotti',
     token: process.env.GITHUB_ACCESS_TOKEN,
     selectedRepos: [
-      'new.danielzotti.it',
-      'me.danielzotti.it',
+      // 'new.danielzotti.it',
+      // 'me.danielzotti.it',
       'chrome-notepad',
       'danielzotti-telegram-bot',
       'ng-filemanager',

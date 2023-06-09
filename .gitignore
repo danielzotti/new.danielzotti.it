@@ -47,3 +47,6 @@ dist
 # PWA
 public/sw.js
 public/workbox-*.js
+
+# Unpublished articles
+src/contents/articles/_*.md

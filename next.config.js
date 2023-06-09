@@ -1,4 +1,4 @@
-const isDev = process.env.NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== 'production';
 
 const withPWA = require('next-pwa')({
   dest: 'public',
@@ -7,25 +7,27 @@ const withPWA = require('next-pwa')({
   disable: isDev,
   exclude: [
     // add buildExcludes here
-    ({asset, compilation}) => {
+    ({ asset, compilation }) => {
       if (
-        asset.name.startsWith("server/") ||
-                asset.name.match(/^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/)
+        asset.name.startsWith('server/') ||
+        asset.name.match(/^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/)
       ) {
         return true;
       }
-      return isDev && !asset.name.startsWith("static/runtime/");
+      return isDev && !asset.name.startsWith('static/runtime/');
     }
-  ],
-})
+  ]
+});
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    appDir: true
+  output: 'export',
+  images: {
+    unoptimized: true
   },
-  output: 'standalone',
-  // distDir: 'dist',
-}
+  // experimental: {
+  //   typedRoutes: true,
+  // },
+};
 
-module.exports = withPWA(nextConfig)
+module.exports = withPWA(nextConfig);

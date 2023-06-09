@@ -1,6 +1,6 @@
 import '../scss/_variables-css.scss';
 import '../scss/styles.scss';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import { HeadFonts } from '../components/head-fonts/head-fonts';
 import Pwa from '../components/pwa/pwa';
 import { config } from '../config';
@@ -56,7 +56,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang='en'>
       <head>
         <HeadFonts />
-        <GoogleAnalytics />
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
       </head>
       <body>
         <ThemeContextProvider>
