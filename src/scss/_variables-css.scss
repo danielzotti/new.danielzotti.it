@@ -3,6 +3,12 @@
 :root {
   color-scheme: light dark;
 
+  //STRUCTURE
+  --html-min-width: 300px;
+
+  --cursor-default: default;
+  --cursor-pointer: pointer;
+
   //COLORS
   --black: #000;
   --black-light: #0f0f0f;
@@ -12,6 +18,8 @@
   --gray-light: #c5c4c5;
   --blue: #2daae1;
   --red: #d70d1f;
+
+  --link-color: inherit;
 
   //FONTS
   --font-family-title: Exo, Georgia, serif;
@@ -25,6 +33,9 @@
 
   //BORDERS
   --border-radius: 10px;
+
+  //TRANSITIONS
+  --transition-duration: .2s;
 }
 
 [data-theme=light] {

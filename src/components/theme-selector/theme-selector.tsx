@@ -1,8 +1,8 @@
 'use client';
 import styles from './theme-selector.module.scss';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun, faCircleHalfStroke, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { ThemeContext } from '../../providers/theme-context-provider';
 
 export const ThemeSelector = () => {
@@ -15,6 +15,7 @@ export const ThemeSelector = () => {
       {theme === 'dark' && <FontAwesomeIcon icon={faMoon} />}
       {theme === 'light' && <FontAwesomeIcon icon={faSun} />}
       {theme === 'os default' && <FontAwesomeIcon icon={faCircleHalfStroke} />}
+      {theme === 'nineties' && <FontAwesomeIcon icon={faHeart} />}
       <span className={styles.theme}>{theme}</span>
     </button>
   );

@@ -59,7 +59,6 @@ I also use this website for testing and trying new technologies (which can be fo
 - [x] Syntax Highlight for code
 - [x] Sort articles by date ASC
 - [ ] Improve Open source section with preview
-- [ ] Easter egg: coffee
 - [ ] Filter articles by category
 - [ ] Offline status
 - [ ] New UI graphic

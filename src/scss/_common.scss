@@ -5,14 +5,14 @@
 }
 
 .link {
-  color: inherit; //var(--text-color);
+  color: var(--link-color);
   text-decoration: none;
   border-bottom: 1px solid var(--accent-color);
-  transition: transform .2s ease-in-out;
+  transition: transform var(--transition-duration) ease-in-out;
 
   &:hover, &:focus, &:active {
     color: var(--accent-color);
-    cursor: pointer;
+    cursor: var(--cursor-pointer);
     text-decoration: none;
     transform: rotate(-3deg);
   }

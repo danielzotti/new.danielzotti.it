@@ -7,10 +7,6 @@
   background-color: var(--footer-bg-color);
   color: var(--footer-text-color);
   height: 50px;
-
-  a {
-    color: inherit;
-  }
-
+  border-top: 2px solid var(--footer-border-color);
 }
 

@@ -11,6 +11,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Welcome } from '../components/welcome/welcome';
 import { Cookie } from '../components/cookie/cookie';
 import { ThemeContextProvider } from '../providers/theme-context-provider';
+import { SvgFilters } from '../components/svg-filters/svg-filters';
+import { Nineties } from '../components/nineties/nineties';
 
 configFa.autoAddCss = false;
 
@@ -61,6 +63,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </Suspense>
       </head>
       <body>
+        <SvgFilters />
+        <Nineties />
         <ThemeContextProvider>
           <main className={styles.mainContent}>
             {children}

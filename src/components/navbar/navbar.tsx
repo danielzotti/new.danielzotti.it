@@ -35,12 +35,13 @@ export const Navbar = () => {
   }, [setIsOpen, isOpen]);
 
   return (
-    <div className={`${styles.navbar} ${isOpen ? styles.isOpen : ''}` }>
+    <div className={`dz-navbar ${styles.navbar} ${isOpen ? styles.isOpen : ''}`}>
       <div className='container'>
         <div className={styles.wrapper}>
           <div className={styles.logo}>
             <Link href={config.urls.home} title='Go to home page'>
               <Image
+                className="dz-navbar__logo"
                 src={logo}
                 alt='Daniel Zotti logo'
                 width={80}
@@ -49,7 +50,7 @@ export const Navbar = () => {
               />
             </Link>
           </div>
-          <div className={styles.itemsContainer}>
+          <div className={`dz-navbar__items ${styles.itemsContainer}`}>
             {items.map((item) => (
               <Link
                 key={item.path}
@@ -65,7 +66,7 @@ export const Navbar = () => {
               <ThemeSelector />
             </div>
           </div>
-          <button className={styles.hamburger} onClick={toggleMenu}>
+          <button className={styles.hamburger} onClick={toggleMenu} aria-label='Menu hamburger'>
             {!isOpen && <FontAwesomeIcon icon={faBars} />}
             {isOpen && <FontAwesomeIcon icon={faTimes} />}
           </button>

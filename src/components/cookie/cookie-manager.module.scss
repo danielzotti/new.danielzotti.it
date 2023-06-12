@@ -17,7 +17,7 @@
   display: block;
   position: fixed;
   overflow: auto;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   inset: clamp(10px, 1vw, #{variables.$margin-medium});
   padding: clamp(10px, 1vw, #{variables.$margin-medium});
 }

@@ -1,10 +1,10 @@
 .wrapper {
   position: relative;
   border: 1px solid var(--text-color);
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   padding: clamp(15px, 1vw, 35px);
   outline: 2px solid transparent;
-  transition: outline-color .2s ease-in-out, transform .2s ease-in-out;
+  transition: outline-color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
   max-width: 800px;
 
   &:hover, &:focus, &:active {

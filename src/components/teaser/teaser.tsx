@@ -17,7 +17,7 @@ export interface TeaserProps {
 export const Teaser = ({ title, description, url, tags, date, target = '_self' }: TeaserProps): JSX.Element => {
   const { toDate } = useDate();
   return (
-    <Link className={styles.wrapper} href={url} target={target}>
+    <Link className={`dz-teaser ${styles.wrapper}`} href={url} target={target}>
       {target === '_blank' &&
         <div className={styles.newWindow}><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></div>}
       <h3 className={styles.title}>{title}</h3>

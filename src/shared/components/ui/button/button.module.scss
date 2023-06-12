@@ -1,8 +1,8 @@
 .button {
   border: none;
-  border-radius: 5px;
+  border-radius: var(--btn-border-radius);
   padding: var(--margin-small) var(--margin-medium);
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
 
   &.primary {
     background-color: var(--btn-primary-bg-color);

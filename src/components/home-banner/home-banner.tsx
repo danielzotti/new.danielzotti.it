@@ -6,7 +6,7 @@ import { AppVersion } from '../app-version/app-version';
 
 export const HomerBanner = () => {
   return (
-    <div className={styles.banner}>
+    <div className={`dz-home-banner ${styles.banner}`}>
       <AppVersion />
       <div className='container'>
         <div className={styles.brand}>

@@ -13,6 +13,8 @@ export const metadata: Metadata = {
 };
 
 export default function MePage() {
+
+
   return (
     <InternalPageLayout>
       <div className={styles.me}>🤓</div>
@@ -22,7 +24,7 @@ export default function MePage() {
           page, but you can be happy because you&apos;ve found one of the many Easter eggs I&apos;ve left all
           over the website!</p>
         <p>
-          If you fell like reach me out to tell me that you are a good detective 🕵️, I&apos;ll be happy to hear it!
+          If you fell like reach me out to tell me that you are a good detective 🕵️‍♂️, I&apos;ll be happy to hear it!
         </p>
       </div>
     </InternalPageLayout>

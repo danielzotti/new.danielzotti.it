@@ -45,7 +45,7 @@ export default function Home() {
 
         <HomeNavbar />
 
-        <div className={styles.contentContainer}>
+        <div className={`dz-home__content ${styles.contentContainer}`}>
 
           <div className={styles.statementsContainer}>
             <h2>Who the heck is 👨‍💻 <em style={{ whiteSpace: 'nowrap' }}>Daniel Zotti</em>?!</h2>
@@ -86,24 +86,24 @@ export default function Home() {
             <h2>Need my 💼 CV?</h2>
 
             <div className={styles.cvList}>
-              <Link className={styles.cv} href={config.assetsUrl.cv.english} target='_blank'>
-                <div className={styles.cvLanguage}>English</div>
+              <Link className={`dz-home__cv ${styles.cv}`} href={config.assetsUrl.cv.english} target='_blank'>
                 <Image
                   src={cvPreviewEn}
                   alt='Daniel Zotti English CV'
                   width={326}
                   height={461}
                 />
+                <div className={styles.cvLanguage}>English</div>
               </Link>
 
-              <Link className={styles.cv} href={config.assetsUrl.cv.italian} target='_blank'>
-                <div className={styles.cvLanguage}>Italiano</div>
+              <Link className={`dz-home__cv ${styles.cv}`} href={config.assetsUrl.cv.italian} target='_blank'>
                 <Image
                   src={cvPreviewIt}
                   alt='Daniel Zotti Curriculum Vitae Italiano'
                   width={326}
                   height={461}
                 />
+                <div className={styles.cvLanguage}>Italiano</div>
               </Link>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function Home() {
           <div className={styles.sections}>
             <h2>Want 📖 more contents?</h2>
 
-            <nav className={styles.sectionList}>
+            <nav className={`dz-home__section-list ${styles.sectionList}`}>
               <HomeSectionTeaser
                 icon={<BlogSvgIcon />}
                 title={'Blog'}

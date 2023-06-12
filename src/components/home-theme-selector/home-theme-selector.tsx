@@ -11,7 +11,7 @@ export const HomeThemeSelector = () => {
   const { toggleTheme } = useContext(ThemeContext);
   return (
     <>
-      <div className={styles.buttonContainer}>
+      <div className={`dz-home-theme-selector ${styles.buttonsContainer}`}>
         <button className={styles.button} onClick={() => toggleTheme('dark')}>
           <Image src={darthVader} alt='Icon of Darth Vader representing the dark theme' />
         </button>

@@ -13,6 +13,7 @@
   --footer-bg-color: var(--black);
   --footer-text-color: var(--white-dark);
 
+  --btn-border-radius: var(--border-radius);
   --btn-primary-text-color: var(--white);
   --btn-primary-bg-color: var(--accent-color);
   --btn-secondary-text-color: var(--accent-color);
@@ -50,6 +51,7 @@
   --footer-bg-color: var(--black-light);
   --footer-text-color: var(--white);
 
+  --btn-border-radius: var(--border-radius);
   --btn-primary-text-color: var(--white);
   --btn-primary-bg-color: var(--accent-color);
   --btn-secondary-text-color: var(--accent-color);
@@ -66,6 +68,69 @@
 
   --cv-language-bg-color: #2daae1aa;
   --cv-language-text-color: var(--black-light);
+
+  --code-bg-color: var(--white);
+  --code-color: var(--gray-dark);
+  --code-border-color: var(--gray-dark);
+}
+
+@mixin nineties {
+
+  --90s-red: #F00;
+  --90s-green: #0F0;
+  --90s-blue: #00F;
+  --90s-purple: #F0F;
+  --90s-yellow: #FF0;
+
+  --90s-background-image: url(/static/90s/90s-spacejam-bg.gif);
+  --90s-background-image-light: url(/static/90s/90s-spacejam-bg-light.gif);
+
+  --90s-font: url(/static/fonts/times-pixelated.woff);
+
+  //--html-min-width: 800px;
+  --cursor-default: url(/static/90s/90s-cursor-with-daniel.png), auto;
+  --cursor-pointer: url(/static/90s/90s-cursor-with-daniel-pointer-stupid.png), pointer;
+
+  --font-family-title: '90s', serif;
+  --font-family-text: '90s', serif;
+
+  --transition-duration: 0;
+  --border-radius: 0;
+
+  // THEME (nineties)
+  --text-color: var(--black);
+  --text-color-secondary: var(--gray-dark);
+  --text-bg-color: var(--white);
+  --accent-color: var(--90s-blue);
+
+  --link-color: var(--accent-color);
+
+  --navbar-bg-color: var(--black);
+  --navbar-text-color: var(--white);
+  --navbar-text-active-color: var(--accent-color);
+  --navbar-border-color: var(--90s-blue);
+
+  --footer-bg-color: var(--black);
+  --footer-text-color: var(--white);
+  --footer-border-color: var(--90s-blue);
+
+  --btn-border-radius: 0;
+  --btn-primary-text-color: var(--white);
+  --btn-primary-bg-color: var(--accent-color);
+  --btn-secondary-text-color: var(--accent-color);
+  --btn-secondary-bg-color: var(--white);
+  --btn-outline-text-color: var(--accent-color);
+  --btn-outline-border-color: var(--accent-color);
+  --btn-clean-text-color: var(--accent-color);
+
+  --home-banner-bg-color: var(--black);
+  --home-banner-text-color: var(--white-dark);
+
+  --cookie-banner-bg-color: var(--black);
+  --cookie-banner-text-color: var(--white);
+
+  --cv-language-bg-color: var(--black);
+  --cv-language-text-color: var(--white);
 
   --code-bg-color: var(--white);
   --code-color: var(--gray-dark);

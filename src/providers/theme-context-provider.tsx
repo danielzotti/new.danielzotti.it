@@ -3,7 +3,7 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { config } from '../config';
 
-export type ThemeValueTypes = 'light' | 'dark' | 'os default';
+export type ThemeValueTypes = 'light' | 'dark' | 'os default' | 'nineties';
 
 export interface ThemeContextModel {
   theme: ThemeValueTypes;

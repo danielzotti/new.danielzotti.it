@@ -1,0 +1,117 @@
+@use "theme";
+@use "animations/marquee";
+
+[data-theme=nineties] {
+
+  background-image: var(--90s-background-image-light);
+
+  @font-face {
+    font-family: '90s';
+    src: var(--90s-font);
+  }
+
+  @include theme.nineties;
+
+  ::selection {
+    background: blue;
+    color: white;
+  }
+
+  img, video {
+    image-rendering: pixelated;
+    filter: url(#pixelate);
+  }
+
+  a {
+    color: var(--link-color);
+    text-decoration: underline;
+    border: none;
+
+    &:hover, &:focus, &:active {
+      text-decoration-line: underline;
+      color: var(--link-color);
+      cursor: var(--cursor-pointer);
+    }
+  }
+
+  small {
+    font-size: 1em;
+  }
+
+  .dz-navbar__items {
+    background-image: var(--90s-background-image);
+  }
+
+  .dz-home-banner {
+    background-image: var(--90s-background-image);
+  }
+
+  .dz-home__content {
+    overflow: hidden;
+
+    & > div:first-child > h2 {
+      animation: marquee 10s linear infinite;
+    }
+  }
+
+  .dz-home__section-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dz-home__cv {
+    &:hover, &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .dz-home-theme-selector {
+    & > button {
+
+      filter: none;
+
+      &:hover, &:focus, &:active {
+        filter: none;
+      }
+    }
+  }
+
+  .dz-section-teaser {
+    & > div:first-child {
+      display: none;
+    }
+
+    &:hover, &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .dz-teaser {
+    border: 2px solid var(--accent-color);
+
+    &:hover, &:focus, &:active {
+      outline: none;
+    }
+  }
+
+  .dz-navbar {
+    background-image: var(--90s-background-image);
+
+    a {
+      color: var(--navbar-text-color);
+
+      &.active {
+        background-color: var(--navbar-text-color);
+        color: var(--navbar-bg-color);
+      }
+    }
+  }
+
+  .dz-footer {
+    background-image: var(--90s-background-image);
+
+    a {
+      color: var(--footer-text-color);
+    }
+  }
+}

@@ -3,7 +3,7 @@
 @use "@scss/mixins/button";
 @use "@scss/mixins/drop-shadow";
 
-.buttonContainer {
+.buttonsContainer {
   display: flex;
   gap: variables.$margin-default;
   justify-content: center;
@@ -12,7 +12,7 @@
 .button {
   @include button.reset;
   @include drop-shadow.border(1px, white);
-  transition: transform .2s ease-in-out;
+  transition: transform var(--transition-duration) ease-in-out;
 
   &:hover, &:focus, &:active {
     transform: rotate(-3deg);
@@ -30,7 +30,7 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  cursor: pointer;
+  padding:0;
+  cursor: var(--cursor-pointer);
   @extend .link;
-
 }

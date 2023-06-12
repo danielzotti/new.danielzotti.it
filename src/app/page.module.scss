@@ -75,12 +75,12 @@
   display: flex;
   position: relative;
   border: 1px solid var(--text-color);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   outline: 2px solid transparent;
-  transition: outline-color .2s ease-in-out, transform .2s ease-in-out;
+  transition: outline-color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
 
-  &:hover {
+  &:hover, &:focus, &:active {
     outline: 2px solid var(--accent-color);
     transform: rotate(-3deg);
   }
