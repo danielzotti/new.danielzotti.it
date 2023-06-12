@@ -20,6 +20,7 @@
   img, video {
     image-rendering: pixelated;
     filter: url(#pixelate);
+    transform: rotate(0deg); // Fix for Safari! Without this rule, it hides the images (I don't know why)
   }
 
   a {
