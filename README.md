@@ -58,6 +58,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - [x] Theme dark/light
 - [x] Syntax Highlight for code
 - [x] Sort articles by date ASC
+- [ ] Transparent navbar on top in Home Page
 - [ ] Improve Open source section with preview
 - [ ] Filter articles by category
 - [ ] Offline status

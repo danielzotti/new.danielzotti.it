@@ -1,23 +1,13 @@
-'use client';
-
-import { useState } from 'react';
 import packageJson from '../../../package.json';
 import styles from './app-version.module.scss';
+import { config } from '../../config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export const AppVersion = () => {
-  const [isVersionVisible, setIsVersionVisible] = useState<boolean>(true);
-
-  const handleVersionClick = () => {
-    setIsVersionVisible(false);
-  };
-
   return (
-    <>
-      {isVersionVisible && (
-        <span className={styles.version} onClick={handleVersionClick}>
-          v{packageJson.version}
-        </span>
-      )}
-    </>
+    <a href={config.github.repo} target='_blank' className={styles.version} title='View it on GitHub'>
+      <FontAwesomeIcon icon={faGithub} /> v{packageJson.version}
+    </a>
   );
 };

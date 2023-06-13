@@ -11,6 +11,12 @@
   right: 25px;
   padding: 5px 100px;
   box-shadow: 0 0 10px var(--red);
-  transform: translate(50%, -50%) rotate(45deg);
   cursor: var(--cursor-pointer);
+  transform: translate(50%, -50%) rotate(45deg);
+  border: none;
+
+  &:hover, &:focus, &:active {
+    transform: translate(50%, -50%) rotate(45deg);
+    color: var(--white);
+  }
 }

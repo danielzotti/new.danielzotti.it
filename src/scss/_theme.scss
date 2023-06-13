@@ -85,14 +85,12 @@
   --90s-background-image: url(/static/90s/90s-spacejam-bg.gif);
   --90s-background-image-light: url(/static/90s/90s-spacejam-bg-light.gif);
 
-  --90s-font: url(/static/fonts/times-pixelated.woff);
-
   //--html-min-width: 800px;
   --cursor-default: url(/static/90s/90s-cursor-with-daniel.png), auto;
   --cursor-pointer: url(/static/90s/90s-cursor-with-daniel-pointer-stupid.png), pointer;
 
-  --font-family-title: '90s', serif;
-  --font-family-text: '90s', serif;
+  --font-family-title: 'times-pixelated', serif;
+  --font-family-text: 'times-pixelated', serif;
 
   --transition-duration: 0;
   --border-radius: 0;

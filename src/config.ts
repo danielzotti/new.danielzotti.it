@@ -51,7 +51,8 @@ export const config = {
       'ng-filemanager',
       'ng-textarea-autoresize',
       'spacecar'
-    ]
+    ],
+    repo: 'https://github.com/danielzotti/new.danielzotti.it'
   },
   apis: {
     baseUrl: `${baseUrl}/api`

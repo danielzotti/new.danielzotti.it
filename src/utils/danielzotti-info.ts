@@ -99,7 +99,7 @@ export const danielzottiInfo = {
     console.log('A list of links to social media profiles');
     console.groupEnd();
 
-    console.groupCollapsed('danielzotti.career()');
+    console.groupCollapsed('danielzotti.timeline()');
     console.log('A complete timeline about Daniel Zotti\'s life');
     console.groupEnd();
 
