@@ -1,5 +1,6 @@
 import '../scss/_variables-css.scss';
 import '../scss/styles.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { ReactNode, Suspense } from 'react';
 import { HeadFonts } from '../components/head-fonts/head-fonts';
 import Pwa from '../components/pwa/pwa';
@@ -7,7 +8,6 @@ import { config } from '../config';
 import styles from './layout.module.scss';
 import { GoogleAnalytics } from '../components/google-analytics/google-analytics';
 import { config as configFa } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { Welcome } from '../components/welcome/welcome';
 import { Cookie } from '../components/cookie/cookie';
 import { ThemeContextProvider } from '../providers/theme-context-provider';

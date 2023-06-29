@@ -114,7 +114,7 @@
   max-width: 80%;
   margin: 0 auto;
 
-  @media(min-width: 400px) {
+  @media(min-width: 300px) {
     grid-template-columns: 1fr 1fr;
   }
 

@@ -32,9 +32,9 @@ perseverance:
 It could be an article, a coding tip, an idea, a piece of documentation or who knows what the future holds for myself!
 
 I’m going to use [my LinkedIn account](https://www.linkedin.com/in/danielzotti) with the hashtag *`#LearnedToday`*, and
-I’m going to write an article on [Dev.to](https://dev.to/danielzotti) (a community that I’ve been reading passively for
-years, but I’ve never posted anything) in order to collect all the progresses together, with the possibility of adding
-further notes and thoughts.
+I’m going to write an [article](https://dev.to/danielzotti/learnedtoday-4b1k) on [Dev.to](https://dev.to/danielzotti)
+(a community that I’ve been reading passively for years, but I’ve never posted anything) in order to collect all the
+progresses together, with the possibility of adding further notes and thoughts.
 
 I’m also going to create a [GitHub repository](https://github.com/danielzotti/LearnedToday) since I love to use GitHub
 to save my entire development career and who knows if I develop an app on top of this list, like a UI to filter articles

@@ -32,6 +32,11 @@ export const config = {
     gray: '#d0d0d0',
     white: '#ffffff'
   },
+  dates: {
+    luxon: {
+      article: 'yyyy-MM-dd'
+    }
+  },
   urls: {
     home: '/',
     blog: '/blog',
