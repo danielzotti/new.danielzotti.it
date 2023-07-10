@@ -70,6 +70,11 @@ p {
   margin: 0 0 clamp(10px, 1vw, 25px) 0;
 }
 
+code {
+  font-size: clamp(1em, 1.2vw, 1.3em);
+  line-height: 1.5;
+}
+
 img {
   max-width: 100%;
   height: auto;

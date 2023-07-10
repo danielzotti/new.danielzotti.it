@@ -6,7 +6,7 @@
   grid-template-areas:
           "metadata"
           "content";
-  @media(min-width: variables.$container-md-min) {
+  @media(min-width: variables.$md-min) {
     grid-template-areas: "content metadata";
     grid-template-columns: 3fr 1fr;
   }
@@ -31,7 +31,7 @@
   margin-bottom: 1vw;
   word-break: break-word;
 
-  @media(max-width: variables.$container-sm-max) {
+  @media(max-width: variables.$sm-max) {
     display: inline-block;
     margin-right: 5px
   }
