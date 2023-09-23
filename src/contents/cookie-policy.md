@@ -85,4 +85,4 @@ The links for specific instructions of the most popular browsers are listed belo
 - [Explorer](http://windows.microsoft.com/it-it/windows7/block-enable-or-allow-cookies)
 
 Moreover, here the link to disable analytical cookies
-of [Google Analytics](https://tools.google.com/dlpage/gaoptout?hl=it" target="_blank)
+of [Google Analytics](https://tools.google.com/dlpage/gaoptout?hl=it)

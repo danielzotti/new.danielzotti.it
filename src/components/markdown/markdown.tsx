@@ -23,7 +23,7 @@ export const Code = ({ className, children }) => {
   }
 
   return (
-    <SyntaxHighlighter language={language} style={codeStyle}>
+    <SyntaxHighlighter language={language === 'html' ? 'htmlbars' : language} style={codeStyle}>
       {children}
     </SyntaxHighlighter>
   );

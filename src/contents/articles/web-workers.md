@@ -178,6 +178,8 @@ source [project](https://github.com/danielzotti/web-workers-playground) on GitHu
 The project guides the user through a series of steps to follow, and the idea is to show the _difference_ between a *
 *long-running task** performed by the _main thread_ (which blocks the UI) and one performed by a _web worker_.
 
+> NB: **_Performances are the same but with the Web Worker the UI is still usable._**
+
 ![Web Workers Playground preview](/static/images/articles/web-workers/web-workers-demo.png)
 
 To _simulate_ a long-running task I used this simple code:
