@@ -49,13 +49,34 @@ export const config = {
     user: 'danielzotti',
     token: process.env.GITHUB_ACCESS_TOKEN,
     selectedRepos: [
-      // 'new.danielzotti.it',
-      // 'me.danielzotti.it',
-      'chrome-notepad',
-      'danielzotti-telegram-bot',
-      'ng-filemanager',
-      'ng-textarea-autoresize',
-      'spacecar'
+      {
+        slug: 'new-danielzotti-it',
+        name: 'new.danielzotti.it'
+      },
+      {
+        slug: 'me-danielzotti-it',
+        name: 'me.danielzotti.it'
+      },
+      {
+        slug: 'chrome-notepad',
+        name: 'chrome-notepad'
+      },
+      {
+        slug: 'danielzotti-telegram-bot',
+        name: 'danielzotti-telegram-bot'
+      },
+      {
+        slug: 'ng-filemanager',
+        name: 'ng-filemanager'
+      },
+      {
+        slug: 'ng-textarea-autoresize',
+        name: 'ng-textarea-autoresize'
+      },
+      {
+        slug: 'spacecar',
+        name: 'spacecar'
+      }
     ],
     repo: 'https://github.com/danielzotti/new.danielzotti.it'
   },

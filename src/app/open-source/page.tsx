@@ -8,7 +8,7 @@ export default async function OpenSourcePage() {
       <h1>Open Source</h1>
       <div className={styles.repos}>
         {config.github.selectedRepos?.map((repo) => (
-          <Teaser title={repo} url={`${config.urls.openSource}/${repo}`} key={repo} />))}
+          <Teaser title={repo.name} url={`${config.urls.openSource}/${repo.slug}`} key={repo.slug} />))}
       </div>
     </>
   );

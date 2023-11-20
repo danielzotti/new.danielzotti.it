@@ -32,7 +32,7 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleMenu = useCallback(() => {
     setIsOpen((open) => !open);
-  }, [setIsOpen, isOpen]);
+  }, [setIsOpen]);
 
   return (
     <div className={`dz-navbar ${styles.navbar} ${isOpen ? styles.isOpen : ''}`}>

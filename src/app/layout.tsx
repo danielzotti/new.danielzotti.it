@@ -13,10 +13,16 @@ import { Cookie } from '../components/cookie/cookie';
 import { ThemeContextProvider } from '../providers/theme-context-provider';
 import { SvgFilters } from '../components/svg-filters/svg-filters';
 import { Nineties } from '../components/nineties/nineties';
+import { Viewport } from 'next';
 
 configFa.autoAddCss = false;
 
+export const viewport: Viewport = {
+  themeColor: config.themeColor
+};
+
 export const metadata = {
+  metadataBase: new URL(config.baseUrl),
   title: config.title,
   description: config.description,
   openGraph: {
@@ -47,7 +53,6 @@ export const metadata = {
     site: config.twitterId
   },
   manifest: config.manifest,
-  themeColor: config.themeColor,
   robots: {
     index: true
   }

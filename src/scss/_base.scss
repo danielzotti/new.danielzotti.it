@@ -71,7 +71,7 @@ p {
 }
 
 code {
-  font-size: clamp(1em, 1.2vw, 1.3em);
+  font-size: clamp(1em, 1.2vw, 1.2em);
   line-height: 1.5;
 }
 
@@ -95,12 +95,15 @@ a {
 }
 
 blockquote {
+  word-break: break-word;
   border-left: 5px solid var(--text-color-secondary);
   margin-left: 0;
   padding-left: 20px;
 }
 
 ul, ol {
+  margin-bottom: clamp(25px, 3vw, 50px);
+
   li {
     @extend p;
   }

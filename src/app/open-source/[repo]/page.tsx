@@ -11,12 +11,16 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faTags, faCalendar, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { Metadata } from 'next';
 import { buildMetadata } from '../../../utils/metadata';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata(
   { params: { repo } }: { params: { repo: string } }
 ): Promise<Metadata> {
-
-  const metadata = await fetchGithubReposByName(repo);
+  const repoName = config.github.selectedRepos.find(r => r.slug === repo)?.name;
+  if (!repoName) {
+    return {};
+  }
+  const metadata = await fetchGithubReposByName(repoName);
 
   return buildMetadata({
     title: config.openSourcePageTitle(metadata?.name),
@@ -26,7 +30,7 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  return config.github.selectedRepos.map((repo) => ({ repo }));
+  return config.github.selectedRepos.map(({ slug }) => ({ repo: slug }));
 }
 
 export default async function RepoPage({
@@ -34,8 +38,12 @@ export default async function RepoPage({
 }: {
   params: { repo: string };
 }) {
-  const repo = await fetchGithubReposByName(params.repo);
+  const repoName = config.github.selectedRepos.find(r => r.slug === params.repo)?.name;
   const { toDate, toDateTime } = useDate();
+  if (!repoName) {
+    return notFound();
+  }
+  const repo = await fetchGithubReposByName(repoName);
   return (
     <>
       <BackButton path={config.urls.openSource} text={'Open Source'} />

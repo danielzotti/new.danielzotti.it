@@ -1,6 +1,6 @@
 # My personal website <3
 
-This is the new 2023 version built with [Next 13](https://nextjs.org/) (with the new App Router feature)
+This is the new 2023 version built with [NextJs 14](https://nextjs.org/) (with the new App Router feature)
 and [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ![Website preview](https://raw.githubusercontent.com/danielzotti/new.danielzotti.it/master/public/static/images/brand/danielzotti-website-preview.png)
@@ -16,13 +16,13 @@ I also use this website for testing and trying new technologies (which can be fo
 
 ## The technologies I've used:
 
-- NextJs 13.3 (with `app` folder)
+- NextJs 14 ~~NextJs 13.3 (with `app` folder)~~
 - Docker
 - GitLab CI
 - SSR
 - PWA
-- PWA offline (in beta, due to `app` folder bug)
-- SSG (in beta, due to `app` folder bug)
+- SSG
+- PWA offline (you need to install the PWA in order to get offline functionality)
 
 # TL;DR
 
@@ -50,18 +50,19 @@ I also use this website for testing and trying new technologies (which can be fo
     - [x] Projects
     - [x] Selected open source repo from GitHub
 - [x] Font Awesome Icons
-- [x] PWA (workaround)
-- [x] 404 page (workaround using `pages` folder since `app` folder doesn't support it yet)
+- [x] PWA  (only if the user install the PWA)
+- [x] 404 page ~~(workaround using `pages` folder since `app` folder doesn't support it yet)~~
 - [x] Cookie manager
 - [x] Google Analytics
 - [x] CSS variables instead of SCSS
 - [x] Theme dark/light
 - [x] Syntax Highlight for code
 - [x] Sort articles by date ASC
+- [x] Offline status
+- [ ] Improve accessibility
 - [ ] Transparent navbar on top in Home Page
 - [ ] Improve Open source section with preview
 - [ ] Filter articles by category
-- [ ] Offline status
 - [ ] New UI graphic
 
 ## Thanks to
