@@ -24,7 +24,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - SSG
 - PWA offline (you need to install the PWA in order to get offline functionality)
 
-# TL;DR
+## TL;DR
 
 - Local development (**without docker**) with "classic" NextJS CLI
     - `npm run dev` aka `next dev`

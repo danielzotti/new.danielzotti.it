@@ -12,6 +12,7 @@ import { faTags, faCalendar, faArrowUpRightFromSquare } from '@fortawesome/free-
 import { Metadata } from 'next';
 import { buildMetadata } from '../../../utils/metadata';
 import { notFound } from 'next/navigation';
+import { Markdown } from '../../../components/markdown/markdown';
 
 export async function generateMetadata(
   { params: { repo } }: { params: { repo: string } }
@@ -20,7 +21,7 @@ export async function generateMetadata(
   if (!repoName) {
     return {};
   }
-  const metadata = await fetchGithubReposByName(repoName);
+  const { data: metadata } = await fetchGithubReposByName(repoName);
 
   return buildMetadata({
     title: config.openSourcePageTitle(metadata?.name),
@@ -43,18 +44,29 @@ export default async function RepoPage({
   if (!repoName) {
     return notFound();
   }
-  const repo = await fetchGithubReposByName(repoName);
+  const { data: repo, readme } = await fetchGithubReposByName(repoName);
   return (
     <>
       <BackButton path={config.urls.openSource} text={'Open Source'} />
       <Suspense fallback={<LoadingSvgIcon />}>
         <div className={styles.contentWrapper}>
           <div className={styles.content}>
-            <h1>{repo.name}</h1>
-            <p>{repo.description}</p>
-            <p>
-              Last update at <strong>{toDateTime(repo.updated_at)}</strong>
-            </p>
+
+            {!readme && <>
+              <h1>{repo.name}</h1>
+              <p>{repo.description}</p>
+              <p>
+                Last update at <strong>{toDateTime(repo.updated_at)}</strong>
+              </p>
+            </>}
+            {!!readme &&
+              <>
+                <div className={styles.repoName}>{repo.name}</div>
+                <div className={styles.readme}>
+                  <Markdown className={styles.content}>{readme}</Markdown>
+                </div>
+              </>
+            }
           </div>
           <div className={styles.metadata}>
             {repo.created_at && (
@@ -74,6 +86,7 @@ export default async function RepoPage({
                 </Link>
               </p>
             )}
+            {!!readme && <p>{repo.description}</p>}
             {repo.topics && repo.topics.length > 0 && (
               <p className={styles.topics}><FontAwesomeIcon icon={faTags} />&nbsp;{repo.topics.join(', ')}</p>
             )}

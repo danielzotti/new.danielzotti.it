@@ -19,5 +19,16 @@ export async function fetchGithubReposByName(name: string) {
     owner: config.github.user,
     repo: name
   });
-  return res.data;
+
+  const defaultBranch = res.data.default_branch;
+  const readmeUrl = `https://raw.githubusercontent.com/${config.github.user}/${name}/${defaultBranch}/README.md`;
+
+  try {
+    const response = await fetch(readmeUrl);
+    const readme = await response.text();
+    return { data: res.data, readme };
+  } catch (ex) {
+    return { data: res.data };
+  }
+
 }

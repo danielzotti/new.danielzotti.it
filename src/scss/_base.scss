@@ -1,3 +1,5 @@
+@use "mixins/typography";
+
 @font-face {
   font-family: 'times-pixelated';
   src: url(/static/90s/times-pixelated.woff) format('woff');
@@ -39,9 +41,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
+  @include typography.titleHighlightBorder();
   font-size: clamp(1.75em, 4vw, 3.5em);
-  border-left: 10px solid var(--accent-color);
-  padding-left: 20px;
 }
 
 h2 {
