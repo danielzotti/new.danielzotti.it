@@ -1,7 +1,7 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile Next App
 
 # base image
-FROM node:18.12.1-alpine AS build-stage
+FROM node:20.10.0-alpine AS build-stage
 
 # create & set working directory
 WORKDIR /app
@@ -21,7 +21,7 @@ ARG configuration
 RUN npm run build
 
 # Stage 2, based on NodeJS, to have only the compiled app, ready for production with SSR
-FROM node:18.12.1-alpine AS serve-stage
+FROM node:20.10.0-alpine AS serve-stage
 
 WORKDIR app
 
