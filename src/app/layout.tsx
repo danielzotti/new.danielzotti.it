@@ -14,6 +14,7 @@ import { ThemeContextProvider } from '../providers/theme-context-provider';
 import { SvgFilters } from '../components/svg-filters/svg-filters';
 import { Nineties } from '../components/nineties/nineties';
 import { Viewport } from 'next';
+import { Xmas } from '../components/xmas/xmas';
 
 configFa.autoAddCss = false;
 
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <SvgFilters />
         <Nineties />
+        <Xmas />
         <ThemeContextProvider>
           <main className={styles.mainContent}>
             {children}

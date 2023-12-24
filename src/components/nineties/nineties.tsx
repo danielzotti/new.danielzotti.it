@@ -1,19 +1,18 @@
 'use client';
 
 import { useEffect } from 'react';
-import { config } from '../../config';
-import { activate90s, deactivate90s, is90sActive, localStorage90sTheme } from '../../utils/nineties';
+import { activate90s, deactivate90s, is90sActive } from '../../utils/nineties';
 
 let word = '';
 
 interface NinetiesProps {
-  activateKeyword: string;
-  deactivateKeyword: string;
+  activateKeyword?: string;
+  deactivateKeyword?: string;
 }
 
-export const Nineties = ({ activateKeyword = 'internetexplorer', deactivateKeyword = 'stop' }) => {
+export const Nineties = ({ activateKeyword = 'internetexplorer', deactivateKeyword = 'stop' }: NinetiesProps) => {
   useEffect(() => {
-    const check = (e) => {
+    const check = (e: KeyboardEvent) => {
       if (word?.length > 50) {
         word = '';
       }
