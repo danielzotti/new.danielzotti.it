@@ -18,9 +18,9 @@ const isXmasTime = (): boolean => {
   const now = DateTime.now();
 
   const start = DateTime.local(year, 12, 8, 0, 0);
-  const end = DateTime.local(year + 1, 1, 7, 0, 0);
+  const end = DateTime.local(year, 1, 7, 0, 0);
 
-  return now >= start && now <= end;
+  return now >= start || now <= end;
 };
 
 export const Xmas = ({ activateQueryParam = 'xmas' }: XmasProps) => {
