@@ -14,13 +14,15 @@ interface XmasProps {
 
 const isXmasTime = (): boolean => {
   const year = new Date().getUTCFullYear();
-
+  const month = new Date().getUTCMonth();
+  const isDecember = month === 11;
+  const isJanuary = month === 0;
   const now = DateTime.now();
 
-  const start = DateTime.local(year, 12, 8, 0, 0);
-  const end = DateTime.local(year, 1, 7, 0, 0);
+  const start = DateTime.local(isJanuary ? (year - 1) : year, 12, 8, 0, 0);
+  const end = DateTime.local(isDecember ? (year + 1) : year, 1, 7, 0, 0);
 
-  return now >= start || now <= end;
+  return now >= start && now <= end;
 };
 
 export const Xmas = ({ activateQueryParam = 'xmas' }: XmasProps) => {
