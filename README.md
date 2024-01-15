@@ -28,14 +28,14 @@ I also use this website for testing and trying new technologies (which can be fo
 
 - Local development (**without docker**) with "classic" NextJS CLI
     - `npm run dev` aka `next dev`
-- Local development: one every change to code, it refreshes
+- Local development: on every change to code, it refreshes
     - `npm run docker:start:local`
 
 ## Steps to create & run the project
 
 - `nvm use`: it uses the version written in `.nvmrc` file (v18)
 - `npx create-next-app@latest`
-- `npm install` (see `package.jon` for dependencies)
+- `npm install` (see `package.json` for dependencies)
 - `npm run dev`
 - Open [http://localhost:3001](http://localhost:3001)
 
