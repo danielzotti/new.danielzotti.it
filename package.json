@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/gtag.js": "0.0.12",
-    "@types/node": "18.15.11",
+    "@types/node": "20.11.16",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "http-server": "^14.1.1",
