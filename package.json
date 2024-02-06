@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
-    "start": "next start -p 3001",
-    "build-and-start": "npm run build && npm run start",
+    "serve": "serve out -p 3001",
     "build-and-serve": "npm run build && serve out -p 3001",
     "docker:start:local": "docker-compose --file docker-compose.local.yml up --build nextjs",
     "docker:start:server": "CONFIGURATION=production docker-compose --file docker-compose.server.yml up --build nextjs",
