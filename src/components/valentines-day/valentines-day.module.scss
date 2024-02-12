@@ -1,0 +1,91 @@
+.daniel {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1000;
+  width: 160px;
+  rotate: -30deg;
+  bottom: -66px;
+  right: -57px;
+  animation: fadeIn 2s, shake 10s ease-in-out infinite;
+}
+
+.heart {
+  position: fixed;
+  z-index: 1001;
+  scale: 1.2;
+  color: red;
+}
+
+.heartRight {
+  @extend .heart;
+  bottom: 49px;
+  right: 56px;
+  rotate: -37deg;
+  animation: fadeIn 2s, flying-heart-right 10s ease-out infinite;
+}
+
+.heartLeft {
+  @extend .heart;
+  bottom: 61px;
+  right: 38px;
+  rotate: -22deg;
+  animation: fadeIn 2s, flying-heart-left 10s ease-out infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 10% {
+    bottom: -66px;
+    right: -57px;
+    rotate: -30deg;
+  }
+  2%, 6% {
+    bottom: -40px;
+    rotate: -20deg;
+  }
+  4%, 8% {
+    bottom: -46px;
+    rotate: -35deg;
+  }
+}
+
+
+@keyframes flying-heart-right {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 0.9;
+    bottom: 49px;
+    right: 56px;
+  }
+  15% {
+    opacity: 0;
+    bottom: 249px;
+    right: 156px;
+  }
+}
+
+@keyframes flying-heart-left {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 0.9;
+    bottom: 61px;
+    right: 38px;
+  }
+  15% {
+    opacity: 0;
+    bottom: 261px;
+    right: 38px;
+  }
+}
