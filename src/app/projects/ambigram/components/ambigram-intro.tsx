@@ -1,7 +1,7 @@
 import styles from './ambigram.module.scss';
-import { config } from '../../../../config';
-import { getMarkdownContentByPath } from '../../../../utils/markdown';
-import { Markdown } from '../../../../components/markdown/markdown';
+import { config } from 'src/config';
+import { getMarkdownContentByPath } from 'src/utils/markdown';
+import { Markdown } from 'src/components/markdown/markdown';
 
 export const AmbigramIntro = () => {
   return (

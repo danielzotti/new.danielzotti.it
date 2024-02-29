@@ -1,6 +1,5 @@
 import styles from './back-button.module.scss';
 import Link from 'next/link';
-import { config } from '../../config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 

@@ -1,5 +1,5 @@
 import { Octokit } from 'octokit';
-import { config } from '../../config';
+import { config } from 'src/config';
 
 const octokit = new Octokit({
   auth: config.github.token
@@ -25,6 +25,9 @@ export async function fetchGithubReposByName(name: string) {
 
   try {
     const response = await fetch(readmeUrl);
+    if(!response.ok) {
+      return { data: res.data };
+    }
     const readme = await response.text();
     return { data: res.data, readme };
   } catch (ex) {

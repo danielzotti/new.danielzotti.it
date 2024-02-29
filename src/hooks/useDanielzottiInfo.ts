@@ -1,4 +1,4 @@
-import { danielzottiInfo } from '../utils/danielzotti-info';
+import { danielzottiInfo } from 'src/utils/danielzotti-info';
 
 export const useDanielzottiInfo = () => {
   return danielzottiInfo;

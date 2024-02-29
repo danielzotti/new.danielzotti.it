@@ -1,8 +1,8 @@
 'use client';
 
-import { config } from '../../config';
+import { config } from 'src/config';
 import { useEffect, useRef } from 'react';
-import { useConsoleCool } from '../../hooks/useConsoleCool';
+import { useConsoleCool } from 'src/hooks/useConsoleCool';
 
 export const Videoprofile = () => {
 

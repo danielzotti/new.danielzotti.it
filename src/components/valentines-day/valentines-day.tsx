@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
 import styles from './valentines-day.module.scss';
-import danielValentinesDay from '../../../public/static/valentines-day/valentines-day.png';
+import danielValentinesDay from 'public/static/valentines-day/valentines-day.png';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';

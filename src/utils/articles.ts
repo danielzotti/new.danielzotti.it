@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import matter from 'gray-matter';
-import { config } from '../config';
-import { ArticleMetadata } from '../models/blog.models';
+import { config } from 'src/config';
+import { ArticleMetadata } from 'src/models/blog.models';
 import { DateTime } from 'luxon';
 
 export const getArticle = (slug: string) => {

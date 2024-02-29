@@ -3,7 +3,7 @@ import styles from './teaser.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare, faCalendar, faTags } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import { useDate } from '../../hooks/useDate';
+import { useDate } from 'src/hooks/useDate';
 
 export interface TeaserProps {
   title: string;

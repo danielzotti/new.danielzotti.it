@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useConsoleCool } from '../../hooks/useConsoleCool';
-import { useDanielzottiInfo } from '../../hooks/useDanielzottiInfo';
+import { useConsoleCool } from 'src/hooks/useConsoleCool';
+import { useDanielzottiInfo } from 'src/hooks/useDanielzottiInfo';
 
 export const Welcome = () => {
   const { consoleCool } = useConsoleCool();

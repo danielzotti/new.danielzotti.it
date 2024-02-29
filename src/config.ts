@@ -42,7 +42,6 @@ export const config = {
     blog: '/blog',
     openSource: '/open-source',
     projects: '/projects',
-    me: '/me',
     cookiePolicy: '/cookie-policy'
   },
   github: {

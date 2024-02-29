@@ -1,14 +1,18 @@
-import { config } from '../config';
+import { config } from 'src/config';
 import { Metadata } from 'next';
 
-export const buildMetadata = ({ title, description, url }: {
+export const buildMetadata = ({ title, description, url, canonical }: {
   title: string;
   description?: string,
   url: string,
+  canonical?: string;
 }): Metadata => {
   return {
     title,
     description,
+    alternates: {
+      canonical: canonical ? canonical : url
+    },
     openGraph: {
       title: title,
       siteName: config.title,

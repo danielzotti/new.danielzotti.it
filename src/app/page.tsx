@@ -1,14 +1,14 @@
-import { Footer } from '../components/footer/footer';
-import { HomerBanner } from '../components/home-banner/home-banner';
-import cvPreviewEn from '../../public/static/images/brand/danielzotti-cv-preview-en-small.webp';
-import cvPreviewIt from '../../public/static/images/brand/danielzotti-cv-preview-it-small.webp';
-import { config } from '../config';
-import { BlogSvgIcon } from '../shared/components/ui/svg-icons/blog-svg-icon';
-import { ProjectsSvgIcon } from '../shared/components/ui/svg-icons/projects-svg-icon';
-import { OpenSourceSvgIcon } from '../shared/components/ui/svg-icons/open-source-svg-icon';
+import { Footer } from 'src/components/footer/footer';
+import { HomerBanner } from 'src/components/home-banner/home-banner';
+import cvPreviewEn from 'public/static/images/brand/danielzotti-cv-preview-en-small.webp';
+import cvPreviewIt from 'public/static/images/brand/danielzotti-cv-preview-it-small.webp';
+import { config } from 'src/config';
+import { BlogSvgIcon } from 'src/shared/components/ui/svg-icons/blog-svg-icon';
+import { ProjectsSvgIcon } from 'src/shared/components/ui/svg-icons/projects-svg-icon';
+import { OpenSourceSvgIcon } from 'src/shared/components/ui/svg-icons/open-source-svg-icon';
 import styles from './page.module.scss';
 import Link from 'next/link';
-import { StatementWithIcon } from '../components/statement-with-icon/statement-with-icon';
+import { StatementWithIcon } from 'src/components/statement-with-icon/statement-with-icon';
 import {
   faCode,
   faBriefcase,
@@ -30,11 +30,11 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faReact, faAngular, faVuejs, faJs, faCss3Alt } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { HomeSectionTeaser } from '../components/home-section-teaser/home-section-teaser';
+import { HomeSectionTeaser } from 'src/components/home-section-teaser/home-section-teaser';
 import Image from 'next/image';
-import { HomeSocialLink } from '../components/home-social-link/home-social-link';
-import { HomeNavbar } from '../components/home-navbar/home-navbar';
-import { HomeThemeSelector } from '../components/home-theme-selector/home-theme-selector';
+import { HomeSocialLink } from 'src/components/home-social-link/home-social-link';
+import { HomeNavbar } from 'src/components/home-navbar/home-navbar';
+import { HomeThemeSelector } from 'src/components/home-theme-selector/home-theme-selector';
 
 export default function Home() {
 

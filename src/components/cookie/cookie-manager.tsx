@@ -2,9 +2,9 @@
 
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styles from './cookie-manager.module.scss';
-import { getCookie, setCookie } from '../../utils/cookie';
-import { config } from '../../config';
-import { Button } from '../../shared/components/ui/button/button';
+import { getCookie, setCookie } from 'src/utils/cookie';
+import { config } from 'src/config';
+import { Button } from 'src/shared/components/ui/button/button';
 
 interface CookieManagerProps {
   policy: ReactNode;

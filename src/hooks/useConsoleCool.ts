@@ -1,4 +1,4 @@
-import { consoleCool } from '../utils/console-cool';
+import { consoleCool } from 'src/utils/console-cool';
 
 export const useConsoleCool = () => {
   return {

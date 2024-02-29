@@ -1,4 +1,4 @@
-import { LoadingSvgIcon } from '../svg-icons/loading-svg-icon';
+import { LoadingSvgIcon } from 'src/shared/components/ui/svg-icons/loading-svg-icon';
 import styles from './loading.module.scss';
 
 export const Loading = () => {

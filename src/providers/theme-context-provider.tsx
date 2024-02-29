@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useCallback, useEffect, useState } from 'react';
-import { config } from '../config';
+import { config } from 'src/config';
 
 export type ThemeValueTypes = 'light' | 'dark' | 'os default' | 'nineties';
 

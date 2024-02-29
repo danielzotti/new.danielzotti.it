@@ -1,8 +1,7 @@
 import { AmbigramIntro } from './components/ambigram-intro';
 import { AmbigramWrapper } from './components/ambigram-wrapper';
-import { BackButton } from '../../../components/back-button/back-button';
-import { config } from '../../../config';
-import { Footer } from '../../../components/footer/footer';
+import { BackButton } from 'src/components/back-button/back-button';
+import { config } from 'src/config';
 
 export default function AmbigramPage() {
   return (

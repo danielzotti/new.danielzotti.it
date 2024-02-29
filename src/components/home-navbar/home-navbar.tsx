@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './home-navbar.module.scss';
-import { Navbar } from '../navbar/navbar';
+import { Navbar } from 'src/components/navbar/navbar';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export const HomeNavbar = () => {

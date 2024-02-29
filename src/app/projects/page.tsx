@@ -1,13 +1,16 @@
-import { config } from '../../config';
-import { InternalPageLayout } from '../../shared/layouts/internal-page-layout/internal-page-layout';
+import { config } from 'src/config';
+import { InternalPageLayout } from 'src/shared/layouts/internal-page-layout/internal-page-layout';
 import styles from './page.module.scss';
-import { Teaser } from '../../components/teaser/teaser';
+import { Teaser } from 'src/components/teaser/teaser';
+import { Metadata } from 'next';
+import { buildMetadata } from 'src/utils/metadata';
 
-export const metadata = {
+export const metadata: Metadata = buildMetadata({
   title: config.pageTitle('Projects'),
   description:
     'Daniel Zotti\'s projects',
-};
+  url: `${config.baseUrl}${config.urls.projects}`
+});
 
 export default async function ProjectsPage() {
   return (

@@ -1,18 +1,18 @@
 import Link from 'next/link';
 import React, { Suspense } from 'react';
-import { config } from '../../../config';
-import { LoadingSvgIcon } from '../../../shared/components/ui/svg-icons/loading-svg-icon';
-import { fetchGithubReposByName } from '../../../utils/api/github';
+import { config } from 'src/config';
+import { LoadingSvgIcon } from 'src/shared/components/ui/svg-icons/loading-svg-icon';
+import { fetchGithubReposByName } from 'src/utils/api/github';
 import styles from './page.module.scss';
-import { useDate } from '../../../hooks/useDate';
+import { useDate } from 'src/hooks/useDate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BackButton } from '../../../components/back-button/back-button';
+import { BackButton } from 'src/components/back-button/back-button';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faTags, faCalendar, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { Metadata } from 'next';
-import { buildMetadata } from '../../../utils/metadata';
+import { buildMetadata } from 'src/utils/metadata';
 import { notFound } from 'next/navigation';
-import { Markdown } from '../../../components/markdown/markdown';
+import { Markdown } from 'src/components/markdown/markdown';
 
 export async function generateMetadata(
   { params: { repo } }: { params: { repo: string } }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { activate90s, deactivate90s, is90sActive } from '../../utils/nineties';
+import { activate90s, deactivate90s, is90sActive } from 'src/utils/nineties';
 
 let word = '';
 

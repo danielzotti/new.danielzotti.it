@@ -1,4 +1,4 @@
-import { Loading } from '../../shared/components/ui/loading/loading';
+import { Loading } from 'src/shared/components/ui/loading/loading';
 
 const LoadingPage = () => {
   return <Loading />;

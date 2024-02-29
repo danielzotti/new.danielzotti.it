@@ -1,21 +1,21 @@
-import '../scss/_variables-css.scss';
-import '../scss/styles.scss';
+import 'src/scss/_variables-css.scss';
+import 'src/scss/styles.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { ReactNode, Suspense } from 'react';
-import { HeadFonts } from '../components/head-fonts/head-fonts';
-import Pwa from '../components/pwa/pwa';
-import { config } from '../config';
+import { HeadFonts } from 'src/components/head-fonts/head-fonts';
+import Pwa from 'src/components/pwa/pwa';
+import { config } from 'src/config';
 import styles from './layout.module.scss';
-import { GoogleAnalytics } from '../components/google-analytics/google-analytics';
+import { GoogleAnalytics } from 'src/components/google-analytics/google-analytics';
 import { config as configFa } from '@fortawesome/fontawesome-svg-core';
-import { Welcome } from '../components/welcome/welcome';
-import { Cookie } from '../components/cookie/cookie';
-import { ThemeContextProvider } from '../providers/theme-context-provider';
-import { SvgFilters } from '../components/svg-filters/svg-filters';
-import { Nineties } from '../components/nineties/nineties';
+import { Welcome } from 'src/components/welcome/welcome';
+import { Cookie } from 'src/components/cookie/cookie';
+import { ThemeContextProvider } from 'src/providers/theme-context-provider';
+import { SvgFilters } from 'src/components/svg-filters/svg-filters';
+import { Nineties } from 'src/components/nineties/nineties';
 import { Viewport } from 'next';
-import { Xmas } from '../components/xmas/xmas';
-import { ValentinesDay } from '../components/valentines-day/valentines-day';
+import { Xmas } from 'src/components/xmas/xmas';
+import { ValentinesDay } from 'src/components/valentines-day/valentines-day';
 
 configFa.autoAddCss = false;
 
@@ -27,6 +27,9 @@ export const metadata = {
   metadataBase: new URL(config.baseUrl),
   title: config.title,
   description: config.description,
+  alternates: {
+    canonical: config.baseUrl,
+  },
   openGraph: {
     title: config.title,
     siteName: config.title,

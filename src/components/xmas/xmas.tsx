@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
-import { Button } from '../../shared/components/ui/button/button';
+import { Button } from 'src/shared/components/ui/button/button';
 import styles from './xmas.module.scss';
 import { faSnowflake } from '@fortawesome/free-regular-svg-icons';
 import { faBan } from '@fortawesome/free-solid-svg-icons';
@@ -50,7 +50,7 @@ export const Xmas = ({ activateQueryParam = 'xmas' }: XmasProps) => {
     root.current!.style.setProperty('--cursor-default', 'url(/static/xmas/xmas-cursor-with-daniel.png), auto');
     root.current!.style.setProperty('--cursor-pointer', 'url(/static/xmas/xmas-cursor-with-daniel-pointer.png), pointer');
 
-  }, []);
+  }, [activateQueryParam]);
 
   if (!isXmasTime() && !isActive) {
     return null;

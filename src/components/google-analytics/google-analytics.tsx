@@ -3,9 +3,9 @@
 import { usePathname, useSearchParams } from 'next/navigation';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
-import { pageview } from '../../utils/google-analytics';
-import { config } from '../../config';
-import { getCookie } from '../../utils/cookie';
+import { pageview } from 'src/utils/google-analytics';
+import { config } from 'src/config';
+import { getCookie } from 'src/utils/cookie';
 
 export const GoogleAnalytics = () => {
   const pathname = usePathname();

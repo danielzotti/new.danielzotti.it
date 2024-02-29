@@ -1,6 +1,6 @@
 {
   "name": "daniel-zotti-next",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3001",
@@ -43,5 +43,8 @@
     "@types/react-dom": "^18.2.15",
     "http-server": "^14.1.1",
     "next-pwa": "^5.6.0"
+  },
+  "browser": {
+    "fs": false
   }
 }

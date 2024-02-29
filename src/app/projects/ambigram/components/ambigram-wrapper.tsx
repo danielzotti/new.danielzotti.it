@@ -3,7 +3,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from '../page.module.scss';
 import { Ambigram } from './ambigram';
-import { Footer } from '../../../../components/footer/footer';
+import { Footer } from 'src/components/footer/footer';
 
 interface AmbigramWrapperProps {
   children: ReactNode;

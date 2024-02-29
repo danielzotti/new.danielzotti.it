@@ -1,4 +1,4 @@
-import { config } from '../config';
+import { config } from 'src/config';
 
 export const localStorage90sTheme = 'nineties';
 

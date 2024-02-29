@@ -1,7 +1,7 @@
 import styles from './cookie-policy-content.module.scss';
-import { getMarkdownContentByPath } from '../../utils/markdown';
-import { config } from '../../config';
-import { Markdown } from '../markdown/markdown';
+import { getMarkdownContentByPath } from 'src/utils/markdown';
+import { config } from 'src/config';
+import { Markdown } from 'src/components/markdown/markdown';
 
 export const CookiePolicyContent = () => {
   return <div className={styles.cookiePolicyContent}>

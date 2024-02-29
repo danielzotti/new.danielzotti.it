@@ -2,11 +2,11 @@
 
 import styles from './page.module.scss';
 import * as QRCode from 'qrcode-svg';
-import { config } from '../../../config';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { config } from 'src/config';
+import { useCallback, useRef, useState } from 'react';
 import Image from 'next/image';
-import logo from '../../../../public/static/icons/icon-72x72.png';
-import { BackButton } from '../../../components/back-button/back-button';
+import logo from 'public/static/icons/icon-72x72.png';
+import { BackButton } from 'src/components/back-button/back-button';
 
 const createQrCode = (content: string) => new QRCode.default({
   content,
@@ -35,7 +35,7 @@ export default function QrCodePage() {
     try {
       setSvg(createQrCode(content));
     } catch (ex) {
-      setErrorMessage;
+      setErrorMessage('Oooops, there was an error!');
     }
   }, []);
 

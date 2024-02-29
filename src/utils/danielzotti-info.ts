@@ -1,5 +1,5 @@
 import { consoleCool } from './console-cool';
-import { config } from '../config';
+import { config } from 'src/config';
 
 export const danielzottiTimeline = [
   {
@@ -107,7 +107,7 @@ export const danielzottiInfo = {
   },
   invert: () => {
     const html = document.querySelector('html');
-    consoleCool('Congratulations, I have found a hidden method! You\'re an hacker, aren\'t you? 🤪');
+    consoleCool('Congratulations, I have found a hidden method! You\'re an hacker, aren\'t you? 🤪', { 'background-color': 'purple', 'color': 'yellow' });
 
     if (!html) {
       return;

@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import styles from './home-banner.module.scss';
-import logo from '../../../public/static/images/brand/danielzotti-logo-medium.webp';
-import { Videoprofile } from '../videoprofile/videoprofile';
-import { AppVersion } from '../app-version/app-version';
+import logo from 'public/static/images/brand/danielzotti-logo-medium.webp';
+import { Videoprofile } from 'src/components/videoprofile/videoprofile';
+import { AppVersion } from 'src/components/app-version/app-version';
 
 export const HomerBanner = () => {
   return (

@@ -1,6 +1,6 @@
-import packageJson from '../../../package.json';
+import packageJson from 'package.json';
 import styles from './app-version.module.scss';
-import { config } from '../../config';
+import { config } from 'src/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 

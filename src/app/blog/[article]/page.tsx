@@ -1,17 +1,17 @@
-import { config } from '../../../config';
+import { config } from 'src/config';
 import {
   getArticleContent, getArticleMetadata,
   getArticleMetadataList
-} from '../../../utils/articles';
+} from 'src/utils/articles';
 import styles from './page.module.scss';
-import { BackButton } from '../../../components/back-button/back-button';
+import { BackButton } from 'src/components/back-button/back-button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTags, faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { useDate } from '../../../hooks/useDate';
-import { Markdown } from '../../../components/markdown/markdown';
+import { useDate } from 'src/hooks/useDate';
+import { Markdown } from 'src/components/markdown/markdown';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { buildMetadata } from '../../../utils/metadata';
+import { buildMetadata } from 'src/utils/metadata';
 
 export async function generateMetadata(
   { params: { article } }: { params: { article: string } }

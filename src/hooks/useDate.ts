@@ -1,4 +1,4 @@
-import { toFormattedDate, toFormattedDateTime } from '../utils/date';
+import { toFormattedDate, toFormattedDateTime } from 'src/utils/date';
 
 export const useDate = () => {
   return {

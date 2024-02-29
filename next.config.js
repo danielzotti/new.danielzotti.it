@@ -24,10 +24,7 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true
-  },
-  // experimental: {
-  //   typedRoutes: true,
-  // },
+  }
 };
 
 module.exports = withPWA(nextConfig);

@@ -3,7 +3,7 @@ import styles from './theme-selector.module.scss';
 import { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun, faCircleHalfStroke, faHeart } from '@fortawesome/free-solid-svg-icons';
-import { ThemeContext } from '../../providers/theme-context-provider';
+import { ThemeContext } from 'src/providers/theme-context-provider';
 
 export const ThemeSelector = () => {
 

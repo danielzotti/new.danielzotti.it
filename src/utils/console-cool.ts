@@ -10,9 +10,9 @@ export interface ConsoleCoolStyle {
 const defaultStyle = {
   'font-size': '15px',
   'background-color': 'black',
-  'border-radius': '8px',
+  'border-radius': '2px',
   color: 'yellow',
-  padding: '10px'
+  // padding: '10px',
 };
 
 export const consoleCool = (text: string, style?: Partial<ConsoleCoolStyle>) => {

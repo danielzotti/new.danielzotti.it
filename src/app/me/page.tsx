@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
-import { InternalPageLayout } from '../../shared/layouts/internal-page-layout/internal-page-layout';
-import { config } from '../../config';
+import { InternalPageLayout } from 'src/shared/layouts/internal-page-layout/internal-page-layout';
+import { config } from 'src/config';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

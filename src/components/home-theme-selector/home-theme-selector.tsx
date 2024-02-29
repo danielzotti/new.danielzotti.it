@@ -2,7 +2,7 @@
 
 import styles from './home-theme-selector.module.scss';
 import { useContext } from 'react';
-import { ThemeContext } from '../../providers/theme-context-provider';
+import { ThemeContext } from 'src/providers/theme-context-provider';
 import yoda from 'public/static/images/icons/yoda.svg';
 import darthVader from 'public/static/images/icons/darth-vader.svg';
 import Image from 'next/image';

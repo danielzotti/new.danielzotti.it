@@ -1,9 +1,9 @@
-import '../scss/_variables-css.scss';
-import '../scss/styles.scss';
+import 'src/scss/_variables-css.scss';
+import 'src/scss/styles.scss';
 import styles from './not-found.module.scss';
-import { Navbar } from '../components/navbar/navbar';
-import { HeadFonts } from '../components/head-fonts/head-fonts';
-import { ThemeContextProvider } from '../providers/theme-context-provider';
+import { Navbar } from 'src/components/navbar/navbar';
+import { HeadFonts } from 'src/components/head-fonts/head-fonts';
+import { ThemeContextProvider } from 'src/providers/theme-context-provider';
 
 export const metadata = {
   robots: {

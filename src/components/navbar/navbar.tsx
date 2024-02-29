@@ -3,10 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { config } from '../../config';
+import { config } from 'src/config';
 import styles from './navbar.module.scss';
-import logo from '../../../public/static/images/brand/danielzotti-logo-medium.webp';
-import { ThemeSelector } from '../theme-selector/theme-selector';
+import logo from 'public/static/images/brand/danielzotti-logo-medium.webp';
+import { ThemeSelector } from 'src/components/theme-selector/theme-selector';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useState } from 'react';
