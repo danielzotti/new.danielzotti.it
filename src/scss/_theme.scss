@@ -1,5 +1,6 @@
 @mixin dark {
 
+  color-scheme: dark;
   // THEME (dark)
   --text-color: var(--white-dark);
   --text-color-secondary: var(--white);
@@ -37,6 +38,7 @@
 }
 
 @mixin light {
+  color-scheme: light;
 
   // THEME (light)
   --text-color: var(--black-light);

@@ -14,8 +14,11 @@ import { ThemeContextProvider } from 'src/providers/theme-context-provider';
 import { SvgFilters } from 'src/components/svg-filters/svg-filters';
 import { Nineties } from 'src/components/nineties/nineties';
 import { Viewport } from 'next';
-import { Xmas } from 'src/components/xmas/xmas';
-import { ValentinesDay } from 'src/components/valentines-day/valentines-day';
+import { Xmas } from 'src/components/special/xmas/xmas';
+import { ValentinesDay } from 'src/components/special/valentines-day/valentines-day';
+import { WomensDay } from 'src/components/special/womens-day/womens-day';
+import { Easter } from 'src/components/special/easter/easter';
+import { PieDay } from 'src/components/special/pie-day/pie-day';
 
 configFa.autoAddCss = false;
 
@@ -77,6 +80,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Nineties />
         <Xmas />
         <ValentinesDay />
+        <WomensDay />
+        <Easter />
+        <PieDay />
         <ThemeContextProvider>
           <main className={styles.mainContent}>
             {children}

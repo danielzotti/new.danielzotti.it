@@ -1,0 +1,75 @@
+$egg-width: 160px;
+$egg-height: $egg-width * 1.5;
+
+//$egg-position-left: calc(50vw - ($egg-width / 2));
+//$egg-position-bottom: calc(50vh - ($egg-height / 2));
+$egg-position-left: 30px;
+$egg-position-bottom: 40px;
+
+$shadow-height: 50px;
+
+.wrapper {
+  position: fixed;
+  bottom: $egg-position-bottom;
+  left: $egg-position-left;
+  z-index: 1000;
+  width: $egg-width;
+  height: $egg-height;
+}
+
+.egg {
+  position: relative;
+  cursor: pointer;
+  z-index: 1000;
+  width: $egg-width;
+  height: $egg-height;
+  border-radius: 55% 55% / 70% 70% 43% 43%;
+  //border: 1px solid #ccb48b;
+  background-color: wheat;
+  background-image: radial-gradient(circle at top, transparent, pink);
+  transform-origin: center bottom;
+  rotate: 3deg;
+  animation: fadeIn 2s, shake 10s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: var(--font-family-title);
+  color: #f029ec;
+  padding-top: 20px;
+}
+
+.shadow {
+  position: relative;
+  z-index: 999;
+  height: $shadow-height;
+  bottom: calc($shadow-height / 2);
+  background-image: radial-gradient(#638d 12%, transparent 50%);
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 10% {
+    rotate: 3deg;
+  }
+  2%, 6% {
+    rotate: -5deg;
+  }
+  4%, 8% {
+    rotate: 7deg;
+  }
+}

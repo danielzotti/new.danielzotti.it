@@ -1,0 +1,35 @@
+$position-bottom: -10px;
+$position-right: -110px;
+
+.mimosa {
+  cursor: pointer;
+  position: fixed;
+  z-index: 1000;
+  width: 160px;
+  rotate: -35deg;
+  bottom: $position-bottom;
+  right: $position-right;
+  transform-origin: center bottom;
+  animation: fadeIn 2s, shake 10s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0%, 10% {
+    rotate: -35deg;
+  }
+  2%, 6% {
+    rotate: -20deg;
+  }
+  4%, 8% {
+    rotate: -40deg;
+  }
+}

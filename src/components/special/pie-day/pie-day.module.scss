@@ -1,0 +1,72 @@
+.close {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: white;
+  color: black;
+  border:1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  width:25px;
+  height:25px;
+  font-size: 23px;
+  line-height: 1;
+  perspective: 800px;
+}
+.coin {
+  position: fixed;
+  z-index: 1000;
+  bottom: 30px;
+  right: 30px;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+
+  transition: transform 1s ease-in;
+  transform-style: preserve-3d;
+
+  > :global(div) {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 12px 20px -10px rgba(0, 0, 0, .7);
+    position: absolute;
+    backface-visibility: hidden;
+  }
+
+  &:global(.heads) {
+    animation: flipHead 2s ease-out forwards;
+  }
+
+  &:global(.tails) {
+    animation: flipTail 2s ease-out forwards;
+  }
+}
+
+.coinHeads {
+}
+
+.coinTails {
+  transform: rotateY(-180deg);
+}
+
+@keyframes flipHead {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1800deg);
+  }
+}
+
+@keyframes flipTail {
+  from {
+    transform: rotateY(0);
+  }
+  to {
+    transform: rotateY(1980deg);
+  }
+}
+
