@@ -72,7 +72,7 @@ export const danielzottiTimeline = [
 
 export const danielzottiInfo = {
   about: () => {
-    console.log('Daniel Zotti is born in Trieste on the 16th of April 1987. He actually live in Trieste and he\'s not looking for a job at the moment!');
+    console.log('Daniel Zotti is born in Trieste on the 16th of April 1987. He is creative and loves joking around and having a good laugh!');
   },
   career: (year?: number) => {
     consoleCool('My story as a creative web developer');
