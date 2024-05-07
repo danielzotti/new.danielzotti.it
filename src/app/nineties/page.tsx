@@ -18,6 +18,7 @@ export default function NinetiesPage() {
   return (
     <InternalPageLayout>
       <NinetiesActivator />
+      <h1>90&apos;s</h1>
       <div className={styles.nineties}>🕺🏻</div>
       <div className={styles.ninetiesText}>
         <h3>You&apos;ve just found the <strong><em>90s</em></strong> page!</h3>

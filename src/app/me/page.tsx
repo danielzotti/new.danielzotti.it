@@ -17,6 +17,7 @@ export default function MePage() {
 
   return (
     <InternalPageLayout>
+      <h1>ME!</h1>
       <div className={styles.me}>🤓</div>
       <div className={styles.meText}>
         <h3>You&apos;ve just found the <strong><em>ME</em></strong> page!</h3>

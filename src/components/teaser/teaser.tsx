@@ -20,7 +20,7 @@ export const Teaser = ({ title, description, url, tags, date, target = '_self' }
     <Link className={`dz-teaser ${styles.wrapper}`} href={url} target={target}>
       {target === '_blank' &&
         <div className={styles.newWindow}><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></div>}
-      <h3 className={styles.title}>{title}</h3>
+      <h2 className={styles.title}>{title}</h2>
       {description && <p className={styles.description}>{description}</p>}
       {tags && tags.length > 0 && <p className={styles.tags}><FontAwesomeIcon icon={faTags} />&nbsp;{tags.join(', ')}</p>}
       {date && <p className={styles.date}><FontAwesomeIcon icon={faCalendar} />&nbsp;{toDate(date)}</p>}

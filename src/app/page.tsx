@@ -126,7 +126,7 @@ export default function Home() {
           <div className={styles.sections}>
             <h2>Want 📖 more contents?</h2>
 
-            <nav className={`dz-home__section-list ${styles.sectionList}`}>
+            <div className={`dz-home__section-list ${styles.sectionList}`}>
               <HomeSectionTeaser
                 icon={<BlogSvgIcon />}
                 title={'Blog'}
@@ -142,7 +142,7 @@ export default function Home() {
                 title={'Open source'}
                 path={config.urls.openSource}
               />
-            </nav>
+            </div>
           </div>
 
           <div className={styles.themeContainer}>

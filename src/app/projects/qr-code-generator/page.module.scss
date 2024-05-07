@@ -63,10 +63,10 @@
   > pre {
     padding: variables.$margin-default;
     margin: 0;
-    overflow: auto;
     word-break: break-all;
     white-space: break-spaces;
     max-width: 100%;
-    max-height: 50vh;
+    max-height: 100%;
+    overflow: auto;
   }
 }
