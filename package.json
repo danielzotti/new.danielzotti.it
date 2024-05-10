@@ -10,7 +10,8 @@
     "docker:start:local": "docker-compose --file docker-compose.local.yml up --build nextjs",
     "docker:start:server": "CONFIGURATION=production docker-compose --file docker-compose.server.yml up --build nextjs",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "upgrade-to-latest": "npm i next@latest react@latest react-dom@latest eslint-config-next@latest @types/react@latest @types/react-dom@latest"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -21,15 +22,15 @@
     "@types/luxon": "^3.3.0",
     "@types/qrcode-svg": "^1.1.1",
     "eslint": "8.38.0",
-    "eslint-config-next": "^14.0.3",
+    "eslint-config-next": "^14.2.3",
     "gray-matter": "^4.0.3",
     "luxon": "^3.3.0",
     "markdown-to-jsx": "^7.2.0",
-    "next": "^14.0.3",
+    "next": "^14.2.3",
     "octokit": "^3.1.2",
     "qrcode-svg": "^1.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-syntax-highlighter": "^15.5.0",
     "sass": "^1.61.0",
     "serve": "^14.2.1",
@@ -39,8 +40,8 @@
   "devDependencies": {
     "@types/gtag.js": "0.0.12",
     "@types/node": "20.11.16",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
     "http-server": "^14.1.1",
     "next-pwa": "^5.6.0"
   },
