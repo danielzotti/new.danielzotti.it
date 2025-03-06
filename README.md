@@ -1,6 +1,6 @@
 # My personal website <3
 
-This is the new 2023 version built with [NextJs 14](https://nextjs.org/) (with the new App Router feature)
+This is the new 2023 version built with [~~NextJs 14~~ NextJs 15](https://nextjs.org/)
 and [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ![Website preview](https://raw.githubusercontent.com/danielzotti/new.danielzotti.it/master/public/static/images/brand/danielzotti-website-preview.png)
@@ -16,13 +16,12 @@ I also use this website for testing and trying new technologies (which can be fo
 
 ## The technologies I've used:
 
-- NextJs 14 ~~NextJs 13.3 (with `app` folder)~~
+- NextJs 15 (React 19) ~~NextJs 14~~ ~~NextJs 13.3 (with `app` folder)~~
 - Docker
 - GitLab CI
 - SSR
-- PWA
 - SSG
-- PWA offline (you need to install the PWA in order to get offline functionality)
+- PWA (+ offline mode)
 
 ## TL;DR
 
@@ -33,7 +32,7 @@ I also use this website for testing and trying new technologies (which can be fo
 
 ## Steps to create & run the project
 
-- `nvm use`: it uses the version written in `.nvmrc` file (v18)
+- `nvm use`: it uses the version written in `.nvmrc` file (v20.0.0)
 - `npx create-next-app@latest`
 - `npm install` (see `package.json` for dependencies)
 - `npm run dev`
@@ -58,10 +57,10 @@ I also use this website for testing and trying new technologies (which can be fo
 - [x] Theme dark/light
 - [x] Syntax Highlight for code
 - [x] Sort articles by date ASC
-- [x] Offline status
+- [x] Offline status (with desaturated colors and images)
 - [ ] Improve accessibility
 - [ ] Transparent navbar on top in Home Page
-- [ ] Improve Open source section with preview
+- [ ] Improve Open source section with preview in teasers
 - [ ] Filter articles by category
 - [ ] New UI graphic
 
@@ -75,6 +74,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - [FontAwesome](https://fontawesome.com/): Icon fonts
 - [qrcode-svg](https://github.com/papnkukn/qrcode-svg): QR Code generator
 - [react-syntax-highlighter](https://github.com/react-syntax-highlighter): Code Syntax Highlighter
+- [next-pwa](https://github.com/shadowwalker/next-pwa): PWA plugin based on [workbox](https://developer.chrome.com/docs/workbox/)
 
 ### Blog articles
 

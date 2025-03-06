@@ -14,12 +14,6 @@
   box-sizing: border-box;
 }
 
-html {
-  &.is-offline {
-    filter: grayscale(0.75);
-  }
-}
-
 html, body {
   font-family: var(--font-family-text);
   font-weight: 100;

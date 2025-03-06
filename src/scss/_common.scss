@@ -17,3 +17,23 @@
     transform: rotate(-3deg);
   }
 }
+
+html {
+  &.is-offline {
+    filter: grayscale(0.7);
+  }
+}
+.offline-badge {
+  background-color: var(--red);
+  color: var(--white-dark);
+  font-size: 10px;
+  padding-block:3px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}

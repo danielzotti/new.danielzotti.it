@@ -10,7 +10,7 @@ import {
 import styles from './ambigram.module.scss';
 
 interface AmbigramProps {
-  scrollContainerRef: RefObject<HTMLDivElement>;
+  scrollContainerRef: RefObject<HTMLDivElement | null>;
   startOffset?: number;
 }
 
@@ -31,7 +31,7 @@ export const Ambigram = ({
   const [isFilled, setIsFilled] = useState<boolean>(false);
   // const [scrollPercentage, setScrollPercentage] = useState<number>(0);
   // const [scrollPercentage, setScrollPercentage] = useState<number>(0);
-  const [letters] = useState<Array<RefObject<SVGPathElement>>>([
+  const [letters] = useState<Array<RefObject<SVGPathElement | null>>>([
     letterD,
     letterA,
     letterNI,
@@ -53,7 +53,7 @@ export const Ambigram = ({
   }, [scrollContainerRef, startOffset]);
 
   const drawPath = useCallback(
-    (letter: RefObject<SVGPathElement>, percentageEnd = 0.5) => {
+    (letter: RefObject<SVGPathElement | null>, percentageEnd = 0.5) => {
       if (!letter.current) {
         return;
       }
@@ -77,7 +77,7 @@ export const Ambigram = ({
   );
 
   const rotateSvg = useCallback(
-    (svgGroup: RefObject<SVGGElement>, offsetPercentage = 0.5) => {
+    (svgGroup: RefObject<SVGGElement | null>, offsetPercentage = 0.5) => {
       if (!svgGroup.current) {
         return;
       }

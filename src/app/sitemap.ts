@@ -2,6 +2,9 @@ import { MetadataRoute } from 'next';
 import { config } from 'src/config';
 import fs from 'fs';
 
+export const dynamic = "force-static";
+export const revalidate = 10;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticUrls: MetadataRoute.Sitemap = Object.entries(config.urls)
     .map(([key, url]) => (
@@ -42,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...githubProjects
   ];
 
-  console.log({ sitemap });
+  // console.log({ sitemap });
   return sitemap;
 
 }

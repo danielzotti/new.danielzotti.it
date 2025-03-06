@@ -83,7 +83,7 @@ $grad: ();
 }
 
 .snow:after {
-  margin-left: -$w/3 + px;
+  margin-left: calc(-1px * $w / 3);
   opacity: .4;
   animation-duration: $s*2;
   animation-direction: reverse;
@@ -93,7 +93,7 @@ $grad: ();
 .snow:before {
   animation-duration: $s*3;
   animation-direction: reverse;
-  margin-left: -$w/2 + px;
+  margin-left: calc(-1px * $w / 2);
   opacity: .65;
   filter: blur(1.5px);
 }
@@ -103,3 +103,4 @@ $grad: ();
     transform: translateY($w + px);
   }
 }
+

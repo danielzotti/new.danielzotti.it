@@ -9,7 +9,7 @@ export const config = {
   blogPageTitle: (title: string = 'Blog') => `${title} | Daniel Zotti's blog`,
   openSourcePageTitle: (title: string = 'Open Source') => `${title} | Daniel Zotti's open source project`,
   description:
-    'Daniel Zotti is a creative computer engineer, professor and a web developer with more than 10 years of experience in creating tailor made software.',
+    'Daniel Zotti is a creative computer engineer, professor and a web developer with more than 15 years of experience in creating tailor made software.',
   twitterId: '@daniel_zotti',
   websiteImage: {
     url: `${baseUrl}/static/images/brand/danielzotti-banner.png`,

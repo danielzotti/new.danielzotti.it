@@ -1,3 +1,4 @@
+import { use } from "react";
 import { config } from 'src/config';
 import {
   getArticleContent, getArticleMetadata,
@@ -13,9 +14,12 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { buildMetadata } from 'src/utils/metadata';
 
-export async function generateMetadata(
-  { params: { article } }: { params: { article: string } }
-): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ article: string }> }): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    article
+  } = params;
 
   const metadata = getArticleMetadata(article);
 
@@ -32,11 +36,13 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ArticlePage({
-  params
-}: {
-  params: { article: string, tags: Array<string> };
-}) {
+export default function ArticlePage(
+  props: {
+    params: Promise<{ article: string, tags: Array<string> }>;
+  }
+) {
+  const params = use(props.params);
+
   const markdown = getArticleContent(params.article);
   const metadata = getArticleMetadata(params.article);
   const { toDate } = useDate();

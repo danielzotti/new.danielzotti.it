@@ -15,8 +15,14 @@ import { notFound } from 'next/navigation';
 import { Markdown } from 'src/components/markdown/markdown';
 
 export async function generateMetadata(
-  { params: { repo } }: { params: { repo: string } }
+    props: { params: Promise<{ repo: string }> }
 ): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    repo
+  } = params;
+
   const repoName = config.github.selectedRepos.find(r => r.slug === repo)?.name;
   if (!repoName) {
     return {};
@@ -34,11 +40,13 @@ export async function generateStaticParams() {
   return config.github.selectedRepos.map(({ slug }) => ({ repo: slug }));
 }
 
-export default async function RepoPage({
-  params
-}: {
-  params: { repo: string };
-}) {
+export default async function RepoPage(
+  props: {
+    params: Promise<{ repo: string }>;
+  }
+) {
+  const params = await props.params;
+  console.log({props, params})
   const repoName = config.github.selectedRepos.find(r => r.slug === params.repo)?.name;
   const { toDate, toDateTime } = useDate();
   if (!repoName) {

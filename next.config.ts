@@ -1,9 +1,14 @@
+import { type NextConfig } from 'next';
+import nextPWA from 'next-pwa';
+
 const isDev = process.env.NODE_ENV !== 'production';
 
-const withPWA = require('next-pwa')({
+nextPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
+  cacheStartUrl: true,  // Cache home page
+  cacheOnFrontEndNav: true, // Cache client-side navigation
   disable: isDev,
   exclude: [
     // add buildExcludes here
@@ -18,8 +23,8 @@ const withPWA = require('next-pwa')({
     }
   ]
 });
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'export',
   images: {
@@ -27,4 +32,4 @@ const nextConfig = {
   }
 };
 
-module.exports = withPWA(nextConfig);
+module.exports = nextPWA(nextConfig);

@@ -3,6 +3,7 @@ import 'src/scss/styles.scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { ReactNode, Suspense } from 'react';
 import { HeadFonts } from 'src/components/head-fonts/head-fonts';
+import {Offline} from "src/components/offline/offline";
 import Pwa from 'src/components/pwa/pwa';
 import { config } from 'src/config';
 import styles from './layout.module.scss';
@@ -86,10 +87,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeContextProvider>
           <main className={styles.mainContent}>
             {children}
+            <Offline />
           </main>
           <Pwa />
           <Welcome />
           <Cookie />
+          {/*<Suspense fallback={null}>
+            <Offline />
+          </Suspense>*/}
         </ThemeContextProvider>
       </body>
     </html>
