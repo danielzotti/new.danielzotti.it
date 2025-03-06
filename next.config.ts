@@ -1,9 +1,8 @@
 import { type NextConfig } from 'next';
-import nextPWA from 'next-pwa';
 
 const isDev = process.env.NODE_ENV !== 'production';
 
-nextPWA({
+const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
@@ -32,4 +31,4 @@ const nextConfig: NextConfig = {
   }
 };
 
-module.exports = nextPWA(nextConfig);
+module.exports = withPWA(nextConfig);
