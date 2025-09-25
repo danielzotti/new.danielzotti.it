@@ -1,0 +1,35 @@
+.wrapper {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.text {
+  text-align: center;
+  color:white;
+  background: #520202;
+  padding:5px 10px;
+  height: 30px;
+  font-size: 20px;
+  line-height: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.flash {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  background: red;
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(40px);
+  transition: opacity 0.05s linear;
+}

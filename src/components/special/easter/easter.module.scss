@@ -12,7 +12,7 @@ $shadow-height: 50px;
   position: fixed;
   bottom: $egg-position-bottom;
   left: $egg-position-left;
-  z-index: 1000;
+  z-index: 50;
   width: $egg-width;
   height: $egg-height;
 }
@@ -20,7 +20,7 @@ $shadow-height: 50px;
 .egg {
   position: relative;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 500;
   width: $egg-width;
   height: $egg-height;
   border-radius: 55% 55% / 70% 70% 43% 43%;
@@ -46,7 +46,7 @@ $shadow-height: 50px;
 
 .shadow {
   position: relative;
-  z-index: 999;
+  z-index: 49;
   height: $shadow-height;
   bottom: calc($shadow-height / 2);
   background-image: radial-gradient(#638d 12%, transparent 50%);

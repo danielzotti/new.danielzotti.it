@@ -2,7 +2,7 @@
 
 .stopBtn {
   position: fixed;
-  z-index: 901;
+  z-index: 51;
   aspect-ratio: 1;
   display: flex;
   padding: 0;
@@ -67,7 +67,7 @@ $grad: ();
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 900
+  z-index: 50;
 }
 
 .snow, .snow:before, .snow:after {

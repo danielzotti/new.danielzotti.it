@@ -3,7 +3,7 @@
 @use '@scss/layout';
 
 .pageContainer {
-  z-index: 99;
+  z-index: 299;
   background-color: rgba(0, 0, 0, 0.6);
   position: fixed;
   inset: 0;
@@ -13,7 +13,7 @@
   @extend .container;
   background-color: var(--text-bg-color);
   color: var(--text-color);
-  z-index: 101;
+  z-index: 301;
   display: block;
   position: fixed;
   overflow: auto;
@@ -30,7 +30,7 @@
   position: sticky;
   top:0;
   right:0;
-  z-index: 101;
+  z-index: 301;
   text-align: right;
 }
 
@@ -43,7 +43,7 @@
 .bannerContainer {
   background-color: var(--cookie-banner-bg-color);
   color: var(--cookie-banner-text-color);
-  z-index: 100;
+  z-index: 300;
   display: block;
   position: fixed;
   bottom: 0;

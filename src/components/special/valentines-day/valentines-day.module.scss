@@ -1,7 +1,7 @@
 .daniel {
   cursor: pointer;
   position: fixed;
-  z-index: 1000;
+  z-index: 50;
   width: 160px;
   rotate: -30deg;
   bottom: -66px;
@@ -11,7 +11,7 @@
 
 .heart {
   position: fixed;
-  z-index: 1001;
+  z-index: 51;
   scale: 1.2;
   color: red;
 }

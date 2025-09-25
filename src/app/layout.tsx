@@ -6,6 +6,7 @@ import { HeadFonts } from 'src/components/head-fonts/head-fonts';
 import {Offline} from "src/components/offline/offline";
 import Pwa from 'src/components/pwa/pwa';
 import { config } from 'src/config';
+import {Halloween} from "../components/special/halloween/halloween";
 import styles from './layout.module.scss';
 import { GoogleAnalytics } from 'src/components/google-analytics/google-analytics';
 import { config as configFa } from '@fortawesome/fontawesome-svg-core';
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ValentinesDay />
         <WomensDay />
         <Easter />
+        <Halloween />
         <PieDay />
         <ThemeContextProvider>
           <main className={styles.mainContent}>
