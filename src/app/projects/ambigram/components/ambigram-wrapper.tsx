@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import styles from '../page.module.scss';
-import { Ambigram } from './ambigram';
-import { Footer } from 'src/components/footer/footer';
+import { ReactNode, useEffect, useRef, useState } from "react";
+import styles from "../page.module.scss";
+import { Ambigram } from "./ambigram";
+import { Footer } from "src/components/footer/footer";
 
 interface AmbigramWrapperProps {
   children: ReactNode;
@@ -17,12 +17,12 @@ export const AmbigramWrapper = ({ children }: AmbigramWrapperProps) => {
 
   useEffect(() => {
     const adjustRatio = 0.75;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setStartOffset((scrollContentRef.current?.offsetTop || 0) * adjustRatio);
 
-    window.addEventListener('resize', () => {
+    window.addEventListener("resize", () => {
       setStartOffset((scrollContentRef.current?.offsetTop || 0) * adjustRatio);
     });
-
   }, []);
 
   return (

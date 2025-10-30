@@ -10,7 +10,9 @@ $position-right: -110px;
   bottom: $position-bottom;
   right: $position-right;
   transform-origin: center bottom;
-  animation: fadeIn 2s, shake 10s ease-in-out infinite;
+  animation:
+    fadeIn 2s,
+    shake 10s ease-in-out infinite;
 }
 
 @keyframes fadeIn {
@@ -23,13 +25,16 @@ $position-right: -110px;
 }
 
 @keyframes shake {
-  0%, 10% {
+  0%,
+  10% {
     rotate: -35deg;
   }
-  2%, 6% {
+  2%,
+  6% {
     rotate: -20deg;
   }
-  4%, 8% {
+  4%,
+  8% {
     rotate: -40deg;
   }
 }

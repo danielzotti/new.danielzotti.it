@@ -1,1 +1,1 @@
-export type IconNames = 'repos' | 'blog' | 'projects';
+export type IconNames = "repos" | "blog" | "projects";

@@ -1,14 +1,15 @@
-import 'src/scss/_variables-css.scss';
-import 'src/scss/styles.scss';
-import styles from './not-found.module.scss';
-import { Navbar } from 'src/components/navbar/navbar';
-import { HeadFonts } from 'src/components/head-fonts/head-fonts';
-import { ThemeContextProvider } from 'src/providers/theme-context-provider';
+import "src/scss/_variables-css.scss";
+import "src/scss/styles.scss";
+import Link from "next/link";
+import styles from "./not-found.module.scss";
+import { Navbar } from "src/components/navbar/navbar";
+import { HeadFonts } from "src/components/head-fonts/head-fonts";
+import { ThemeContextProvider } from "src/providers/theme-context-provider";
 
 export const metadata = {
   robots: {
-    index: false
-  }
+    index: false,
+  },
 };
 
 export default function NotFoundError() {
@@ -17,12 +18,10 @@ export default function NotFoundError() {
       <HeadFonts />
       <Navbar />
       <div className={styles.notFound}>
-        <div className={styles.detective}>
-          🕵️‍♂️
-        </div>
+        <div className={styles.detective}>🕵️‍♂️</div>
         <h1>404 | Page not found</h1>
         <p>
-          Go <a href='/'>home</a>, you&apos;re drunk 🥴!
+          Go <Link href="/">home</Link>, you&apos;re drunk 🥴!
         </p>
       </div>
     </ThemeContextProvider>

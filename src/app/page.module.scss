@@ -46,11 +46,11 @@
   justify-content: center;
   margin: 0 auto;
   max-width: 150px;
-  @media(min-width: 500px) {
+  @media (min-width: 500px) {
     max-width: clamp(500px, 45vw, 800px);
     grid-template-columns: 150px 150px 150px;
   }
-  @media(min-width: variables.$container-sm-min) {
+  @media (min-width: variables.$container-sm-min) {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: stretch;
@@ -78,9 +78,13 @@
   border-radius: var(--border-radius);
   overflow: hidden;
   outline: 2px solid transparent;
-  transition: outline-color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+  transition:
+    outline-color var(--transition-duration) ease-in-out,
+    transform var(--transition-duration) ease-in-out;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     outline: 2px solid var(--accent-color);
     transform: rotate(-3deg);
   }
@@ -114,11 +118,11 @@
   max-width: 80%;
   margin: 0 auto;
 
-  @media(min-width: 300px) {
+  @media (min-width: 300px) {
     grid-template-columns: 1fr 1fr;
   }
 
-  @media(min-width: 500px) {
+  @media (min-width: 500px) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

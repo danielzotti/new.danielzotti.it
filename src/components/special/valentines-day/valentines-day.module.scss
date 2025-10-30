@@ -6,7 +6,9 @@
   rotate: -30deg;
   bottom: -66px;
   right: -57px;
-  animation: fadeIn 2s, shake 10s ease-in-out infinite;
+  animation:
+    fadeIn 2s,
+    shake 10s ease-in-out infinite;
 }
 
 .heart {
@@ -21,7 +23,9 @@
   bottom: 49px;
   right: 56px;
   rotate: -37deg;
-  animation: fadeIn 2s, flying-heart-right 10s ease-out infinite;
+  animation:
+    fadeIn 2s,
+    flying-heart-right 10s ease-out infinite;
 }
 
 .heartLeft {
@@ -29,7 +33,9 @@
   bottom: 61px;
   right: 38px;
   rotate: -22deg;
-  animation: fadeIn 2s, flying-heart-left 10s ease-out infinite;
+  animation:
+    fadeIn 2s,
+    flying-heart-left 10s ease-out infinite;
 }
 
 @keyframes fadeIn {
@@ -42,21 +48,23 @@
 }
 
 @keyframes shake {
-  0%, 10% {
+  0%,
+  10% {
     bottom: -66px;
     right: -57px;
     rotate: -30deg;
   }
-  2%, 6% {
+  2%,
+  6% {
     bottom: -40px;
     rotate: -20deg;
   }
-  4%, 8% {
+  4%,
+  8% {
     bottom: -46px;
     rotate: -35deg;
   }
 }
-
 
 @keyframes flying-heart-right {
   100% {

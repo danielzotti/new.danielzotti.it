@@ -2,7 +2,7 @@
 title: JavaScript has no sleep function
 description: ...but we can easily solve it this way!
 date: "2023-06-21"
-tags: [ "javascript" ]
+tags: ["javascript"]
 ---
 
 # JavaScript has no sleep function, but we can easily solve it this way!
@@ -10,7 +10,7 @@ tags: [ "javascript" ]
 **In order to make your browser sleep, just write this line of code:**
 
 ```javascript
-await new Promise(_ => setTimeout(_, 2000));
+await new Promise((_) => setTimeout(_, 2000));
 ```
 
 _This will make the browser sleep for 2 seconds (2000ms)._
@@ -20,15 +20,15 @@ _This will make the browser sleep for 2 seconds (2000ms)._
 ## Let's create a reusable sleep function
 
 ```javascript
-const sleep = (ms = 2000) => new Promise(_ => setTimeout(_, ms));
+const sleep = (ms = 2000) => new Promise((_) => setTimeout(_, ms));
 ```
 
 Or with a more _old days'_ notation:
 
 ```javascript
-function sleep(ms = 2000) { 
-  return new Promise(function(_) {
-    return setTimeout(_, ms)
+function sleep(ms = 2000) {
+  return new Promise(function (_) {
+    return setTimeout(_, ms);
   });
 }
 ```
@@ -50,7 +50,7 @@ Result in console:
 ```
 > Let's wait for 5s
 [waiting for 5 seconds]
-> 5s have passed 
+> 5s have passed
 ```
 
 ### Top-level await issue
@@ -59,15 +59,13 @@ Using _top-level await_ might not work in some old browser/node versions. To sol
 with an _immediately-invoked async function_.
 
 ```javascript
-(async function() {
-
+(async function () {
   console.log(`Let's wait for 5s`);
 
   await sleep(5000);
 
   console.log(`5s have passed`);
-
-}());  
+})();
 ```
 
 ## Sleep function in old browsers
@@ -81,8 +79,7 @@ function sleep(mss) {
   let currentDate = null;
   do {
     currentDate = Date.now();
-  } while(
-    currentDate - date < milliseconds);
+  } while (currentDate - date < milliseconds);
 }
 ```
 

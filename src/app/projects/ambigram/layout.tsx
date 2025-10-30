@@ -1,26 +1,26 @@
-import '@scss/styles.scss';
-import { ReactNode } from 'react';
-import { Navbar } from 'src/components/navbar/navbar';
-import { config } from 'src/config';
-import styles from './layout.module.scss';
-import { Metadata } from 'next';
-import { buildMetadata } from 'src/utils/metadata';
+import "@scss/styles.scss";
+import { ReactNode } from "react";
+import { Navbar } from "src/components/navbar/navbar";
+import { config } from "src/config";
+import styles from "./layout.module.scss";
+import { Metadata } from "next";
+import { buildMetadata } from "src/utils/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: config.pageTitle('Daniel\'s ambigram'),
+  title: config.pageTitle("Daniel's ambigram"),
   description:
-    'Daniel\'s ambigram made with Illustrator, exported in SVG format and animated with JS',
+    "Daniel's ambigram made with Illustrator, exported in SVG format and animated with JS",
   url: `${config.baseUrl}${config.urls.projects}/ambigram`,
   image: {
     url: `${config.baseUrl}/static/images/ambigram/daniel-ambigram.png`,
     width: 1200,
     height: 630,
-    alt: 'Daniel\'s ambigram'
-  }
+    alt: "Daniel's ambigram",
+  },
 });
 
 export default function AmbigramDemoLayout({
-  children
+  children,
 }: {
   children: ReactNode;
 }) {

@@ -2,7 +2,7 @@
 title: Notification in Browsers
 description: How to deal with local and push notifications
 date: "2023-09-15"
-tags: [ "javascript", "browser-api" ]
+tags: ["javascript", "browser-api"]
 ---
 
 # Notification in Browsers
@@ -25,11 +25,11 @@ these services we cannot manage notifications!
 It is as easy as typing:
 
 ```javascript
-if (!('serviceWorker' in navigator)) {
-  throw new Error('No Service Worker support')
+if (!("serviceWorker" in navigator)) {
+  throw new Error("No Service Worker support");
 }
 if (!("Notification" in window)) {
-  throw new Error('No Notification support')
+  throw new Error("No Notification support");
 }
 ```
 
@@ -40,7 +40,7 @@ NB: This applies to any browser feature.
 In order to activate notifications on a specific device, the user must be asked if they want to receive notifications.
 
 ```javascript
-Notification.requestPermission()
+Notification.requestPermission();
 ```
 
 An alert will pop up in the browser asking the user to respond...
@@ -87,7 +87,7 @@ first parameter.
 ```javascript
 navigator.serviceWorker.ready.then((swRegistration) => {
   swRegistration.showNotification("My First notification!");
-})
+});
 ```
 
 These few lines of code will show the notification:
@@ -124,27 +124,29 @@ clicked.
 ```javascript
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
-    navigator.serviceWorker.ready.then(async registration => {
+    navigator.serviceWorker.ready.then(async (registration) => {
       await registration.showNotification("Come baaaaack!", {
         body: `Click here and come back to the website!`,
         silent: true,
         tag: "come-back", // required if silent is set to "true"
       });
-      registration.addEventListener('click', (e) => {
+      registration.addEventListener("click", (e) => {
         e.preventDefault();
         window.parent.focus();
       });
     });
   } else {
-    navigator.serviceWorker.ready.then(registration => {
-      registration.getNotifications({
-        tag: 'come-back'
-      }).then((notifications) => {
-        notifications.forEach(n => {
-          n.close();
+    navigator.serviceWorker.ready.then((registration) => {
+      registration
+        .getNotifications({
+          tag: "come-back",
         })
-      });
-    })
+        .then((notifications) => {
+          notifications.forEach((n) => {
+            n.close();
+          });
+        });
+    });
   }
 });
 ```
@@ -169,19 +171,19 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
     comeBackNotification = new Notification("Come baaaaack!");
 
-    comeBackNotification.addEventListener('close', (e) => {
-      console.log("Notification CLOSED!", e.target.data)
+    comeBackNotification.addEventListener("close", (e) => {
+      console.log("Notification CLOSED!", e.target.data);
     });
 
-    comeBackNotification.addEventListener('click', (e) => {
-      console.log("Notification CLICKED!", e.target.data)
+    comeBackNotification.addEventListener("click", (e) => {
+      console.log("Notification CLICKED!", e.target.data);
       e.preventDefault();
       window.parent.focus();
     });
   } else {
     comeBackNotification.close();
   }
-})
+});
 ```
 
 ## Good to know
@@ -201,10 +203,10 @@ running until the promise you passed in has settled.
 
 ```javascript
 // file: `sw,js`
-self.addEventListener('push', function(event) {
+self.addEventListener("push", function (event) {
   const promiseChain = self.registration.showNotification("Push Notification");
   event.waitUntil(promiseChain);
-})
+});
 ```
 
 ## Push Notifications (from remote server)

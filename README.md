@@ -1,6 +1,6 @@
 # My personal website <3
 
-This is the new 2023 version built with [~~NextJs 14~~ NextJs 15](https://nextjs.org/)
+This is the new 2023 version built with [~~NextJs 14~~ NextJs 16](https://nextjs.org/)
 and [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ![Website preview](https://raw.githubusercontent.com/danielzotti/new.danielzotti.it/master/public/static/images/brand/danielzotti-website-preview.png)
@@ -12,11 +12,11 @@ than that, I swear! 😇
 
 I also use this website for testing and trying new technologies (which can be found in the next chapter).
 
-***Please don't try to hack my website ❤️***
+**_Please don't try to hack my website ❤️_**
 
 ## The technologies I've used:
 
-- NextJs 15 (React 19) ~~NextJs 14~~ ~~NextJs 13.3 (with `app` folder)~~
+- NextJs 16 (React 19) ~~NextJs 15~~ ~~NextJs 14~~ ~~NextJs 13.3 (with `app` folder)~~
 - Docker
 - GitLab CI
 - SSR
@@ -36,7 +36,7 @@ I also use this website for testing and trying new technologies (which can be fo
 - `npx create-next-app@latest`
 - `npm install` (see `package.json` for dependencies)
 - `npm run dev`
-- Open [http://localhost:3001](http://localhost:3001)
+- Open [http://localhost:3087](http://localhost:3087)
 
 ## Roadmap
 
@@ -49,7 +49,7 @@ I also use this website for testing and trying new technologies (which can be fo
     - [x] Projects
     - [x] Selected open source repo from GitHub
 - [x] Font Awesome Icons
-- [x] PWA  (only if the user install the PWA)
+- [x] PWA (only if the user install the PWA)
 - [x] 404 page ~~(workaround using `pages` folder since `app` folder doesn't support it yet)~~
 - [x] Cookie manager
 - [x] Google Analytics
@@ -74,7 +74,8 @@ I also use this website for testing and trying new technologies (which can be fo
 - [FontAwesome](https://fontawesome.com/): Icon fonts
 - [qrcode-svg](https://github.com/papnkukn/qrcode-svg): QR Code generator
 - [react-syntax-highlighter](https://github.com/react-syntax-highlighter): Code Syntax Highlighter
-- [next-pwa](https://github.com/shadowwalker/next-pwa): PWA plugin based on [workbox](https://developer.chrome.com/docs/workbox/)
+- [next-pwa](https://github.com/shadowwalker/next-pwa): PWA plugin based
+  on [workbox](https://developer.chrome.com/docs/workbox/)
 
 ### Blog articles
 

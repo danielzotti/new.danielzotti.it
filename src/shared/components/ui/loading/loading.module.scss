@@ -6,14 +6,14 @@ $icon-size: 100px !default;
   justify-content: center;
   //position: absolute;
   //inset: 0;
-  padding-top:50px;
+  padding-top: 50px;
 
   svg {
     width: $icon-size;
     height: $icon-size;
     animation: rotation 2s infinite ease-in-out;
     transform-origin: center;
-    fill: var(--text-color)
+    fill: var(--text-color);
   }
 }
 

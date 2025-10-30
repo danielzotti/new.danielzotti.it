@@ -1,34 +1,35 @@
-import 'src/scss/_variables-css.scss';
-import 'src/scss/styles.scss';
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { ReactNode, Suspense } from 'react';
-import { HeadFonts } from 'src/components/head-fonts/head-fonts';
-import {Offline} from "src/components/offline/offline";
-import Pwa from 'src/components/pwa/pwa';
-import { config } from 'src/config';
-import {Halloween} from "../components/special/halloween/halloween";
-import styles from './layout.module.scss';
-import { GoogleAnalytics } from 'src/components/google-analytics/google-analytics';
-import { config as configFa } from '@fortawesome/fontawesome-svg-core';
-import { Welcome } from 'src/components/welcome/welcome';
-import { Cookie } from 'src/components/cookie/cookie';
-import { ThemeContextProvider } from 'src/providers/theme-context-provider';
-import { SvgFilters } from 'src/components/svg-filters/svg-filters';
-import { Nineties } from 'src/components/nineties/nineties';
-import { Viewport } from 'next';
-import { Xmas } from 'src/components/special/xmas/xmas';
-import { ValentinesDay } from 'src/components/special/valentines-day/valentines-day';
-import { WomensDay } from 'src/components/special/womens-day/womens-day';
-import { Easter } from 'src/components/special/easter/easter';
-import { PieDay } from 'src/components/special/pie-day/pie-day';
+import "src/scss/_variables-css.scss";
+import "src/scss/styles.scss";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { ReactNode, Suspense } from "react";
+import { HeadFonts } from "src/components/head-fonts/head-fonts";
+import { Offline } from "src/components/offline/offline";
+import Pwa from "src/components/pwa/pwa";
+import { config } from "src/config";
+import HotjarAnalytics from "../components/hotjar-analytics/hotjar-analytics";
+import { Halloween } from "../components/special/halloween/halloween";
+import styles from "./layout.module.scss";
+import { GoogleAnalytics } from "src/components/google-analytics/google-analytics";
+import { config as configFa } from "@fortawesome/fontawesome-svg-core";
+import { Welcome } from "src/components/welcome/welcome";
+import { Cookie } from "src/components/cookie/cookie";
+import { ThemeContextProvider } from "src/providers/theme-context-provider";
+import { SvgFilters } from "src/components/svg-filters/svg-filters";
+import { Nineties } from "src/components/nineties/nineties";
+import { Metadata, Viewport } from "next";
+import { Xmas } from "src/components/special/xmas/xmas";
+import { ValentinesDay } from "src/components/special/valentines-day/valentines-day";
+import { WomensDay } from "src/components/special/womens-day/womens-day";
+import { Easter } from "src/components/special/easter/easter";
+import { PieDay } from "src/components/special/pie-day/pie-day";
 
 configFa.autoAddCss = false;
 
 export const viewport: Viewport = {
-  themeColor: config.themeColor
+  themeColor: config.themeColor,
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
   title: config.title,
   description: config.description,
@@ -39,14 +40,14 @@ export const metadata = {
     title: config.title,
     siteName: config.title,
     url: config.baseUrl,
-    type: 'website',
+    type: "website",
     images: [
       {
         url: config.websiteImage.url,
         width: config.websiteImage.width,
-        height: config.websiteImage.height
-      }
-    ]
+        height: config.websiteImage.height,
+      },
+    ],
   },
   twitter: {
     title: config.title,
@@ -56,25 +57,28 @@ export const metadata = {
         url: config.websiteImage.url,
         width: config.websiteImage.width,
         height: config.websiteImage.height,
-        alt: config.websiteImage.alt
-      }
+        alt: config.websiteImage.alt,
+      },
     ],
-    card: 'summary_large_image',
-    site: config.twitterId
+    card: "summary_large_image",
+    site: config.twitterId,
   },
   manifest: config.manifest,
   robots: {
-    index: true
-  }
+    index: true,
+  },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <HeadFonts />
         <Suspense fallback={null}>
           <GoogleAnalytics />
+          <HotjarAnalytics />
         </Suspense>
       </head>
       <body>
@@ -94,9 +98,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Pwa />
           <Welcome />
           <Cookie />
-          {/*<Suspense fallback={null}>
-            <Offline />
-          </Suspense>*/}
         </ThemeContextProvider>
       </body>
     </html>

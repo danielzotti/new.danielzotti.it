@@ -5,9 +5,9 @@
   display: grid;
   gap: 3vw;
   grid-template-areas:
-          "content"
-          "metadata";
-  @media(min-width: variables.$container-md-min) {
+    "content"
+    "metadata";
+  @media (min-width: variables.$container-md-min) {
     grid-template-areas: "content metadata";
     grid-template-columns: 3fr 1fr;
   }

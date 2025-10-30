@@ -2,7 +2,7 @@
 title: Web Workers
 description: Running heavy tasks without interfere with the main UI thread
 date: "2023-09-21"
-tags: [ "javascript", "browser-api" ]
+tags: ["javascript", "browser-api"]
 ---
 
 # Web Workers
@@ -16,8 +16,7 @@ means that computationally intensive tasks, such as complex calculations, data p
 significantly slow down the user experience. Users may encounter **unresponsive web pages or even complete freezes when
 a script monopolizes the CPU**.
 
-**Web Workers** address this problem by introducing a **multi-threaded approach to JavaScript** execution *
-*_within the browser_**. With them, you can create separate threads that run concurrently alongside the main application
+**Web Workers** address this problem by introducing a **multi-threaded approach to JavaScript** execution \* \*_within the browser_\*\*. With them, you can create separate threads that run concurrently alongside the main application
 thread.
 
 ## Key points to understand Web Workers
@@ -66,7 +65,7 @@ argument:
 
 ```javascript
 // index.js
-const worker = new Worker('./worker.js');
+const worker = new Worker("./worker.js");
 ```
 
 ## Prepare the communication with the Web Worker
@@ -82,11 +81,11 @@ worker.onerror = (error) => {
 
 worker.onmessage = (event) => {
   // everytime a worker use `postMessage` to send a message
-}
+};
 
 worker.onmessageerror = (event) => {
   // e.g. the message from the worker can't be serialized
-}
+};
 ```
 
 ## Communication
@@ -96,7 +95,7 @@ the [`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/post
 
 ```javascript
 // index.js
-worker.postMessage({ message: 'Do something' });
+worker.postMessage({ message: "Do something" });
 ```
 
 ...and inside the worker we listen to the [`message`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent) and
@@ -104,16 +103,16 @@ read the `data` property:
 
 ```javascript
 // worker.js
-addEventListener('message', function(event) {
+addEventListener("message", function (event) {
   console.log(event.data); // { message: 'Do something'}
-})
+});
 ```
 
 We can do the other way round by calling the `postMessage` inside the worker:
 
 ```javascript
 // worker.js
-postMessage({ message: 'A message from the worker!' });
+postMessage({ message: "A message from the worker!" });
 ```
 
 ...and react to the message event in the main thread using the `onmessage` method of the worker instance:
@@ -122,7 +121,7 @@ postMessage({ message: 'A message from the worker!' });
 // index.js
 worker.onmessage = (event) => {
   console.log(event.data); // { message: 'A message from the worker!'}
-}
+};
 ```
 
 ## The whole code
@@ -138,34 +137,34 @@ if (!window.Worker) {
   return;
 }
 
-const worker = new Worker('./worker.js');
+const worker = new Worker("./worker.js");
 
-worker.onerror = (error) => { 
+worker.onerror = (error) => {
   // ...
 };
 
 worker.onmessage = (event) => {
   // ...
-}
+};
 
 worker.onmessageerror = (event) => {
   // ...
-}
+};
 
-worker.postMessage({ message: 'Do something' });
+worker.postMessage({ message: "Do something" });
 ```
 
 ### Web Worker
 
 ```javascript
 // worker.js
-addEventListener('message', function(event) {
-  if (event.data === 'Do something') {
+addEventListener("message", function (event) {
+  if (event.data === "Do something") {
     postMessage({ message: `Ok, I'll do!` });
   } else {
     console.log(`I won't do anything...`);
   }
-})
+});
 ```
 
 > NB: `postMessage` is the only way the Web Worker can comunicate with the main thread and viceversa!
@@ -175,8 +174,8 @@ addEventListener('message', function(event) {
 And as always, can't miss the [demo](https://web-workers-playground.danielzotti.it/) and open
 source [project](https://github.com/danielzotti/web-workers-playground) on GitHub!
 
-The project guides the user through a series of steps to follow, and the idea is to show the _difference_ between a *
-*long-running task** performed by the _main thread_ (which blocks the UI) and one performed by a _web worker_.
+The project guides the user through a series of steps to follow, and the idea is to show the _difference_ between a \*
+\*long-running task\*\* performed by the _main thread_ (which blocks the UI) and one performed by a _web worker_.
 
 > NB: **_Performances are the same but with the Web Worker the UI is still usable._**
 

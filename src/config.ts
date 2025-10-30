@@ -1,152 +1,154 @@
-import path from 'path';
+import path from "path";
 
-const baseUrl = 'https://www.danielzotti.it';
+const baseUrl = "https://www.danielzotti.it";
 
 export const config = {
   baseUrl,
-  title: 'Daniel Zotti | Creative Web developer',
+  title: "Daniel Zotti | Creative Web developer",
   pageTitle: (title: string) => `${title} | Daniel Zotti`,
-  blogPageTitle: (title: string = 'Blog') => `${title} | Daniel Zotti's blog`,
-  openSourcePageTitle: (title: string = 'Open Source') => `${title} | Daniel Zotti's open source project`,
+  blogPageTitle: (title: string = "Blog") => `${title} | Daniel Zotti's blog`,
+  openSourcePageTitle: (title: string = "Open Source") =>
+    `${title} | Daniel Zotti's open source project`,
   description:
-    'Daniel Zotti is a creative computer engineer, professor and a web developer with more than 15 years of experience in creating tailor made software.',
-  twitterId: '@daniel_zotti',
+    "Daniel Zotti is a creative computer engineer, professor and a web developer with more than 15 years of experience in creating tailor made software.",
+  twitterId: "@daniel_zotti",
   websiteImage: {
     url: `${baseUrl}/static/images/brand/danielzotti-banner.png`,
     width: 1200,
     height: 627,
-    alt: 'Daniel Zotti\'s website'
+    alt: "Daniel Zotti's website",
   },
-  themeColor: '#1976d2',
-  manifest: '/manifest.json',
-  faviconUrl: '/static/icons/favicon.png',
-  faviconAppleUrl: '/static/icons/favicon-apple.png',
-  googleAnalyticsToken: 'G-432SY69LDS',
-  cookieAccept: 'danielzotti_cookie_accept',
-  cookieDate: 'danielzotti_cookie_date',
-  themes: ['light', 'dark', 'os default'],
-  themeLocalStorageName: 'danielzotti_theme',
+  themeColor: "#1976d2",
+  manifest: "/manifest.json",
+  faviconUrl: "/static/icons/favicon.png",
+  faviconAppleUrl: "/static/icons/favicon-apple.png",
+  googleAnalyticsToken: "G-432SY69LDS",
+  hotjarAnalyticsToken: 6548916,
+  cookieAccept: "danielzotti_cookie_accept",
+  cookieDate: "danielzotti_cookie_date",
+  themes: ["light", "dark", "os default"],
+  themeLocalStorageName: "danielzotti_theme",
   colors: {
-    black: '#0f0f0f',
-    blue: '#2daae1',
-    gray: '#d0d0d0',
-    white: '#ffffff'
+    black: "#0f0f0f",
+    blue: "#2daae1",
+    gray: "#d0d0d0",
+    white: "#ffffff",
   },
   dates: {
     luxon: {
-      article: 'yyyy-MM-dd'
-    }
+      article: "yyyy-MM-dd",
+    },
   },
   urls: {
-    home: '/',
-    blog: '/blog',
-    openSource: '/open-source',
-    projects: '/projects',
-    cookiePolicy: '/cookie-policy'
+    home: "/",
+    blog: "/blog",
+    openSource: "/open-source",
+    projects: "/projects",
+    cookiePolicy: "/cookie-policy",
   },
   github: {
-    user: 'danielzotti',
+    user: "danielzotti",
     token: process.env.GITHUB_ACCESS_TOKEN,
     selectedRepos: [
       {
-        slug: 'new-danielzotti-it',
-        name: 'new.danielzotti.it',
-        humanName: 'www.danielzotti.it'
+        slug: "new-danielzotti-it",
+        name: "new.danielzotti.it",
+        humanName: "www.danielzotti.it",
       },
       {
-        slug: 'fake-3d-website',
-        name: 'fake-3d-website-next',
-        humanName: 'Fake 3D Website'
+        slug: "fake-3d-website",
+        name: "fake-3d-website-next",
+        humanName: "Fake 3D Website",
       },
       {
-        slug: 'slide-roulette',
-        name: 'slide-roulette',
-        humanName: 'Slide Roulette'
+        slug: "slide-roulette",
+        name: "slide-roulette",
+        humanName: "Slide Roulette",
       },
       {
-        slug: 'me-danielzotti-it',
-        name: 'me.danielzotti.it',
-        humanName: 'My (old) Personal Website'
+        slug: "me-danielzotti-it",
+        name: "me.danielzotti.it",
+        humanName: "My (old) Personal Website",
       },
       {
-        slug: 'chrome-notepad',
-        name: 'chrome-notepad',
-        humanName: 'Chrome Notepad'
+        slug: "chrome-notepad",
+        name: "chrome-notepad",
+        humanName: "Chrome Notepad",
       },
       {
-        slug: 'danielzotti-telegram-bot',
-        name: 'danielzotti-telegram-bot',
-        humanName: 'Daniel Zotti Telegram Bot'
+        slug: "danielzotti-telegram-bot",
+        name: "danielzotti-telegram-bot",
+        humanName: "Daniel Zotti Telegram Bot",
       },
       {
-        slug: 'ng-filemanager',
-        name: 'ng-filemanager',
+        slug: "ng-filemanager",
+        name: "ng-filemanager",
       },
       {
-        slug: 'ng-textarea-autoresize',
-        name: 'ng-textarea-autoresize'
+        slug: "ng-textarea-autoresize",
+        name: "ng-textarea-autoresize",
       },
       {
-        slug: 'spacecar',
-        name: 'spacecar',
-      }
+        slug: "spacecar",
+        name: "spacecar",
+      },
     ],
-    repo: 'https://github.com/danielzotti/new.danielzotti.it'
+    repo: "https://github.com/danielzotti/new.danielzotti.it",
   },
   apis: {
-    baseUrl: `${baseUrl}/api`
+    baseUrl: `${baseUrl}/api`,
   },
   assetsUrl: {
     cv: {
-      italian: '/cv/Daniel Zotti Curriculum Italiano.pdf?v=1',
-      english: '/cv/Daniel Zotti Curriculum English.pdf?v=1'
-    }
+      italian: "/cv/Daniel Zotti Curriculum Italiano.pdf?v=1",
+      english: "/cv/Daniel Zotti Curriculum English.pdf?v=1",
+    },
   },
   imageUrls: {
-    icons: '/static/images/icons',
-    brand: '/static/images/brand',
-    videoprofile: '/static/videoprofile'
+    icons: "/static/images/icons",
+    brand: "/static/images/brand",
+    videoprofile: "/static/videoprofile",
   },
   folders: {
-    articles: path.join(process.cwd(), 'src/contents/articles'),
-    projects: path.join(process.cwd(), 'src/app/projects'),
-    contents: path.join(process.cwd(), 'src/contents')
+    articles: path.join(process.cwd(), "src/contents/articles"),
+    projects: path.join(process.cwd(), "src/app/projects"),
+    contents: path.join(process.cwd(), "src/contents"),
   },
   social: {
     facebook: {
-      name: 'daniel.dada.zotti',
-      url: 'https://www.facebook.com/daniel.dada.zotti'
+      name: "daniel.dada.zotti",
+      url: "https://www.facebook.com/daniel.dada.zotti",
     },
     github: {
-      name: 'danielzotti',
-      url: 'https://github.com/danielzotti'
+      name: "danielzotti",
+      url: "https://github.com/danielzotti",
     },
     gitlab: {
-      name: 'danielzotti',
-      url: 'https://gitlab.com/danielzotti'
+      name: "danielzotti",
+      url: "https://gitlab.com/danielzotti",
     },
     instagram: {
-      name: '@daniel_zotti_dev',
-      url: 'https://www.instagram.com/daniel_zotti_dev'
+      name: "@daniel_zotti_dev",
+      url: "https://www.instagram.com/daniel_zotti_dev",
     },
     linkedin: {
-      name: 'danielzotti',
-      url: 'https://www.linkedin.com/in/danielzotti/'
+      name: "danielzotti",
+      url: "https://www.linkedin.com/in/danielzotti/",
     },
     twitter: {
-      name: '@daniel_zotti',
-      url: 'https://twitter.com/daniel_zotti'
+      name: "@daniel_zotti",
+      url: "https://twitter.com/daniel_zotti",
     },
     youtube: {
-      name: 'danielzotti',
-      url: 'https://www.youtube.com/c/danielzotti'
-    }
+      name: "danielzotti",
+      url: "https://www.youtube.com/c/danielzotti",
+    },
   },
   fontUrls: [
-    'https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900&display=swap',
-    'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:100,300,400,500,700,900&display=swap'
+    "https://fonts.googleapis.com/css?family=Exo:100,200,300,400,500,600,700,800,900&display=swap",
+    "https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:100,300,400,500,700,900&display=swap",
     // 'https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap',
     // 'https://fonts.googleapis.com/icon?family=Material+Icons',
     // 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,1,200'
-  ]
+  ],
 };

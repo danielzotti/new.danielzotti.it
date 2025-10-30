@@ -2,7 +2,7 @@
 title: Welcome!
 description: My first article for my brand new 2023 website 🥰
 date: "2023-06-08"
-tags: [ "general" ]
+tags: ["general"]
 ---
 
 # Welcome!

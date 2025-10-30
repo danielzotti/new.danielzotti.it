@@ -1,8 +1,7 @@
 @use "theme";
 @use "animations/marquee";
 
-[data-theme=nineties] {
-
+[data-theme="nineties"] {
   background-image: var(--90s-background-image-light);
 
   @include theme.nineties;
@@ -12,10 +11,13 @@
     color: white;
   }
 
-  img, video {
+  img,
+  video {
     image-rendering: pixelated;
     filter: url(#pixelate);
-    transform: rotate(0deg); // Fix for Safari! Without this rule, it hides the images (I don't know why)
+    transform: rotate(
+      0deg
+    ); // Fix for Safari! Without this rule, it hides the images (I don't know why)
   }
 
   a {
@@ -23,7 +25,9 @@
     text-decoration: underline;
     border: none;
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       text-decoration-line: underline;
       color: var(--link-color);
       cursor: var(--cursor-pointer);
@@ -56,17 +60,20 @@
   }
 
   .dz-home__cv {
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       outline: none;
     }
   }
 
   .dz-home-theme-selector {
     & > button {
-
       filter: none;
 
-      &:hover, &:focus, &:active {
+      &:hover,
+      &:focus,
+      &:active {
         filter: none;
       }
     }
@@ -77,7 +84,9 @@
       display: none;
     }
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       outline: none;
     }
   }
@@ -85,7 +94,9 @@
   .dz-teaser {
     border: 2px solid var(--accent-color);
 
-    &:hover, &:focus, &:active {
+    &:hover,
+    &:focus,
+    &:active {
       outline: none;
     }
   }

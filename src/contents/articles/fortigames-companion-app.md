@@ -2,7 +2,7 @@
 title: Fortigames Companion App
 description: How we built an app in less than 5 days with Qwik, Supabase and Vercel
 date: "2023-11-20"
-tags: [ "app", "typescript", "qwik", "supabase", "vercel" ]
+tags: ["app", "typescript", "qwik", "supabase", "vercel"]
 ---
 
 # Fortigames Companion App
@@ -387,7 +387,7 @@ _Supabase_ has the **Realtime** function and it is really easy to activate: just
 
 There is little data in the DB, and from a realtime perspective **it makes sense to load the whole list of users** (and all the other data) without thinking about pagination and just stay listening for the few data changes and update the data in memory accordingly. For convenience of use, we decided to wrap the logic in **_hooks_**.
 
-### hooks for realtime 
+### hooks for realtime
 
 NB: We will take `useParticipants()` hook as an example, but all the hooks are developed pretty much the same way (following the same pattern).
 
@@ -399,7 +399,6 @@ The single source of truth is our **store**, and from there we filter the data w
 // /src/hooks/useParticipants.ts
 
 export const useParticipants = () => {
-
   // Single source of truth
   const store = useContext(ParticipantsContext);
 

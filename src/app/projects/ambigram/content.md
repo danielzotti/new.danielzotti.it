@@ -11,7 +11,6 @@ another meaning.
 ambigrams have an axial symmetry and can be
 read through a reflective surface (like a mirror or a mirroring lake), and many other types of ambigrams exist.
 
-
 ##### Inspired by this cool property, I decided to design a half-turn ambigram with my name!
 
 #### ⬇ scroll down to see it! ⬇

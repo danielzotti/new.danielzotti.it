@@ -18,20 +18,22 @@
 
   &.filled {
     .letter {
-      transition: stroke-width 1s ease-in-out, fill 1s ease-in-out;
+      transition:
+        stroke-width 1s ease-in-out,
+        fill 1s ease-in-out;
       fill: var(--accent-color);
       stroke-width: 2px;
       stroke-linecap: round;
       stroke-linejoin: bevel;
     }
   }
-
 }
 
 .letter {
   fill: transparent;
   stroke: var(--text-color);
   stroke-width: 1px;
-  transition: stroke 0.2s ease-in-out, fill 0.2s ease-in-out;
+  transition:
+    stroke 0.2s ease-in-out,
+    fill 0.2s ease-in-out;
 }
-

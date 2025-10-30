@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import MarkdownToJsx from 'markdown-to-jsx';
-import Link from 'next/link';
-import SyntaxHighlighter, { vs2015 as codeStyle } from 'react-syntax-highlighter';
+import MarkdownToJsx from "markdown-to-jsx";
+import Link from "next/link";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import codeStyle from "react-syntax-highlighter/dist/esm/styles/hljs/vs2015";
 
 interface MarkdownLinkProps {
   title: string;
@@ -11,18 +12,25 @@ interface MarkdownLinkProps {
 }
 
 export const MarkdownLink = ({ title, href, children }: MarkdownLinkProps) => {
-  return <Link title={title} href={href} target='_blank'>{children}</Link>;
+  return (
+    <Link title={title} href={href} target="_blank">
+      {children}
+    </Link>
+  );
 };
 
 export const Code = ({ className, children }) => {
-  const language = className?.replace('lang-', '') || 'none';
+  const language = className?.replace("lang-", "") || "none";
 
-  if (language === 'none') {
+  if (language === "none") {
     return <code>{children}</code>;
   }
 
   return (
-    <SyntaxHighlighter language={language === 'html' ? 'htmlbars' : language} style={codeStyle}>
+    <SyntaxHighlighter
+      language={language === "html" ? "htmlbars" : language}
+      style={codeStyle}
+    >
       {children}
     </SyntaxHighlighter>
   );
@@ -34,16 +42,21 @@ interface MarkdownProps {
 }
 
 export const Markdown = ({ children, className }: MarkdownProps) => {
-  return <MarkdownToJsx className={className} options={{
-    overrides: {
-      a: {
-        component: MarkdownLink
-      },
-      code: {
-        component: Code
-      }
-    }
-  }}>
-    {children}
-  </MarkdownToJsx>;
+  return (
+    <MarkdownToJsx
+      className={className}
+      options={{
+        overrides: {
+          a: {
+            component: MarkdownLink,
+          },
+          code: {
+            component: Code,
+          },
+        },
+      }}
+    >
+      {children}
+    </MarkdownToJsx>
+  );
 };

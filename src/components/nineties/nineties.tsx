@@ -1,20 +1,23 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { activate90s, deactivate90s, is90sActive } from 'src/utils/nineties';
+import { useEffect } from "react";
+import { activate90s, deactivate90s, is90sActive } from "src/utils/nineties";
 
-let word = '';
+let word = "";
 
 interface NinetiesProps {
   activateKeyword?: string;
   deactivateKeyword?: string;
 }
 
-export const Nineties = ({ activateKeyword = 'internetexplorer', deactivateKeyword = 'stop' }: NinetiesProps) => {
+export const Nineties = ({
+  activateKeyword = "internetexplorer",
+  deactivateKeyword = "stop",
+}: NinetiesProps) => {
   useEffect(() => {
     const check = (e: KeyboardEvent) => {
       if (word?.length > 50) {
-        word = '';
+        word = "";
       }
 
       let typing = word;
@@ -23,7 +26,7 @@ export const Nineties = ({ activateKeyword = 'internetexplorer', deactivateKeywo
         (e.keyCode >= 97 && e.keyCode <= 122) // letter lowercase
       ) {
         if (!typing) {
-          typing = '';
+          typing = "";
         }
 
         typing += String.fromCharCode(e.which).toLowerCase();
@@ -39,13 +42,13 @@ export const Nineties = ({ activateKeyword = 'internetexplorer', deactivateKeywo
           deactivate90s();
         }
       } else {
-        word = '';
+        word = "";
       }
     };
-    document.addEventListener('keyup', check);
+    document.addEventListener("keyup", check);
 
     return () => {
-      document.removeEventListener('keyup', check);
+      document.removeEventListener("keyup", check);
     };
   }, [activateKeyword, deactivateKeyword]);
   return null;

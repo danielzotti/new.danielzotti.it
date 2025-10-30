@@ -1,29 +1,29 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { config } from 'src/config';
-import styles from './navbar.module.scss';
-import logo from 'public/static/images/brand/danielzotti-logo-medium.webp';
-import { ThemeSelector } from 'src/components/theme-selector/theme-selector';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useCallback, useState } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { config } from "src/config";
+import styles from "./navbar.module.scss";
+import logo from "public/static/images/brand/danielzotti-logo-medium.webp";
+import { ThemeSelector } from "src/components/theme-selector/theme-selector";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCallback, useState } from "react";
 
 const items: NavbarItem[] = [
   {
     path: config.urls.blog,
-    label: 'Blog'
+    label: "Blog",
   },
   {
     path: config.urls.projects,
-    label: 'Projects'
+    label: "Projects",
   },
   {
     path: config.urls.openSource,
-    label: 'Open Source'
-  }
+    label: "Open Source",
+  },
 ];
 
 export const Navbar = () => {
@@ -35,15 +35,17 @@ export const Navbar = () => {
   }, [setIsOpen]);
 
   return (
-    <header className={`dz-navbar ${styles.navbar} ${isOpen ? styles.isOpen : ''}`}>
-      <div className='container'>
+    <header
+      className={`dz-navbar ${styles.navbar} ${isOpen ? styles.isOpen : ""}`}
+    >
+      <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.logo}>
-            <Link href={config.urls.home} title='Go to home page'>
+            <Link href={config.urls.home} title="Go to home page">
               <Image
-                className='dz-navbar__logo'
+                className="dz-navbar__logo"
                 src={logo}
-                alt='Daniel Zotti logo'
+                alt="Daniel Zotti logo"
                 width={80}
                 height={48}
                 priority
@@ -56,7 +58,7 @@ export const Navbar = () => {
                 key={item.path}
                 href={item.path}
                 className={`${styles.item} ${
-                  pathName?.startsWith(item.path) ? 'active' : ''
+                  pathName?.startsWith(item.path) ? "active" : ""
                 }`}
               >
                 {item.label}
@@ -66,7 +68,11 @@ export const Navbar = () => {
               <ThemeSelector />
             </div>
           </nav>
-          <button className={styles.hamburger} onClick={toggleMenu} aria-label='Menu hamburger'>
+          <button
+            className={styles.hamburger}
+            onClick={toggleMenu}
+            aria-label="Menu hamburger"
+          >
             {!isOpen && <FontAwesomeIcon icon={faBars} />}
             {isOpen && <FontAwesomeIcon icon={faTimes} />}
           </button>

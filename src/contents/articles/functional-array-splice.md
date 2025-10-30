@@ -2,7 +2,7 @@
 title: Functional Array.splice()
 description: Add/Remove items in array without changing the original one
 date: "2023-07-10"
-tags: [ "javascript", "array", "functional-programming" ]
+tags: ["javascript", "array", "functional-programming"]
 ---
 
 # Functional splice
@@ -21,14 +21,14 @@ with [spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 Here is the idea:
 
 ```javascript
-const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+const items = ["item1", "item2", "item3", "item4", "item5"];
 
 const position = 3; // aka "array index"
 
 const newItems = [
   ...items.slice(0, position),
-  'NEW ITEM',
-  ...items.slice(position)
+  "NEW ITEM",
+  ...items.slice(position),
 ];
 
 // newItems = ['item1','item2','item3','NEW ITEM','item4','item5'];
@@ -40,18 +40,24 @@ const newItems = [
 Here is the implementation as a function with the same features of the `splice()` method:
 
 ```javascript
-const functionalSplice = (items, position, deleteCount, ...newItems) => ([
+const functionalSplice = (items, position, deleteCount, ...newItems) => [
   ...items.slice(0, position),
   ...newItems,
-  ...items.slice(position + deleteCount)
-]);
+  ...items.slice(position + deleteCount),
+];
 
-const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+const items = ["item1", "item2", "item3", "item4", "item5"];
 
-const newItems_pos3 = functionalSplice(items, 3, 0, 'NEW ITEM middle 1', 'NEW ITEM middle 2');
+const newItems_pos3 = functionalSplice(
+  items,
+  3,
+  0,
+  "NEW ITEM middle 1",
+  "NEW ITEM middle 2",
+);
 // ['item1', 'item2', 'item3', 'NEW ITEM middle 1', 'NEW ITEM middle 2', 'item4', 'item5']
 
-const newItems_start = functionalSplice(items, 0, 1, 'NEW ITEM start');
+const newItems_start = functionalSplice(items, 0, 1, "NEW ITEM start");
 // ['NEW ITEM start', 'item2', 'item3', 'item4', 'item5']
 ```
 
@@ -60,7 +66,7 @@ const newItems_start = functionalSplice(items, 0, 1, 'NEW ITEM start');
 The solution is using `Infinity` (or `items.length`, but `Infinity` is easier!)
 
 ```javascript
-const newItems_end = functionalSplice(items, Infinity, 0, 'NEW ITEM end');
+const newItems_end = functionalSplice(items, Infinity, 0, "NEW ITEM end");
 // ['item1', 'item2', 'item3', 'item4', 'item5', 'NEW ITEM end']
 ```
 
@@ -69,17 +75,26 @@ const newItems_end = functionalSplice(items, Infinity, 0, 'NEW ITEM end');
 Here is the implementation as a function in the Array prototype, mimicking the `splice()` signature:
 
 ```javascript
-Array.prototype.functionalSplice = function(position, deleteCount, ...newItems) {
+Array.prototype.functionalSplice = function (
+  position,
+  deleteCount,
+  ...newItems
+) {
   return [
     ...this.slice(0, position),
     ...newItems,
-    ...this.slice(position + deleteCount)
+    ...this.slice(position + deleteCount),
   ];
 };
 
-const items = ['item1', 'item2', 'item3', 'item4', 'item5'];
+const items = ["item1", "item2", "item3", "item4", "item5"];
 
-const newItems_pos3 = items.functionalSplice(3, 0, 'NEW ITEM middle 1', 'NEW ITEM middle 2');
+const newItems_pos3 = items.functionalSplice(
+  3,
+  0,
+  "NEW ITEM middle 1",
+  "NEW ITEM middle 2",
+);
 // ['item1', 'item2', 'item3', 'NEW ITEM middle 1', 'NEW ITEM middle 2', 'item4', 'item5']
 ```
 

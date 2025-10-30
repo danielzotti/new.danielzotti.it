@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { usePathname, useSearchParams } from 'next/navigation';
-import Script from 'next/script';
-import { useEffect, useState } from 'react';
-import { pageview } from 'src/utils/google-analytics';
-import { config } from 'src/config';
-import { getCookie } from 'src/utils/cookie';
+import { usePathname, useSearchParams } from "next/navigation";
+import Script from "next/script";
+import { useEffect, useState } from "react";
+import { pageview } from "src/utils/google-analytics";
+import { config } from "src/config";
+import { getCookie } from "src/utils/cookie";
 
 export const GoogleAnalytics = () => {
   const pathname = usePathname();
@@ -14,7 +14,7 @@ export const GoogleAnalytics = () => {
 
   useEffect(() => {
     if (pathname) {
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== "production") {
         // console.log(`Page "${pathname}" not saved to Google Analytics since it's a dev env`);
         return;
       }
@@ -23,12 +23,13 @@ export const GoogleAnalytics = () => {
   }, [pathname, searchParams]);
 
   useEffect(() => {
-    if (getCookie(config.cookieAccept) === 'true') {
+    if (getCookie(config.cookieAccept) === "true") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setHasAcceptedCookie(true);
     }
   }, []);
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== "production") {
     return null;
   }
 
@@ -38,11 +39,12 @@ export const GoogleAnalytics = () => {
 
   return (
     <>
-      <Script async
+      <Script
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${config.googleAnalyticsToken}`}
-        strategy='afterInteractive'
+        strategy="afterInteractive"
       ></Script>
-      <Script id='google-analytics' strategy='afterInteractive'>
+      <Script id="google-analytics" strategy="afterInteractive">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){window.dataLayer.push(arguments)}

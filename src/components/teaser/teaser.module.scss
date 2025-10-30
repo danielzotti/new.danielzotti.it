@@ -4,10 +4,14 @@
   border-radius: var(--border-radius);
   padding: clamp(15px, 1vw, 35px);
   outline: 2px solid transparent;
-  transition: outline-color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out;
+  transition:
+    outline-color var(--transition-duration) ease-in-out,
+    transform var(--transition-duration) ease-in-out;
   max-width: 800px;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     color: inherit;
     outline: 2px solid var(--accent-color);
     transform: rotate(-2deg);
@@ -25,7 +29,6 @@
 }
 
 .description {
-
 }
 
 .tags {

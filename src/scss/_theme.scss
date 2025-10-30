@@ -1,5 +1,4 @@
 @mixin dark {
-
   color-scheme: dark;
   // THEME (dark)
   --text-color: var(--white-dark);
@@ -77,22 +76,22 @@
 }
 
 @mixin nineties {
-
-  --90s-red: #F00;
-  --90s-green: #0F0;
-  --90s-blue: #00F;
-  --90s-purple: #F0F;
-  --90s-yellow: #FF0;
+  --90s-red: #f00;
+  --90s-green: #0f0;
+  --90s-blue: #00f;
+  --90s-purple: #f0f;
+  --90s-yellow: #ff0;
 
   --90s-background-image: url(/static/90s/90s-spacejam-bg.gif);
   --90s-background-image-light: url(/static/90s/90s-spacejam-bg-light.gif);
 
   //--html-min-width: 800px;
   --cursor-default: url(/static/90s/90s-cursor-with-daniel.png), auto;
-  --cursor-pointer: url(/static/90s/90s-cursor-with-daniel-pointer-stupid.png), pointer;
+  --cursor-pointer:
+    url(/static/90s/90s-cursor-with-daniel-pointer-stupid.png), pointer;
 
-  --font-family-title: 'times-pixelated', serif;
-  --font-family-text: 'times-pixelated', serif;
+  --font-family-title: "times-pixelated", serif;
+  --font-family-text: "times-pixelated", serif;
 
   --transition-duration: 0;
   --border-radius: 0;

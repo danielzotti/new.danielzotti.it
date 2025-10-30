@@ -1,61 +1,70 @@
-import { config } from 'src/config';
-import { Metadata } from 'next';
+import { config } from "src/config";
+import { Metadata } from "next";
 
-export const buildMetadata = ({ title, description, url, canonical, image }: {
+export const buildMetadata = ({
+  title,
+  description,
+  url,
+  canonical,
+  image,
+}: {
   title: string;
-  description?: string,
-  url: string,
+  description?: string;
+  url: string;
   canonical?: string;
   image?: {
-    url: string,
-    width: number,
-    height: number,
-    alt?: string
-  }
+    url: string;
+    width: number;
+    height: number;
+    alt?: string;
+  };
 }): Metadata => {
   return {
     title,
     description,
     alternates: {
-      canonical: canonical ? canonical : url
+      canonical: canonical ? canonical : url,
     },
     openGraph: {
       title: title,
       siteName: config.title,
       url,
-      type: 'article',
+      type: "article",
       images: [
-        image ? {
-          url: image.url,
-          width: image.width,
-          height: image.height
-        } :
-          {
-            url: config.websiteImage.url,
-            width: config.websiteImage.width,
-            height: config.websiteImage.height
-          }
-      ]
+        image
+          ? {
+              url: image.url,
+              width: image.width,
+              height: image.height,
+            }
+          : {
+              url: config.websiteImage.url,
+              width: config.websiteImage.width,
+              height: config.websiteImage.height,
+            },
+      ],
     },
     // https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
     twitter: {
       title: title,
       description: description,
       images: [
-        image ? {
-          url: image.url,
-          width: image.width,
-          height: image.height,
-          alt: image.alt ?? config.websiteImage.alt
-        } : {
-          url: config.websiteImage.url,
-          width: config.websiteImage.width,
-          height: config.websiteImage.height,
-          alt: config.websiteImage.alt
-        }
+        image
+          ? {
+              url: image.url,
+              width: image.width,
+              height: image.height,
+              alt: image.alt ?? config.websiteImage.alt,
+            }
+          : {
+              url: config.websiteImage.url,
+              width: config.websiteImage.width,
+              height: config.websiteImage.height,
+              alt: config.websiteImage.alt,
+            },
       ],
-      card: 'summary_large_image',
-      site: config.twitterId
-    }
+      card: "summary_large_image",
+      site: config.twitterId,
+    },
   };
 };

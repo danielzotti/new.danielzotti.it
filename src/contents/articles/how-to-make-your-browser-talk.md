@@ -2,7 +2,7 @@
 title: How to make your browser talk in ONE line of code
 description: Modern browsers APIs are making this kind of task super easy to achieve!
 date: "2023-07-04"
-tags: [ "javascript", "browser-api" ]
+tags: ["javascript", "browser-api"]
 ---
 
 # How to make your browser talk in ONE line of code
@@ -14,7 +14,7 @@ Ok, I could have exaggerated a bit... But let's go straight to the point and the
 **In order to make your browser talk, just write this line of code:**
 
 ```javascript
-speechSynthesis.speak(new SpeechSynthesisUtterance('Hello!'));
+speechSynthesis.speak(new SpeechSynthesisUtterance("Hello!"));
 ```
 
 How simple is that?! Many years ago it would have been unthinkable to do such a thing, but nowadays modern browsers give
@@ -34,7 +34,7 @@ In order to make our browser speak, we use the **_SpeechSynthesisUtterance_** in
 Firstly, we have to create a new SpeechSynthesisUtterance instance that accepts only one parameter (the sentence):
 
 ```javascript
-const utterance = new SpeechSynthesisUtterance('Hello!')
+const utterance = new SpeechSynthesisUtterance("Hello!");
 ```
 
 There are a lot of _SpeechSynthesisUtterance_ properties we can manage:
@@ -50,7 +50,7 @@ There are a lot of _SpeechSynthesisUtterance_ properties we can manage:
 Let's discover how we can "tune" the browser's voice:
 
 ```javascript
-utterance.lang = 'en-US' // A string representing a BCP 47 language tag
+utterance.lang = "en-US"; // A string representing a BCP 47 language tag
 utterance.rate = 0.5; // Represent the speed
 utterance.pitch = 2;
 utterance.volume = 0.5; // mute=0, max=1
@@ -76,9 +76,9 @@ We are also able to listen to a lot of events too:
 Print out to the console once an event occurs:
 
 ```javascript
-utterance.onstart = (event) => console.log('Speech has started', event);
+utterance.onstart = (event) => console.log("Speech has started", event);
 
-utterance.onend = (event) => console.log('Speech has ended', event);
+utterance.onend = (event) => console.log("Speech has ended", event);
 ```
 
 _Speech Syntesis_ is **well-supported** on major browsers, on the contrary _Speech Recognition_ is **partially supported

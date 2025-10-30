@@ -54,7 +54,7 @@ order to improve the web experience and the navigation speed).
 Those cookies are managed by Google Analytics, a web analytics tool provided by Google Inc. For instance,
 some of Google Analytics’ cookies are:
 
-**__utmz**; **__utmc**; **__utmb**; **__utma**; **__utmt**.
+**\_\_utmz**; **\_\_utmc**; **\_\_utmb**; **\_\_utma**; **\_\_utmt**.
 
 To get more information about these cookies, please
 visit [https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage](https://developers.google.com/analytics/devguides/collection/analyticsjs/cookie-usage)
@@ -62,7 +62,7 @@ visit [https://developers.google.com/analytics/devguides/collection/analyticsjs/
 Pursuant to Decision 229/2014, technical tools are adopted in order to reduce the identifying power of these cookies.
 Google Privacy Policy is available [here](https://www.google.com/intl/it/policies/privacy),
 whereas Google Analytics Privacy information
-is available [here](https://support.google.com/analytics/topic/2919631?hl=it&amp;ref_topic=1008008).
+is available [here](https://support.google.com/analytics/topic/2919631?hl=it&ref_topic=1008008).
 
 Third-Party Cookies could be set and modified by different organizationsto the owner of the website, therefore the
 aforementioned owner of the website is not responsible for later modifications and integrations to Third-Party Cookies
@@ -78,7 +78,7 @@ The links for specific instructions of the most popular browsers are listed belo
 
 - [Firefox](https://support.mozilla.org/it/kb/Attivare%20e%20disattivare%20i%20cookie)
 
-- [Chrome](https://support.google.com/chrome/answer/95647?hl=it-IT&amp;hlrm=fr&amp;hlrm=en)
+- [Chrome](https://support.google.com/chrome/answer/95647?hl=it-IT&hlrm=fr&hlrm=en)
 
 - [Safari](https://support.apple.com/kb/PH19214?locale=it_IT)
 

@@ -2,7 +2,7 @@
 title: LearnedToday
 description: I'll try to share something I learned every day from now on.. Will I be able to do it?
 date: "2023-06-27"
-tags: [ "javascript", "css", "frontend", "learning" ]
+tags: ["javascript", "css", "frontend", "learning"]
 ---
 
 # #LearnedToday
@@ -19,7 +19,7 @@ worth sharing it with a wider audience.
 But the older I get the more I feel the urge to share my knowledge, moreover, in the last few years, I noticed that what
 I used to share was not so bad.
 
-> This is why I decided to start sharing some knowledge ***TODAY!***
+> This is why I decided to start sharing some knowledge **_TODAY!_**
 
 I wish I had started with a “sexier” date like 1st January but if I had kept postponing it, I never would have started
 it!
@@ -31,7 +31,7 @@ perseverance:
 
 It could be an article, a coding tip, an idea, a piece of documentation or who knows what the future holds for myself!
 
-I’m going to use [my LinkedIn account](https://www.linkedin.com/in/danielzotti) with the hashtag *`#LearnedToday`*, and
+I’m going to use [my LinkedIn account](https://www.linkedin.com/in/danielzotti) with the hashtag _`#LearnedToday`_, and
 I’m going to write an [article](https://dev.to/danielzotti/learnedtoday-4b1k) on [Dev.to](https://dev.to/danielzotti)
 (a community that I’ve been reading passively for years, but I’ve never posted anything) in order to collect all the
 progresses together, with the possibility of adding further notes and thoughts.

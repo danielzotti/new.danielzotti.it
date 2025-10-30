@@ -23,7 +23,7 @@
 
   //FONTS
   --font-family-title: Exo, Georgia, serif;
-  --font-family-text: 'Roboto Condensed', Verdana, Helvetica, Arial, sans-serif;
+  --font-family-text: "Roboto Condensed", Verdana, Helvetica, Arial, sans-serif;
 
   //MARGINS
   --margin-small: 5px;
@@ -35,20 +35,20 @@
   --border-radius: 10px;
 
   //TRANSITIONS
-  --transition-duration: .2s;
-  --navbar-transition-duration: .5s;
+  --transition-duration: 0.2s;
+  --navbar-transition-duration: 0.5s;
 }
 
-[data-theme=light] {
+[data-theme="light"] {
   @include theme.light;
 }
 
-[data-theme=dark] {
+[data-theme="dark"] {
   @include theme.dark;
 }
 
 // OS Default.
-:root:not([data-theme=light]):not([data-theme=dark]) {
+:root:not([data-theme="light"]):not([data-theme="dark"]) {
   @media (prefers-color-scheme: light) {
     @include theme.light;
   }

@@ -2,7 +2,7 @@
 title: Drag & Drop API
 description: How to deal with drag&drop in the Browser
 date: "2023-09-08"
-tags: [ "javascript", "browser-api" ]
+tags: ["javascript", "browser-api"]
 ---
 
 # Drag&Drop API
@@ -19,26 +19,25 @@ Here, briefly, is what I figured out:
 - In order to activate the dragging functionality on a element, it must be set the `draggable` attribute on it.
 
 ```html
-<div class='item' draggable='true'>
-  Drag me
-</div>
+<div class="item" draggable="true">Drag me</div>
 ```
 
 - If we need to add some actions (e.g. save element's data for future purpose) once the element is "grabbed", a listener
   to the `dragStart` event must be added to it.
 
 ```html
-<div id='my-item'
-     class='item'
-     draggable='true'
-     ondragstart='handleDragStart(event)'
+<div
+  id="my-item"
+  class="item"
+  draggable="true"
+  ondragstart="handleDragStart(event)"
 >
   Drag me
 </div>
 
 <script>
   function handleDragStart(e) {
-    console.log('You are dragging ', e.target.id);
+    console.log("You are dragging ", e.target.id);
   }
 </script>
 ```
@@ -47,9 +46,10 @@ Here, briefly, is what I figured out:
   In order to create them, we need to make the target element listen to `dragOver` and `drop` events.
 
 ```html
-<div class='dropzone'
-     ondrop='handleDrop(event)'
-     ondragover='handleDragOver(event)'
+<div
+  class="dropzone"
+  ondrop="handleDrop(event)"
+  ondragover="handleDragOver(event)"
 >
   Drop the dragging element here!
 </div>

@@ -1,3 +1,6 @@
 @mixin border($width: 1px, $color: black) {
-  filter: drop-shadow(#{$width} #{$width} 0px $color) drop-shadow(#{$width} -#{$width} 0px $color) drop-shadow(-#{$width} #{$width} 0px $color) drop-shadow(-#{$width} -#{$width} 0px $color);
+  filter: drop-shadow(#{$width} #{$width} 0px $color)
+    drop-shadow(#{$width} -#{$width} 0px $color)
+    drop-shadow(-#{$width} #{$width} 0px $color)
+    drop-shadow(-#{$width} -#{$width} 0px $color);
 }

@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import React, { type JSX } from 'react';
+import Link from "next/link";
+import React, { type JSX } from "react";
 
 export interface SocialLinkProps {
   label: string;
   url: string;
-  target: '_blank' | '_self';
+  target: "_blank" | "_self";
 }
 
 export const SocialLink = ({

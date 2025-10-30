@@ -1,9 +1,15 @@
-'use client';
+"use client";
 
-import { createContext, useCallback, useEffect, useState, type JSX } from 'react';
-import { config } from 'src/config';
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+  type JSX,
+} from "react";
+import { config } from "src/config";
 
-export type ThemeValueTypes = 'light' | 'dark' | 'os default' | 'nineties';
+export type ThemeValueTypes = "light" | "dark" | "os default" | "nineties";
 
 export interface ThemeContextModel {
   theme: ThemeValueTypes;
@@ -11,19 +17,18 @@ export interface ThemeContextModel {
 }
 
 export const ThemeContext = createContext<ThemeContextModel>({
-  theme: 'os default',
-  toggleTheme: () => {
-  }
+  theme: "os default",
+  toggleTheme: () => {},
 });
 
 interface ThemeContextProviderProps {
   children?: JSX.Element | Array<JSX.Element>;
 }
 
-export function ThemeContextProvider(
-  props: ThemeContextProviderProps
-) {
-  const [theme, setTheme] = useState<ThemeValueTypes>('os default');
+export function ThemeContextProvider(props: ThemeContextProviderProps) {
+  const [theme, setTheme] = useState<ThemeValueTypes>("os default");
+
+  // eslint-disable-next-line react-hooks/immutability
   useEffect(() => initialThemeHandler());
 
   const getThemeValue = useCallback(() => {
@@ -37,17 +42,16 @@ export function ThemeContextProvider(
 
   const initialThemeHandler = () => {
     const localStorageTheme = getThemeValue() as ThemeValueTypes;
-    if (!localStorageTheme) {
-      setNewTheme('os default');
-
-    } else {
+    if (localStorageTheme) {
       setNewTheme(localStorageTheme);
+    } else {
+      setNewTheme("os default");
     }
   };
 
   const setNewTheme = (newTheme: ThemeValueTypes) => {
     setThemeValue(newTheme);
-    document!.querySelector('body')!.dataset.theme = theme;
+    document!.querySelector("body")!.dataset.theme = theme;
   };
 
   const toggleThemeHandler = (value?: ThemeValueTypes) => {
@@ -55,8 +59,9 @@ export function ThemeContextProvider(
       setNewTheme(value);
       return;
     }
-    const currentThemeIndex = config.themes.findIndex(t => t === theme);
-    const newThemeIndex = currentThemeIndex + 1 >= config.themes.length ? 0 : currentThemeIndex + 1;
+    const currentThemeIndex = config.themes.findIndex((t) => t === theme);
+    const newThemeIndex =
+      currentThemeIndex + 1 >= config.themes.length ? 0 : currentThemeIndex + 1;
     setNewTheme(config.themes.at(newThemeIndex) as ThemeValueTypes);
   };
 

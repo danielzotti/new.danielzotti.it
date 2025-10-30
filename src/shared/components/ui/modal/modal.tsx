@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode } from "react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -8,15 +8,15 @@ interface ModalProps {
 }
 
 export const Modal = ({ children, setIsOpen, isOpen, title }: ModalProps) => {
-  return (
-    isOpen ? (
+  return isOpen ? (
+    <div>
       <div>
-        <div>
-          <h1>title</h1>
-          <button onClick={() => setIsOpen(false)}>Close</button>
-        </div>
-        <div>{children}</div>
+        <h1>title</h1>
+        <button onClick={() => setIsOpen(false)}>Close</button>
       </div>
-    ) : <></>
+      <div>{children}</div>
+    </div>
+  ) : (
+    <></>
   );
 };

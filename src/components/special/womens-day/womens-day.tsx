@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { DateTime } from 'luxon';
-import styles from './womens-day.module.scss';
-import mimosa from 'public/static/womens-day/mimosa.png';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useEffect, useRef, useState } from "react";
+import { DateTime } from "luxon";
+import styles from "./womens-day.module.scss";
+import mimosa from "public/static/womens-day/mimosa.png";
+import Image from "next/image";
+import Link from "next/link";
 
 const isWomensDay = (): boolean => {
   const month = DateTime.now().month;
@@ -18,7 +18,6 @@ const isWomensDay = (): boolean => {
 };
 
 export const WomensDay = () => {
-
   const [isActive, setIsActive] = useState<boolean>(false);
 
   const toggleWomensDay = () => {
@@ -29,30 +28,34 @@ export const WomensDay = () => {
     if (!isWomensDay()) {
       return;
     }
-
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsActive(true);
-
   }, []);
 
   if (!isWomensDay() && !isActive) {
     return null;
   }
 
-  return <>
-    {isActive && <>
-
-      <Link className={styles.mimosa}
-        href='https://en.wikipedia.org/wiki/International_Women%27s_Day'
-        target='_blank'
-        title="International Women's Day">
-        <Image
-          src={mimosa}
-          alt="Daniel Zotti wishes you a merry Valentine's Day!"
-          rel='preload'
-          priority
-          onClick={toggleWomensDay}
-        />
-      </Link>
-    </>}
-  </>;
+  return (
+    <>
+      {isActive && (
+        <>
+          <Link
+            className={styles.mimosa}
+            href="https://en.wikipedia.org/wiki/International_Women%27s_Day"
+            target="_blank"
+            title="International Women's Day"
+          >
+            <Image
+              src={mimosa}
+              alt="Daniel Zotti wishes you a merry Valentine's Day!"
+              rel="preload"
+              priority
+              onClick={toggleWomensDay}
+            />
+          </Link>
+        </>
+      )}
+    </>
+  );
 };

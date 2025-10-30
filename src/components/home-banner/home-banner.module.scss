@@ -9,7 +9,7 @@
   font-size: 0;
   padding: 5px;
   text-align: center;
-  @media(min-width: variables.$sm-min) {
+  @media (min-width: variables.$sm-min) {
     padding: 50px 0;
     text-align: left;
   }
@@ -21,10 +21,10 @@
   text-align: center;
   width: 100%;
   max-width: 220px;
-  @media(min-width: variables.$sm-min) {
+  @media (min-width: variables.$sm-min) {
     width: 40%;
   }
-  @media(min-width: variables.$md-min) {
+  @media (min-width: variables.$md-min) {
     width: 50%;
   }
 
@@ -40,24 +40,24 @@
 .brand {
   display: inline-block;
   vertical-align: middle;
-  @media(min-width: variables.$sm-min) {
+  @media (min-width: variables.$sm-min) {
     width: 60%;
   }
-  @media(min-width: variables.$md-min) {
+  @media (min-width: variables.$md-min) {
     width: 50%;
   }
-  @media(min-width: variables.$xs-min) and (max-width: variables.$xs-max) {
+  @media (min-width: variables.$xs-min) and (max-width: variables.$xs-max) {
     margin-bottom: 20px;
   }
-
 }
 
-.logo, .name {
+.logo,
+.name {
   position: relative;
   vertical-align: middle;
   padding: 10px;
   line-height: 1;
-  @media(min-width: variables.$sm-min) {
+  @media (min-width: variables.$sm-min) {
     display: inline-block;
   }
 }
@@ -68,7 +68,7 @@
 
   img {
     max-width: 200px;
-    @media(min-width: variables.$sm-min) {
+    @media (min-width: variables.$sm-min) {
       max-width: 300px;
     }
   }
@@ -86,7 +86,7 @@
   animation-delay: 2s;
   animation-iteration-count: infinite;
 
-  @media(max-width: variables.$xs-max) {
+  @media (max-width: variables.$xs-max) {
     font-size: 40px;
   }
 

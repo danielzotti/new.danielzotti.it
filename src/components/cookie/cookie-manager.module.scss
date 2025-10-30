@@ -1,6 +1,6 @@
-@use '@scss/variables';
-@use '@scss/common';
-@use '@scss/layout';
+@use "@scss/variables";
+@use "@scss/common";
+@use "@scss/layout";
 
 .pageContainer {
   z-index: 299;
@@ -23,13 +23,12 @@
 }
 
 .cookiePolicyContentContainer {
-
 }
 
 .closeButton {
   position: sticky;
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
   z-index: 301;
   text-align: right;
 }

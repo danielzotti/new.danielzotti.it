@@ -1,9 +1,14 @@
-import React, { type JSX } from 'react';
-import styles from './teaser.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare, faCalendar, faTags } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
-import { useDate } from 'src/hooks/useDate';
+import React, { type JSX } from "react";
+import { toFormattedDate } from "../../utils/date";
+import styles from "./teaser.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUpRightFromSquare,
+  faCalendar,
+  faTags,
+} from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
+import { useDate } from "src/hooks/useDate";
 
 export interface TeaserProps {
   title: string;
@@ -11,19 +16,38 @@ export interface TeaserProps {
   description?: string;
   tags?: Array<string>;
   date?: string;
-  target?: '_self' | '_blank';
+  target?: "_self" | "_blank";
 }
 
-export const Teaser = ({ title, description, url, tags, date, target = '_self' }: TeaserProps): JSX.Element => {
-  const { toDate } = useDate();
+export const Teaser = ({
+  title,
+  description,
+  url,
+  tags,
+  date,
+  target = "_self",
+}: TeaserProps): JSX.Element => {
   return (
     <Link className={`dz-teaser ${styles.wrapper}`} href={url} target={target}>
-      {target === '_blank' &&
-        <div className={styles.newWindow}><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></div>}
+      {target === "_blank" && (
+        <div className={styles.newWindow}>
+          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+        </div>
+      )}
       <h2 className={styles.title}>{title}</h2>
       {description && <p className={styles.description}>{description}</p>}
-      {tags && tags.length > 0 && <p className={styles.tags}><FontAwesomeIcon icon={faTags} />&nbsp;{tags.join(', ')}</p>}
-      {date && <p className={styles.date}><FontAwesomeIcon icon={faCalendar} />&nbsp;{toDate(date)}</p>}
+      {tags && tags.length > 0 && (
+        <p className={styles.tags}>
+          <FontAwesomeIcon icon={faTags} />
+          &nbsp;{tags.join(", ")}
+        </p>
+      )}
+      {date && (
+        <p className={styles.date}>
+          <FontAwesomeIcon icon={faCalendar} />
+          &nbsp;{toFormattedDate(date)}
+        </p>
+      )}
     </Link>
   );
 };

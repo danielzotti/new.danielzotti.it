@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import styles from './home-navbar.module.scss';
-import { Navbar } from 'src/components/navbar/navbar';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import styles from "./home-navbar.module.scss";
+import { Navbar } from "src/components/navbar/navbar";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const HomeNavbar = () => {
   const navbarContainerRef = useRef<HTMLDivElement>(null);
@@ -20,16 +20,21 @@ export const HomeNavbar = () => {
   }, []);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     checkNavbarVisibility();
-    window.addEventListener('scroll', checkNavbarVisibility);
+    window.addEventListener("scroll", checkNavbarVisibility);
 
     return () => {
-      window.removeEventListener('scroll', checkNavbarVisibility);
+      window.removeEventListener("scroll", checkNavbarVisibility);
     };
   }, [checkNavbarVisibility]);
 
-  return <div className={`${styles.navbar} ${isNavbarVisible ? 'is-visible' : ''}`} ref={navbarContainerRef}>
-    <Navbar />
-  </div>;
-}
-;
+  return (
+    <div
+      className={`${styles.navbar} ${isNavbarVisible ? "is-visible" : ""}`}
+      ref={navbarContainerRef}
+    >
+      <Navbar />
+    </div>
+  );
+};

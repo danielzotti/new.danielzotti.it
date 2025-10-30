@@ -4,9 +4,9 @@
   display: grid;
   gap: 3vw;
   grid-template-areas:
-          "metadata"
-          "content";
-  @media(min-width: variables.$md-min) {
+    "metadata"
+    "content";
+  @media (min-width: variables.$md-min) {
     grid-template-areas: "content metadata";
     grid-template-columns: 3fr 1fr;
   }
@@ -23,16 +23,16 @@
   & > h1:first-child {
     margin-top: 0;
   }
-
 }
 
-.tags, .date {
+.tags,
+.date {
   font-size: clamp(0.75em, 2vw, 25px);
   margin-bottom: 1vw;
   word-break: break-word;
 
-  @media(max-width: variables.$sm-max) {
+  @media (max-width: variables.$sm-max) {
     display: inline-block;
-    margin-right: 5px
+    margin-right: 5px;
   }
 }

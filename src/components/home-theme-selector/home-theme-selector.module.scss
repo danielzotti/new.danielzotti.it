@@ -14,7 +14,9 @@
   @include drop-shadow.border(1px, white);
   transition: transform var(--transition-duration) ease-in-out;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     transform: rotate(-3deg);
     @include drop-shadow.border(1px, var(--accent-color));
   }
@@ -30,7 +32,7 @@
   border-top: 0;
   border-left: 0;
   border-right: 0;
-  padding:0;
+  padding: 0;
   cursor: var(--cursor-pointer);
   @extend .link;
 }

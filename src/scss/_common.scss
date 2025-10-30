@@ -10,7 +10,9 @@
   border-bottom: 1px solid var(--accent-color);
   transition: transform var(--transition-duration) ease-in-out;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     color: var(--accent-color);
     cursor: var(--cursor-pointer);
     text-decoration: none;
@@ -27,7 +29,7 @@ html {
   background-color: var(--red);
   color: var(--white-dark);
   font-size: 10px;
-  padding-block:3px;
+  padding-block: 3px;
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;

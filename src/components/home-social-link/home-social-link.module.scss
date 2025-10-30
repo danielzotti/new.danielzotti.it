@@ -1,13 +1,12 @@
 .social {
   font-size: clamp(60px, 4vw, 120px);
   margin-bottom: 30px;
-  border:0;
+  border: 0;
 
-  @media(min-width: 400px) {
+  @media (min-width: 400px) {
     margin-bottom: 0;
   }
 }
-
 
 .icon {
   margin-bottom: 1vw;

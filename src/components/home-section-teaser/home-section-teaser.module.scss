@@ -4,14 +4,20 @@
   align-items: center;
   position: relative;
   text-align: center;
-  transition: color var(--transition-duration) ease-in-out, background-color var(--transition-duration) ease-in-out, transform var(--transition-duration) ease-in-out, outline-color var(--transition-duration) ease-in-out;
+  transition:
+    color var(--transition-duration) ease-in-out,
+    background-color var(--transition-duration) ease-in-out,
+    transform var(--transition-duration) ease-in-out,
+    outline-color var(--transition-duration) ease-in-out;
   padding: 1vw;
   border: 1px solid var(--text-color);
   border-radius: var(--border-radius);
   outline: 2px solid transparent;
   color: var(--text-color);
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     outline: 2px solid var(--accent-color);
     transform: rotate(-2deg);
     color: var(--accent-color);
@@ -25,7 +31,6 @@
     }
   }
 }
-
 
 .icon {
   svg {

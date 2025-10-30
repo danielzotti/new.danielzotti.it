@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import styles from './pie-day.module.scss';
-import { useEffect, useState } from 'react';
-import { DateTime } from 'luxon';
-import pieNumber from 'public/static/pie-day/pie-day-number.svg';
-import pieText from 'public/static/pie-day/pie-day-text.svg';
-import Image from 'next/image';
+import styles from "./pie-day.module.scss";
+import { useEffect, useState } from "react";
+import { DateTime } from "luxon";
+import pieNumber from "public/static/pie-day/pie-day-number.svg";
+import pieText from "public/static/pie-day/pie-day-text.svg";
+import Image from "next/image";
 
 const isPieDay = (): boolean => {
   const month = DateTime.now().month;
@@ -18,9 +18,8 @@ const isPieDay = (): boolean => {
 };
 
 export const PieDay = () => {
-
   const [isActive, setIsActive] = useState<boolean>(false);
-  const [face, setFace] = useState<'heads' | 'tails' | ''>('');
+  const [face, setFace] = useState<"heads" | "tails" | "">("");
 
   const togglePieDay = () => {
     setIsActive((active) => !active);
@@ -28,14 +27,14 @@ export const PieDay = () => {
 
   const flip = () => {
     if (Math.random() > 0.5) {
-      setFace('');
+      setFace("");
       setTimeout(() => {
-        setFace('heads');
+        setFace("heads");
       }, 100);
     } else {
-      setFace('');
+      setFace("");
       setTimeout(() => {
-        setFace('tails');
+        setFace("tails");
       }, 100);
     }
   };
@@ -44,6 +43,7 @@ export const PieDay = () => {
     if (!isPieDay()) {
       return;
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsActive(true);
     flip();
   }, []);
@@ -52,17 +52,27 @@ export const PieDay = () => {
     return null;
   }
 
-  return <>
-    {isActive && <>
-      <button className={styles.close} title='Hide pie coin!' onClick={togglePieDay}>&times;</button>
-      <div className={`${styles.coin} ${face}`} onClick={flip}>
-        <div className={styles.coinHeads}>
-          <Image src={pieNumber} alt='3.14 coin' />
-        </div>
-        <div className={styles.coinTails}>
-          <Image src={pieText} alt='Pie coin' />
-        </div>
-      </div>
-    </>}
-  </>;
+  return (
+    <>
+      {isActive && (
+        <>
+          <button
+            className={styles.close}
+            title="Hide pie coin!"
+            onClick={togglePieDay}
+          >
+            &times;
+          </button>
+          <div className={`${styles.coin} ${face}`} onClick={flip}>
+            <div className={styles.coinHeads}>
+              <Image src={pieNumber} alt="3.14 coin" />
+            </div>
+            <div className={styles.coinTails}>
+              <Image src={pieText} alt="Pie coin" />
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
 };

@@ -1,8 +1,8 @@
 ---
 title: EyeDropper Browser API
-description: How to open a color picker natively in the Browser 
+description: How to open a color picker natively in the Browser
 date: "2023-08-21"
-tags: [ "javascript", "browser-api" ]
+tags: ["javascript", "browser-api"]
 ---
 
 # EyeDropper API
@@ -16,9 +16,8 @@ try {
   const colorSelectionResult = await eyeDropper.open(); // It will wait until the user selects a color
 
   // This part is executed once the user has selected the color
-  console.log(colorSelectionResult)
-}
-catch(ex) {
+  console.log(colorSelectionResult);
+} catch (ex) {
   // User has canceled the selection
 }
 ```

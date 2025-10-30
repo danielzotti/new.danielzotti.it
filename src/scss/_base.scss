@@ -1,8 +1,8 @@
 @use "mixins/typography";
 
 @font-face {
-  font-family: 'times-pixelated';
-  src: url(/static/90s/times-pixelated.woff) format('woff');
+  font-family: "times-pixelated";
+  src: url(/static/90s/times-pixelated.woff) format("woff");
 }
 
 * {
@@ -14,7 +14,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   font-family: var(--font-family-text);
   font-weight: 100;
   min-width: var(--html-min-width);
@@ -24,7 +25,12 @@ html, body {
   cursor: var(--cursor-default);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   position: relative;
   font-family: var(--font-family-title);
   font-weight: 500;
@@ -81,7 +87,9 @@ a {
   border-bottom: 1px solid var(--accent-color);
   transition: transform var(--transition-duration) ease-in-out;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     color: var(--accent-color);
     cursor: var(--cursor-pointer);
     text-decoration: none;
@@ -96,7 +104,8 @@ blockquote {
   padding-left: 20px;
 }
 
-ul, ol {
+ul,
+ol {
   margin-bottom: clamp(25px, 3vw, 50px);
 
   li {
