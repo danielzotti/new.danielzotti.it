@@ -5,13 +5,14 @@ import { useEffect, useRef } from "react";
 import { useConsoleCool } from "src/hooks/useConsoleCool";
 import { isHalloween } from "../../utils/halloween";
 
-const getVideoProfileUrl = () => {
+const getVideoprofileUrl = () => {
   if (isHalloween()) {
     return {
       webm: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.webm`,
       mp4: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.mp4`,
       gif: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.gif`,
       jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
+      isLoop: false,
     };
   } else {
     return {
@@ -19,6 +20,7 @@ const getVideoProfileUrl = () => {
       mp4: `${config.imageUrls.videoprofile}/videoprofile-small.mp4`,
       gif: `${config.imageUrls.videoprofile}/videoprofile-small.gif`,
       jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
+      isLoop: true,
     };
   }
 };
@@ -36,7 +38,7 @@ export const Videoprofile = () => {
         await video.current.play();
       } catch (e) {
         console.error(e);
-        video.current.poster = getVideoProfileUrl().jpg;
+        video.current.poster = getVideoprofileUrl().jpg;
 
         consoleCool(
           "Your browser is a bad boy and it's preventing my profile \"image\" (which is actually a video) from playing. \
@@ -52,14 +54,14 @@ so that it still shows the animation! 😈 It's not as performant as the video, 
     <video
       ref={video}
       autoPlay
-      loop={!isHalloween()}
+      loop={getVideoprofileUrl().isLoop}
       playsInline
-      poster={getVideoProfileUrl().jpg}
+      poster={getVideoprofileUrl().jpg}
       muted
       // controls
     >
-      <source type="video/webm" src={getVideoProfileUrl().webm} />
-      <source type="video/mp4" src={getVideoProfileUrl().mp4} />
+      <source type="video/webm" src={getVideoprofileUrl().webm} />
+      <source type="video/mp4" src={getVideoprofileUrl().mp4} />
     </video>
   );
 };
