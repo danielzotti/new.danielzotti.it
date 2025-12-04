@@ -1,33 +1,40 @@
 "use client";
 
+import { useEffect, useMemo, useRef, useState } from "react";
 import { config } from "src/config";
-import { useEffect, useRef } from "react";
 import { useConsoleCool } from "src/hooks/useConsoleCool";
 import { isHalloween } from "../../utils/halloween";
-
-const getVideoprofileUrl = () => {
-  if (isHalloween()) {
-    return {
-      webm: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.webm`,
-      mp4: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.mp4`,
-      gif: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.gif`,
-      jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
-      isLoop: false,
-    };
-  } else {
-    return {
-      webm: `${config.imageUrls.videoprofile}/videoprofile-small.webm`,
-      mp4: `${config.imageUrls.videoprofile}/videoprofile-small.mp4`,
-      gif: `${config.imageUrls.videoprofile}/videoprofile-small.gif`,
-      jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
-      isLoop: true,
-    };
-  }
-};
 
 export const Videoprofile = () => {
   const { consoleCool } = useConsoleCool();
   const video = useRef<HTMLVideoElement>(null);
+  const [canShowVideoSource, setCanShowVideoSource] = useState<boolean>(false);
+
+  const profileUrl = useMemo(() => {
+    if (isHalloween()) {
+      return {
+        webm: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.webm`,
+        mp4: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.mp4`,
+        gif: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.gif`,
+        jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
+        isLoop: false,
+      };
+    } else {
+      return {
+        webm: `${config.imageUrls.videoprofile}/videoprofile-small.webm`,
+        mp4: `${config.imageUrls.videoprofile}/videoprofile-small.mp4`,
+        gif: `${config.imageUrls.videoprofile}/videoprofile-small.gif`,
+        jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
+        isLoop: true,
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    // NOTE: this useEffect + useState is necessary to change URLs on the client side
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCanShowVideoSource(true);
+  }, [setCanShowVideoSource]);
 
   useEffect(() => {
     const play = async () => {
@@ -38,7 +45,7 @@ export const Videoprofile = () => {
         await video.current.play();
       } catch (e) {
         console.error(e);
-        video.current.poster = getVideoprofileUrl().jpg;
+        video.current.poster = profileUrl.gif;
 
         consoleCool(
           "Your browser is a bad boy and it's preventing my profile \"image\" (which is actually a video) from playing. \
@@ -47,21 +54,28 @@ so that it still shows the animation! 😈 It's not as performant as the video, 
         );
       }
     };
-    void play();
-  }, [consoleCool]);
+
+    if (canShowVideoSource) {
+      void play();
+    }
+  }, [consoleCool, profileUrl, canShowVideoSource]);
 
   return (
     <video
       ref={video}
       autoPlay
-      loop={getVideoprofileUrl().isLoop}
+      loop={profileUrl.isLoop}
       playsInline
-      poster={getVideoprofileUrl().jpg}
+      poster={profileUrl.jpg}
       muted
       // controls
     >
-      <source type="video/webm" src={getVideoprofileUrl().webm} />
-      <source type="video/mp4" src={getVideoprofileUrl().mp4} />
+      {canShowVideoSource && (
+        <>
+          <source type="video/webm" src={profileUrl.webm} />
+          <source type="video/mp4" src={profileUrl.mp4} />
+        </>
+      )}
     </video>
   );
 };
