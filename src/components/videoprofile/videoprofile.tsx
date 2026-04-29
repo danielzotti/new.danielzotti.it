@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { config } from "src/config";
 import { useConsoleCool } from "src/hooks/useConsoleCool";
 import { isHalloween } from "../../utils/halloween";
+import { isXmasTime } from "../../utils/xmas";
 
 export const Videoprofile = () => {
   const { consoleCool } = useConsoleCool();
@@ -16,6 +17,14 @@ export const Videoprofile = () => {
         webm: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.webm`,
         mp4: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.mp4`,
         gif: `${config.imageUrls.videoprofile}/videoprofile-halloween-transition.gif`,
+        jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
+        isLoop: false,
+      };
+    } else if (isXmasTime()) {
+      return {
+        webm: `${config.imageUrls.videoprofile}/videoprofile-xmas-transition.webm`,
+        mp4: `${config.imageUrls.videoprofile}/videoprofile-xmas-transition.mp4`,
+        gif: `${config.imageUrls.videoprofile}/videoprofile-xmas-transition.gif`,
         jpg: `${config.imageUrls.videoprofile}/videoprofile.jpg`,
         isLoop: false,
       };
@@ -69,6 +78,7 @@ so that it still shows the animation! 😈 It's not as performant as the video, 
       poster={profileUrl.jpg}
       muted
       // controls
+      className="videoprofile"
     >
       {canShowVideoSource && (
         <>

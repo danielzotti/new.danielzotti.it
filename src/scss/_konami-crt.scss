@@ -1,0 +1,36 @@
+html.konami-crt-active {
+  &::before,
+  &::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
+  }
+
+  // Semi-transparent scanlines to emulate a CRT display.
+  &::before {
+	z-index: 2147483646;
+	background: repeating-linear-gradient(
+	  to bottom,
+	  rgba(0, 0, 0, 0.2) 0,
+	  rgba(0, 0, 0, 0.2) 1px,
+	  rgba(255, 255, 255, 0.03) 2px,
+	  rgba(255, 255, 255, 0.03) 4px
+	);
+  }
+
+  // Soft green tint overlay for the old monitor feeling.
+  &::after {
+	z-index: 2147483645;
+	background: rgba(37, 109, 68, 0.14);
+  }
+}
+
+html.konami-crt-active body > div {
+  filter: contrast(0.86) saturate(0.8) brightness(0.95) sepia(0.2) hue-rotate(16deg);
+}
+
+body {
+  transition: filter 200ms ease-in-out;
+}
+

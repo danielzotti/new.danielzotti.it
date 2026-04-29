@@ -17,11 +17,45 @@ export default async function ProjectsPage() {
       <h1>Projects</h1>
       <div className={styles.projects}>
         <Teaser
+          title={"Tabuu"}
+          description={"My favorite card game, but to play online!"}
+          url={"https://tabuu.danielzotti.it"}
+          tags={["website", "nextjs", "game", "vibe-coding"]}
+          target="_blank"
+          date={"2026-02-27"}
+        />
+        <Teaser
+          title={"Sing (h)it!"}
+          description={
+            '"Sing(h)it! The H is silent. U are not!" is an engaging party game designed to test your musical knowledge and quick thinking! Gather your friends, challenge them to sing songs containing specific words, and see who can reach the top of the leaderboard.'
+          }
+          url={"https://sing-hit.danielzotti.it"}
+          tags={["website", "nextjs", "game", "vibe-coding"]}
+          target="_blank"
+          date={"2025-12-10"}
+        />
+        <Teaser
+          title={"Infinitris"}
+          description={"An infinite Tic-Tac-Toe game"}
+          url={"https://infinitris.danielzotti.it"}
+          tags={["website", "nextjs", "game", "vibe-coding"]}
+          target="_blank"
+          date={"2025-12-10"}
+        />
+        <Teaser
+          title={"Impro Word"}
+          description={"A handy tool to generate random words for your impro!"}
+          url={"https://impro-word.danielzotti.it"}
+          tags={["website", "nextjs", "tool", "vibe-coding"]}
+          target="_blank"
+          date={"2026-03-10"}
+        />
+        <Teaser
           title={"Slide Roulette"}
           description={
             "An app to test your improvising skills going through a random presentation!"
           }
-          url={"https://slide-roulette.danielzotti.it/"}
+          url={"https://slide-roulette.danielzotti.it"}
           tags={["website", "qwik", "game"]}
           target="_blank"
           date={"2024-05-03"}
@@ -33,7 +67,7 @@ export default async function ProjectsPage() {
             "A fake 3D simulation using webcam or mouse move + mouse wheel"
           }
           url={"https://danielzotti.github.io/fake-3d-website-next"}
-          tags={["website", "react", "3d"]}
+          tags={["website", "3d", "nextjs"]}
           target="_blank"
           date={"2024-03-15"}
         />

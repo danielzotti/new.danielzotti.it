@@ -26,9 +26,9 @@ I also use this website for testing and trying new technologies (which can be fo
 ## TL;DR
 
 - Local development (**without docker**) with "classic" NextJS CLI
-    - `npm run dev` aka `next dev`
+  - `npm run dev` aka `next dev`
 - Local development: on every change to code, it refreshes
-    - `npm run docker:start:local`
+  - `npm run docker:start:local`
 
 ## Steps to create & run the project
 
@@ -41,13 +41,13 @@ I also use this website for testing and trying new technologies (which can be fo
 ## Roadmap
 
 - [x] Home page
-    - [x] Introduction
-    - [x] Social links
-    - [x] CV download
+  - [x] Introduction
+  - [x] Social links
+  - [x] CV download
 - [x] Sections
-    - [x] Blog
-    - [x] Projects
-    - [x] Selected open source repo from GitHub
+  - [x] Blog
+  - [x] Projects
+  - [x] Selected open source repo from GitHub
 - [x] Font Awesome Icons
 - [x] PWA (only if the user install the PWA)
 - [x] 404 page ~~(workaround using `pages` folder since `app` folder doesn't support it yet)~~

@@ -9,7 +9,7 @@ export const HomerBanner = () => {
     <div className={`dz-home-banner ${styles.banner}`}>
       <AppVersion />
       <div className="container">
-        <div className={styles.brand}>
+        <div className={`${styles.brand} brand`}>
           <div className={styles.logo}>
             <Image src={logo} alt="Daniel Zotti logo" rel="preload" priority />
           </div>

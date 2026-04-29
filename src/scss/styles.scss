@@ -8,3 +8,11 @@
 @import "layout";
 
 @import "nineties";
+@import "konami-crt";
+
+.page-content-container,
+.dz-navbar__items a,
+.videoprofile {
+  rotate: 0deg;
+  transition: rotate 0.75s ease-in-out 0.2s;
+}

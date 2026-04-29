@@ -1,29 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { DateTime } from "luxon";
-import { Button } from "src/shared/components/ui/button/button";
-import styles from "./xmas.module.scss";
 import { faSnowflake } from "@fortawesome/free-regular-svg-icons";
 import { faBan } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
+import { Button } from "src/shared/components/ui/button/button";
+import { isXmasTime } from "../../../utils/xmas";
+import styles from "./xmas.module.scss";
 
 interface XmasProps {
   activateQueryParam?: string;
 }
-
-const isXmasTime = (): boolean => {
-  const year = new Date().getUTCFullYear();
-  const month = new Date().getUTCMonth();
-  const isDecember = month === 11;
-  const isJanuary = month === 0;
-  const now = DateTime.now();
-
-  const start = DateTime.local(isJanuary ? year - 1 : year, 12, 8, 0, 0);
-  const end = DateTime.local(isDecember ? year + 1 : year, 1, 7, 0, 0);
-
-  return now >= start && now <= end;
-};
 
 export const Xmas = ({ activateQueryParam = "xmas" }: XmasProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);

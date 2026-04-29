@@ -7,6 +7,7 @@ import { Offline } from "src/components/offline/offline";
 import Pwa from "src/components/pwa/pwa";
 import { config } from "src/config";
 import HotjarAnalytics from "../components/hotjar-analytics/hotjar-analytics";
+import { AprilsFool } from "../components/special/aprils-fool/aprils-fool";
 import { Halloween } from "../components/special/halloween/halloween";
 import styles from "./layout.module.scss";
 import { GoogleAnalytics } from "src/components/google-analytics/google-analytics";
@@ -22,6 +23,7 @@ import { ValentinesDay } from "src/components/special/valentines-day/valentines-
 import { WomensDay } from "src/components/special/womens-day/womens-day";
 import { Easter } from "src/components/special/easter/easter";
 import { PieDay } from "src/components/special/pie-day/pie-day";
+import { KonamiCrt } from "../components/special/konami-crt/konami-crt";
 
 configFa.autoAddCss = false;
 
@@ -89,7 +91,9 @@ export default function RootLayout({
         <WomensDay />
         <Easter />
         <Halloween />
+        <AprilsFool />
         <PieDay />
+        <KonamiCrt />
         <ThemeContextProvider>
           <main className={styles.mainContent}>
             {children}

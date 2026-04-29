@@ -48,7 +48,9 @@ export default function Home() {
 
         <HomeNavbar />
 
-        <div className={`dz-home__content ${styles.contentContainer}`}>
+        <div
+          className={`dz-home__content ${styles.contentContainer} page-content-container`}
+        >
           <div className={styles.statementsContainer}>
             <h2>
               Who the heck is 👨‍💻{" "}

@@ -1,0 +1,90 @@
+.wrapper {
+  position: fixed;
+  bottom: 45px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  scale: 0;
+  transition:
+    opacity 0.5s ease-in-out,
+    scale 0.5s ease-in-out;
+}
+
+.text {
+  border: 2px solid #111;
+  text-align: center;
+  color: #101010;
+  background: linear-gradient(135deg, #ffe572 0%, #f8c110 55%, #f4a300 100%);
+  box-shadow:
+    0 8px 0 #111,
+    0 14px 24px rgba(0, 0, 0, 0.28);
+  padding: 10px 18px;
+  max-width: 80%;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  transform: rotate(-1deg);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+  animation: wiggle 2.2s ease-in-out infinite;
+}
+
+.text:hover {
+  transform: translateY(-3px) rotate(1deg) scale(1.03);
+  box-shadow:
+    0 11px 0 #111,
+    0 18px 30px rgba(0, 0, 0, 0.35);
+  filter: saturate(1.1);
+}
+
+.text:active {
+  transform: translateY(2px) rotate(0deg) scale(0.99);
+  box-shadow:
+    0 4px 0 #111,
+    0 8px 14px rgba(0, 0, 0, 0.22);
+}
+
+.text:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.textMain {
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.textSub {
+  font-size: 14px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text {
+    animation: none;
+    transition: none;
+  }
+}

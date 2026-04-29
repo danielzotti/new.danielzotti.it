@@ -9,7 +9,9 @@ export const InternalPageLayout = ({ children }: { children: ReactNode }) => {
     <>
       <div className={styles.pageContainer}>
         <Navbar />
-        <div className={styles.contentContainer}>{children}</div>
+        <div className={`${styles.contentContainer} page-content-container`}>
+          {children}
+        </div>
       </div>
       <Footer />
     </>
