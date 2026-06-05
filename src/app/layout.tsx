@@ -24,6 +24,7 @@ import { WomensDay } from "src/components/special/womens-day/womens-day";
 import { Easter } from "src/components/special/easter/easter";
 import { PieDay } from "src/components/special/pie-day/pie-day";
 import { KonamiCrt } from "../components/special/konami-crt/konami-crt";
+import { Ghostbusters } from "src/components/special/ghostbusters/ghostbusters";
 
 configFa.autoAddCss = false;
 
@@ -93,6 +94,7 @@ export default function RootLayout({
         <Halloween />
         <AprilsFool />
         <PieDay />
+        <Ghostbusters />
         <KonamiCrt />
         <ThemeContextProvider>
           <main className={styles.mainContent}>

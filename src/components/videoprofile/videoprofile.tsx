@@ -4,11 +4,20 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { config } from "src/config";
 import { useConsoleCool } from "src/hooks/useConsoleCool";
 import { isHalloween } from "../../utils/halloween";
+import {
+  getGhostbustersStorageDay,
+  GHOSTBUSTERS_MANUAL_ACTIVATION_DATE_KEY,
+  GHOSTBUSTERS_MANUAL_ACTIVATION_EVENT,
+  GHOSTBUSTERS_MANUAL_ACTIVATION_KEY,
+} from "../../utils/ghostbusters";
 import { isXmasTime } from "../../utils/xmas";
+
+const GHOSTBUSTERS_TAP_TARGET = 8;
 
 export const Videoprofile = () => {
   const { consoleCool } = useConsoleCool();
   const video = useRef<HTMLVideoElement>(null);
+  const tapCountRef = useRef<number>(0);
   const [canShowVideoSource, setCanShowVideoSource] = useState<boolean>(false);
 
   const profileUrl = useMemo(() => {
@@ -45,6 +54,24 @@ export const Videoprofile = () => {
     setCanShowVideoSource(true);
   }, [setCanShowVideoSource]);
 
+  const onVideoprofileTap = () => {
+    tapCountRef.current += 1;
+
+    if (tapCountRef.current < GHOSTBUSTERS_TAP_TARGET) {
+      return;
+    }
+
+    tapCountRef.current = 0;
+
+    localStorage.setItem(GHOSTBUSTERS_MANUAL_ACTIVATION_KEY, "true");
+    localStorage.setItem(
+      GHOSTBUSTERS_MANUAL_ACTIVATION_DATE_KEY,
+      getGhostbustersStorageDay(),
+    );
+
+    globalThis.dispatchEvent(new Event(GHOSTBUSTERS_MANUAL_ACTIVATION_EVENT));
+  };
+
   useEffect(() => {
     const play = async () => {
       if (!video.current) {
@@ -79,6 +106,7 @@ so that it still shows the animation! 😈 It's not as performant as the video, 
       muted
       // controls
       className="videoprofile"
+      onPointerDown={onVideoprofileTap}
     >
       {canShowVideoSource && (
         <>

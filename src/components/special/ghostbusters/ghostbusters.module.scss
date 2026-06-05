@@ -1,0 +1,222 @@
+.slimer {
+  position: fixed;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: grab;
+  z-index: 40;
+  user-select: none;
+  transform-origin: center center;
+  animation: slimerFloat 1.3s ease-in-out infinite alternate;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+// State during capture animation — overrides float animation
+.catching {
+  animation: slimerCapture 1.3s ease-in forwards !important;
+  pointer-events: none;
+  cursor: default !important;
+}
+
+.trapContainer {
+  position: fixed;
+  z-index: 41;
+  pointer-events: none;
+  animation: trapAppear 0.4s ease-out forwards;
+  transition: left 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    top 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.45s ease-out,
+    filter 0.45s ease-out;
+}
+
+// Trap enters active "sucking" mode
+.trapActive {
+  animation: trapAppear 0.4s ease-out forwards, trapPulse 0.35s ease-in-out infinite alternate !important;
+  filter: drop-shadow(0 0 18px #f7d51b) drop-shadow(0 0 40px #f7d51b) !important;
+}
+
+// Trap moving toward button
+.trapMoving {
+  animation: trapShrink 0.5s ease-in forwards !important;
+  opacity: 1;
+  pointer-events: none;
+}
+
+@keyframes trapShrink {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.35);
+  }
+}
+
+.trapFading {
+  opacity: 0;
+  filter: none;
+}
+
+.trapImg {
+  display: block;
+}
+
+@keyframes slimerCapture {
+  // Phase 1 (0-30%): panic — frantic shake
+  0% {
+    transform: scale(1) rotate(0deg) translateY(0);
+    opacity: 1;
+  }
+  5% {
+    transform: scale(1.15) rotate(12deg) translateY(-8px);
+    opacity: 1;
+  }
+  10% {
+    transform: scale(1.15) rotate(-12deg) translateY(4px);
+    opacity: 1;
+  }
+  15% {
+    transform: scale(1.15) rotate(14deg) translateY(-10px);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.15) rotate(-14deg) translateY(4px);
+    opacity: 1;
+  }
+  25% {
+    transform: scale(1.1) rotate(8deg) translateY(-6px);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.1) rotate(-8deg) translateY(2px);
+    opacity: 1;
+  }
+  // Phase 2 (30-100%): sucked into trap — spin + shrink to nothing
+  50% {
+    transform: scale(0.7) rotate(360deg) translateY(0);
+    opacity: 0.85;
+  }
+  70% {
+    transform: scale(0.35) rotate(720deg) translateY(10px);
+    opacity: 0.5;
+  }
+  90% {
+    transform: scale(0.1) rotate(1080deg) translateY(20px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(0) rotate(1260deg) translateY(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes trapAppear {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes trapPulse {
+  from {
+    transform: scale(1);
+    filter: drop-shadow(0 0 14px #f7d51b);
+  }
+  to {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 36px #f7d51b) drop-shadow(0 0 60px #fff200);
+  }
+}
+
+
+@keyframes slimerFloat {
+  from {
+    transform: translateY(-4px);
+  }
+  to {
+    transform: translateY(4px);
+  }
+}
+
+.buttonContainer {
+  position: fixed;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.deactivateContainer {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 50;
+}
+
+.releaseBtn {
+  text-align: center;
+  color: white;
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+  padding: 10px 20px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  border: 2px solid #f7d51b;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    box-shadow: 0 0 15px #f7d51b;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.deactivateBtn {
+  text-align: center;
+  color: #aaa;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 6px 14px;
+  height: 32px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(0, 0, 0, 0.85);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
