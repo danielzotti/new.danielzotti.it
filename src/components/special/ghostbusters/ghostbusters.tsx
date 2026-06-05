@@ -22,6 +22,7 @@ const SCALE_MIN = 0.55;
 const SCALE_MAX = 1.55;
 
 type Position = { x: number; y: number };
+type BeamPhase = "idle" | "active" | "hit" | "miss";
 
 export const Ghostbusters = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -34,11 +35,17 @@ export const Ghostbusters = () => {
   const [pos, setPos] = useState<Position>({ x: 0, y: 0 });
   const [scale, setScale] = useState<number>(1);
   const [trapPos, setTrapPos] = useState<Position | null>(null);
+  const [beamPhase, setBeamPhase] = useState<BeamPhase>("idle");
+  const [beamTarget, setBeamTarget] = useState<Position | null>(null);
   const frameRef = useRef<number | null>(null);
   const catchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const trapFinalizeRef = useRef<boolean>(false);
   const trapFadeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isCaughtRef = useRef<boolean>(false);
+  const bgMusicRef = useRef<HTMLAudioElement | null>(null);
+  const beamTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const posRef = useRef<Position>({ x: 0, y: 0 });
+  const scaleRef = useRef<number>(1);
   const velRef = useRef({
     vx: (2 + Math.random() * 2) * (Math.random() < 0.5 ? 1 : -1),
     vy: (2 + Math.random() * 2) * (Math.random() < 0.5 ? 1 : -1),
@@ -79,32 +86,126 @@ export const Ghostbusters = () => {
         return;
       }
 
-      const audioContext = new Ctor();
-      const now = audioContext.currentTime;
-      const beeps = [
-        { freq: 800, start: now, duration: 0.1 },
-        { freq: 1200, start: now + 0.12, duration: 0.1 },
-        { freq: 600, start: now + 0.24, duration: 0.15 },
-        { freq: 1400, start: now + 0.4, duration: 0.1 },
-      ];
+      const ctx = new Ctor();
+      const now = ctx.currentTime;
 
-      beeps.forEach(({ freq, start, duration }) => {
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
+      // Helper: white noise buffer source
+      const createNoise = (duration: number) => {
+        const bufLen = Math.ceil(ctx.sampleRate * duration);
+        const buf = ctx.createBuffer(1, bufLen, ctx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufLen; i++) data[i] = Math.random() * 2 - 1;
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        return src;
+      };
 
-        osc.connect(gain);
-        gain.connect(audioContext.destination);
+      const osc = (
+        type: OscillatorType,
+        freqStart: number,
+        freqEnd: number,
+        gainStart: number,
+        gainEnd: number,
+        start: number,
+        duration: number,
+      ) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = type;
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.frequency.setValueAtTime(freqStart, start);
+        if (freqEnd !== freqStart)
+          o.frequency.exponentialRampToValueAtTime(freqEnd, start + duration);
+        g.gain.setValueAtTime(gainStart, start);
+        g.gain.exponentialRampToValueAtTime(Math.max(gainEnd, 0.0001), start + duration);
+        o.start(start);
+        o.stop(start + duration + 0.01);
+      };
 
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.3, start);
-        gain.gain.exponentialRampToValueAtTime(0.01, start + duration);
+      // ── 1. Proton beam charge-up: rising sawtooth sweep ──────────────────
+      (() => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = "sawtooth";
+        o.connect(g);
+        g.connect(ctx.destination);
+        o.frequency.setValueAtTime(80, now);
+        o.frequency.exponentialRampToValueAtTime(1400, now + 0.5);
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.22, now + 0.1);
+        g.gain.linearRampToValueAtTime(0.0001, now + 0.5);
+        o.start(now);
+        o.stop(now + 0.55);
+      })();
 
-        osc.start(start);
-        osc.stop(start + duration);
+      // ── 2. Proton zap: bandpass-filtered noise ────────────────────────────
+      (() => {
+        const noise = createNoise(0.75);
+        const filter = ctx.createBiquadFilter();
+        filter.type = "bandpass";
+        filter.frequency.setValueAtTime(700, now + 0.2);
+        filter.frequency.exponentialRampToValueAtTime(3200, now + 0.95);
+        filter.Q.value = 1.2;
+        const g = ctx.createGain();
+        noise.connect(filter);
+        filter.connect(g);
+        g.connect(ctx.destination);
+        g.gain.setValueAtTime(0, now + 0.2);
+        g.gain.linearRampToValueAtTime(0.3, now + 0.35);
+        g.gain.linearRampToValueAtTime(0.0001, now + 0.95);
+        noise.start(now + 0.2);
+        noise.stop(now + 0.95);
+      })();
+
+      // ── 3. Rapid zap clicks (electric sparks) ────────────────────────────
+      for (let i = 0; i < 7; i++) {
+        osc("square", 1200 - i * 60, 300, 0.14, 0.0001, now + 0.25 + i * 0.085, 0.07);
+      }
+
+      // ── 4. Trap SLAM: low boom + metallic clank ───────────────────────────
+      const slamT = now + 0.88;
+      osc("sine",   150, 28,   0.65, 0.0001, slamT,        0.4);  // deep boom
+      osc("square", 3200, 400, 0.22, 0.0001, slamT,        0.1);  // metallic clank
+      osc("sine",   60,   20,  0.35, 0.0001, slamT + 0.05, 0.35); // sub thud
+
+      // ── 5. "Gotcha!" ascending arpeggio (G4–B4–D5–G5) ───────────────────
+      [392, 494, 587, 784].forEach((freq, i) => {
+        osc("square", freq, freq, 0.13, 0.0001, now + 1.05 + i * 0.09, 0.08);
       });
     } catch {
       // Ignore audio failures silently (browser policy / unsupported APIs)
     }
+  };
+
+  const playBackgroundMusic = async (reset = true): Promise<boolean> => {
+    if (!bgMusicRef.current) {
+      bgMusicRef.current = new Audio("/static/ghostbusters/ghostbusters.mp3");
+      bgMusicRef.current.loop = true;
+      bgMusicRef.current.preload = "auto";
+    }
+
+    if (reset) {
+      bgMusicRef.current.currentTime = 0;
+    }
+
+    try {
+      await bgMusicRef.current.play();
+      return true;
+    } catch (error) {
+      // Some browsers may still block autoplay outside user gestures.
+      console.warn("Ghostbusters music could not start", error);
+      return false;
+    }
+  };
+
+  const stopBackgroundMusic = () => {
+    if (!bgMusicRef.current) {
+      return;
+    }
+
+    bgMusicRef.current.pause();
+    bgMusicRef.current.currentTime = 0;
   };
 
   const animateSlimer = () => {
@@ -120,6 +221,7 @@ export const Ghostbusters = () => {
       SCALE_MIN +
       ((Math.sin(scalePhaseRef.current) + 1) / 2) * (SCALE_MAX - SCALE_MIN);
     setScale(newScale);
+    scaleRef.current = newScale;
 
     // Current effective size used for boundary check
     const effectiveSize = SLIMER_BASE_SIZE * newScale;
@@ -160,6 +262,7 @@ export const Ghostbusters = () => {
         newY = Math.max(0, Math.min(newY, window.innerHeight - effectiveSize));
       }
 
+      posRef.current = { x: newX, y: newY };
       return { x: newX, y: newY };
     });
 
@@ -183,11 +286,21 @@ export const Ghostbusters = () => {
     };
   };
 
+  const clearBeam = () => {
+    if (beamTimeoutRef.current) {
+      clearTimeout(beamTimeoutRef.current);
+      beamTimeoutRef.current = null;
+    }
+    setBeamPhase("idle");
+    setBeamTarget(null);
+  };
+
   const catchSlimer = () => {
     if (isCaughtRef.current) {
       return;
     }
 
+    stopBackgroundMusic();
     stopAnimation();
     trapFinalizeRef.current = false;
     setIsCatching(true);
@@ -229,7 +342,58 @@ export const Ghostbusters = () => {
     }, 1300);
   };
 
-  const onTrapTransitionEnd: TransitionEventHandler<HTMLDivElement> = (event) => {
+  const handleScreenClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isCaughtRef.current || isCatching) return;
+    if (beamPhase !== "idle") return;
+
+    const clickX = e.clientX;
+    const clickY = e.clientY;
+
+    setBeamTarget({ x: clickX, y: clickY });
+    setBeamPhase("active");
+
+    // Hit detection: Slimer center + half-sizes scaled
+    const currentPos = posRef.current;
+    const currentScale = scaleRef.current;
+    const slimerW = 110; // rendered width
+    const slimerH = 150; // rendered height
+    const centerX = currentPos.x + slimerW / 2;
+    const centerY = currentPos.y + slimerH / 2;
+    const halfW = (slimerW / 2) * currentScale;
+    const halfH = (slimerH / 2) * currentScale;
+
+    const hit =
+      clickX >= centerX - halfW &&
+      clickX <= centerX + halfW &&
+      clickY >= centerY - halfH &&
+      clickY <= centerY + halfH;
+
+    if (hit) {
+      stopAnimation(); // Ferma Slimer immediatamente
+      // After brief "active" phase → flash → catch
+      beamTimeoutRef.current = setTimeout(() => {
+        setBeamPhase("hit");
+        beamTimeoutRef.current = setTimeout(() => {
+          setBeamPhase("idle");
+          setBeamTarget(null);
+          catchSlimer();
+        }, 480);
+      }, 150);
+    } else {
+      // Miss → fade beam
+      beamTimeoutRef.current = setTimeout(() => {
+        setBeamPhase("miss");
+        beamTimeoutRef.current = setTimeout(() => {
+          setBeamPhase("idle");
+          setBeamTarget(null);
+        }, 600);
+      }, 80);
+    }
+  };
+
+  const onTrapTransitionEnd: TransitionEventHandler<HTMLDivElement> = (
+    event,
+  ) => {
     if (!isTrapMovingToButton) {
       return;
     }
@@ -289,6 +453,8 @@ export const Ghostbusters = () => {
     if (trapFadeTimeoutRef.current) {
       clearTimeout(trapFadeTimeoutRef.current);
     }
+    clearBeam();
+    stopBackgroundMusic();
     setIsActive(false);
     setIsManualMode(false);
     setIsCaught(false);
@@ -341,6 +507,8 @@ export const Ghostbusters = () => {
         GHOSTBUSTERS_MANUAL_ACTIVATION_DATE_KEY,
         getGhostbustersStorageDay(),
       );
+      // Manual activation comes from a click/tap, so we try to play during that gesture.
+      void playBackgroundMusic();
       activateGhostbustersMode(true);
     };
 
@@ -361,6 +529,10 @@ export const Ghostbusters = () => {
       if (trapFadeTimeoutRef.current) {
         clearTimeout(trapFadeTimeoutRef.current);
       }
+      if (beamTimeoutRef.current) {
+        clearTimeout(beamTimeoutRef.current);
+      }
+      stopBackgroundMusic();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -369,21 +541,58 @@ export const Ghostbusters = () => {
     isCaughtRef.current = isCaught;
   }, [isCaught]);
 
+  useEffect(() => {
+    if (isActive && !isCaught) {
+      void playBackgroundMusic(false);
+      return;
+    }
+
+    stopBackgroundMusic();
+  }, [isActive, isCaught]);
+
   if (!isGhostbustersDay() && !isActive) return null;
 
   return (
     <>
       {isActive && (
         <>
+          {!isCaught && !isCatching && (
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Spara il raggio protone su Slimer"
+              className={styles.clickOverlay}
+              onClick={handleScreenClick}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  // Keyboard: aim at Slimer center
+                  const cx = posRef.current.x + 55;
+                  const cy = posRef.current.y + 75;
+                  handleScreenClick({
+                    clientX: cx,
+                    clientY: cy,
+                  } as React.MouseEvent<HTMLDivElement>);
+                }
+              }}
+            />
+          )}
+
           {!isCaught && (
             <button
               aria-label="Cattura Slimer"
               className={`${styles.slimer} ${isCatching ? styles.catching : ""}`}
-              style={{ left: `${pos.x}px`, top: `${pos.y}px`, transform: `scale(${scale})` }}
-              onClick={isCatching ? undefined : catchSlimer}
+              style={{
+                left: `${pos.x}px`,
+                top: `${pos.y}px`,
+                transform: `scale(${scale})`,
+              }}
             >
               <SlimerSvg />
             </button>
+          )}
+
+          {beamTarget && beamPhase !== "idle" && (
+            <ProtonBeam target={beamTarget} phase={beamPhase} />
           )}
 
           {trapPos && (
@@ -402,7 +611,7 @@ export const Ghostbusters = () => {
           {isCaught && (
             <div className={styles.buttonContainer}>
               <button className={styles.releaseBtn} onClick={releaseSlimer}>
-                👻 Libera Slimer
+                👻 Release Slimer
               </button>
             </div>
           )}
@@ -413,7 +622,7 @@ export const Ghostbusters = () => {
                 className={styles.deactivateBtn}
                 onClick={deactivateGhostbustersMode}
               >
-                ✕ Disattiva Ghostbusters mode
+                ✕ Disable Ghostbusters mode
               </button>
             </div>
           )}
@@ -447,3 +656,201 @@ const TrapSvg = () => (
     unoptimized
   />
 );
+
+/** Genera un percorso SVG ondulato dal punto (x1,y1) al punto (x2,y2).
+ *  amplitude: ampiezza in px dell'onda perpendolare al raggio
+ *  waveCount: numero di ondulazioni complete lungo il raggio
+ *  phaseOffset: sfasamento iniziale (radianti) per creare strisce separate
+ */
+function makeWavyPath(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  amplitude: number,
+  waveCount: number,
+  phaseOffset = 0,
+): string {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  if (len < 1) return `M ${x1} ${y1} L ${x2} ${y2}`;
+
+  const ux = dx / len;
+  const uy = dy / len;
+  // Vettore perpendicolare (ruotato di 90°)
+  const px = -uy;
+  const py = ux;
+
+  const steps = Math.max(50, Math.floor(len / 5));
+  let d = `M ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+  for (let i = 1; i <= steps; i++) {
+    const t = i / steps;
+    // Dissolvenza alle estremità per raccordo pulito
+    const taper = Math.sin(t * Math.PI);
+    const wave =
+      Math.sin(t * waveCount * Math.PI * 2 + phaseOffset) * amplitude * taper;
+    const bx = x1 + dx * t + px * wave;
+    const by = y1 + dy * t + py * wave;
+    d += ` L ${bx.toFixed(1)} ${by.toFixed(1)}`;
+  }
+  return d;
+}
+
+const ProtonBeam = ({
+  target,
+  phase,
+}: {
+  target: Position;
+  phase: Exclude<BeamPhase, "idle">;
+}) => {
+  const sw = globalThis.window?.innerWidth ?? 1920;
+  const sh = globalThis.window?.innerHeight ?? 1080;
+  const x1 = sw / 2;
+  const y1 = sh;
+  const x2 = target.x;
+  const y2 = target.y;
+
+  // Percorsi ondulati con sfasamento diverso per ogni layer
+  const pathOuter = makeWavyPath(x1, y1, x2, y2, 14, 5, 0);
+  const pathMid   = makeWavyPath(x1, y1, x2, y2, 11, 5, 0);
+  const pathBlue  = makeWavyPath(x1, y1, x2, y2, 9,  6, Math.PI * 0.65);
+  const pathCore  = makeWavyPath(x1, y1, x2, y2, 7,  5, 0);
+  const pathWhite = makeWavyPath(x1, y1, x2, y2, 5,  5, 0);
+
+  let phaseClass = styles.beamMiss;
+  if (phase === "active") phaseClass = styles.beamActive;
+  else if (phase === "hit") phaseClass = styles.beamHit;
+
+  return (
+    <svg
+      className={`${styles.beamSvg} ${phaseClass}`}
+      width="100%"
+      height="100%"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <filter id="gb-beam-glow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter
+          id="gb-beam-glow-strong"
+          x="-80%"
+          y="-80%"
+          width="260%"
+          height="260%"
+        >
+          <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter
+          id="gb-beam-glow-blue"
+          x="-80%"
+          y="-80%"
+          width="260%"
+          height="260%"
+        >
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Flash bianco a schermo intero sull'hit */}
+      {phase === "hit" && (
+        <rect
+          x="0"
+          y="0"
+          width="100%"
+          height="100%"
+          fill="white"
+          className={styles.hitFlashRect}
+        />
+      )}
+
+      {/* Alone esterno rosso-arancio */}
+      <path
+        d={pathOuter}
+        stroke="rgba(255,50,0,0.22)"
+        strokeWidth="55"
+        fill="none"
+        strokeLinecap="round"
+        filter="url(#gb-beam-glow-strong)"
+      />
+
+      {/* Layer intermedio arancione */}
+      <path
+        d={pathMid}
+        stroke="rgba(255,130,20,0.65)"
+        strokeWidth="20"
+        fill="none"
+        strokeLinecap="round"
+        filter="url(#gb-beam-glow)"
+      />
+
+      {/* Striscia blu elettrica (sfasata) */}
+      <path
+        d={pathBlue}
+        stroke="rgba(60,140,255,0.85)"
+        strokeWidth="5"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="35 22"
+        filter="url(#gb-beam-glow-blue)"
+        className={styles.beamBlueFlow}
+      />
+
+      {/* Core giallo-arancio con dashes animate */}
+      <path
+        d={pathCore}
+        stroke="rgba(255,215,60,0.9)"
+        strokeWidth="7"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="55 18"
+        className={styles.beamCoreFlow}
+      />
+
+      {/* Nucleo bianco incandescente */}
+      <path
+        d={pathWhite}
+        stroke="rgba(255,255,210,0.95)"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeDasharray="80 25"
+        className={styles.beamWhiteFlow}
+      />
+
+      {/* Flash muzzle all'origine (basso centro) */}
+      <circle
+        cx={x1}
+        cy={y1}
+        r="22"
+        fill="rgba(255,160,40,0.85)"
+        filter="url(#gb-beam-glow)"
+        className={styles.beamMuzzle}
+      />
+
+      {/* Punto di impatto */}
+      <circle
+        cx={x2}
+        cy={y2}
+        r="18"
+        fill="rgba(255,100,0,0.75)"
+        filter="url(#gb-beam-glow)"
+        className={styles.beamImpact}
+      />
+    </svg>
+  );
+};
+

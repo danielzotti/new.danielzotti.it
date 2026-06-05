@@ -220,3 +220,173 @@
     transform: scale(0.97);
   }
 }
+
+// ── Proton beam ──────────────────────────────────────────────────────────────
+
+// Full-screen transparent overlay that intercepts click/tap for aiming
+.clickOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 44;
+  cursor: crosshair;
+  background: transparent;
+}
+
+// SVG canvas for the beam — sits above the overlay
+.beamSvg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 46;
+}
+
+// Phase: beam is firing (normal)
+.beamActive {
+  animation: beamAppear 0.08s ease-out forwards;
+}
+
+// Phase: beam hit Slimer — flash!
+.beamHit {
+  animation: beamHitAnim 0.48s ease-out forwards;
+}
+
+// Phase: beam missed — fade out
+.beamMiss {
+  animation: beamMissAnim 0.62s ease-out forwards;
+}
+
+// Animated flowing dashes — core energy stream
+.beamCoreFlow {
+  animation: beamDashFlow 0.11s linear infinite;
+}
+
+// Animated flowing dashes — white-hot inner core
+.beamWhiteFlow {
+  animation: beamDashFlow 0.075s linear infinite;
+}
+
+// Blue electric stripe — flows in opposite direction for contrast
+.beamBlueFlow {
+  animation: beamDashFlowReverse 0.14s linear infinite;
+}
+
+// Muzzle flash pulse
+.beamMuzzle {
+  animation: muzzlePulse 0.18s ease-in-out infinite alternate;
+}
+
+// Impact point pulse
+.beamImpact {
+  animation: impactPulse 0.22s ease-in-out infinite alternate;
+}
+
+// Full-screen white flash rect (inside beamHit SVG)
+.hitFlashRect {
+  animation: hitFlashFade 0.48s ease-out forwards;
+}
+
+@keyframes beamAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes beamHitAnim {
+  0% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  15% {
+    opacity: 1;
+    filter: brightness(5) saturate(0);
+  }
+  40% {
+    opacity: 1;
+    filter: brightness(3) saturate(0.4);
+  }
+  75% {
+    opacity: 0.7;
+    filter: brightness(1.5);
+  }
+  100% {
+    opacity: 0;
+    filter: brightness(1);
+  }
+}
+
+@keyframes beamMissAnim {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes beamDashFlow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -73;
+  }
+}
+
+@keyframes beamDashFlowReverse {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 57;
+  }
+}
+
+@keyframes muzzlePulse {
+  from {
+    opacity: 0.65;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes impactPulse {
+  from {
+    opacity: 0.55;
+    transform: scale(0.65);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1.45);
+  }
+}
+
+@keyframes hitFlashFade {
+  0% {
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.75;
+  }
+  55% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
