@@ -51,8 +51,31 @@ export default function ArticlePage(props: {
 
   const { tags, date } = metadata;
 
+  const blogJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": metadata.title,
+    "description": metadata.description,
+    "datePublished": metadata.date,
+    "url": `${config.baseUrl}/blog/${params.article}`,
+    "author": {
+      "@type": "Person",
+      "name": "Daniel Zotti",
+      "url": config.baseUrl
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Daniel Zotti",
+      "url": config.baseUrl
+    }
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <BackButton path={config.urls.blog} text={"Blog"} />
       <div className={styles.contentWrapper}>
         <div className={styles.metadata}>

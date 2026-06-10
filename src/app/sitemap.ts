@@ -25,14 +25,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  const projects: MetadataRoute.Sitemap = ["ambigram", "qr-code-generator"].map(
-    (slug) => ({
-      url: `${config.baseUrl}${config.urls.projects}/${slug}`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    }),
-  );
+  const projects: MetadataRoute.Sitemap = [
+    "ambigram",
+    "qr-code-generator",
+    "ascii-smuggler",
+  ].map((slug) => ({
+    url: `${config.baseUrl}${config.urls.projects}/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
 
   const githubProjects: MetadataRoute.Sitemap = config.github.selectedRepos.map(
     (item) => ({

@@ -41,8 +41,51 @@ import { HomeNavbar } from "src/components/home-navbar/home-navbar";
 import { HomeThemeSelector } from "src/components/home-theme-selector/home-theme-selector";
 
 export default function Home() {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Daniel Zotti",
+    "url": config.baseUrl,
+    "image": config.websiteImage.url,
+    "jobTitle": "Creative Web Developer, Professor and Computer Engineer by day. Improviser and Stand-up Comedian by night",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Bitrock",
+      "url": "https://bitrock.it"
+    },
+    "sameAs": [
+      config.social.instagram.url,
+      config.social.linkedin.url,
+      config.social.facebook.url,
+      config.social.youtube.url,
+      config.social.gitlab.url,
+      config.social.github.url,
+      config.social.twitter.url
+    ]
+  };
+
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Daniel Zotti | Creative Web developer",
+    "url": config.baseUrl,
+    "author": {
+      "@type": "Person",
+      "name": "Daniel Zotti"
+    },
+    "description": config.description
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
       <div className={styles.pageContainer}>
         <HomerBanner />
 

@@ -204,8 +204,31 @@ export default function QrCodePage() {
     svgImg.src = svgDataUrl;
   }, [svg, showLogo, customLogoSrc]);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "QR Code Generator",
+    "operatingSystem": "Web",
+    "applicationCategory": "UtilitiesApplication",
+    "browserRequirements": "Requires HTML5, CSS3, JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Daniel Zotti"
+    },
+    "description": "Generate custom SVG and PNG QR Codes with custom colors and custom center logo support."
+  };
+
   return (
     <div className={styles.pageContainer}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BackButton path={config.urls.projects} text={"Projects"} />
       <h1>QR Code generator</h1>
       <p>

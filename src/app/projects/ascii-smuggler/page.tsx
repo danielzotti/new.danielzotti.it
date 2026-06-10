@@ -90,8 +90,31 @@ export default function AsciiSmugglerPage() {
     }
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "ASCII Smuggler",
+    "operatingSystem": "Web",
+    "applicationCategory": "SecurityApplication",
+    "browserRequirements": "Requires HTML5, CSS3, JavaScript",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Daniel Zotti"
+    },
+    "description": "A security utility to encode invisible Unicode Tag Characters or detect and decode hidden payloads to prevent indirect LLM prompt injections."
+  };
+
   return (
     <div className={styles.pageContainer}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <BackButton path={config.urls.projects} text={"Projects"} />
       <h1>ASCII Smuggler</h1>
 
