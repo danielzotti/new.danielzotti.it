@@ -27,6 +27,8 @@ type BeamPhase = "idle" | "active" | "hit" | "miss";
 export const Ghostbusters = () => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [isManualMode, setIsManualMode] = useState<boolean>(false);
+  const [isGhostbustersDayDialogOpen, setIsGhostbustersDayDialogOpen] =
+    useState<boolean>(false);
   const [isCaught, setIsCaught] = useState<boolean>(false);
   const [isCatching, setIsCatching] = useState<boolean>(false);
   const [isTrapMovingToButton, setIsTrapMovingToButton] =
@@ -173,6 +175,145 @@ export const Ghostbusters = () => {
       [392, 494, 587, 784].forEach((freq, i) => {
         osc("square", freq, freq, 0.13, 0.0001, now + 1.05 + i * 0.09, 0.08);
       });
+    } catch {
+      // Ignore audio failures silently (browser policy / unsupported APIs)
+    }
+  };
+
+  const playProtonShotSound = () => {
+    try {
+      const Ctor =
+        globalThis.AudioContext ||
+        (globalThis as unknown as { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext;
+
+      if (!Ctor) {
+        return;
+      }
+
+      const ctx = new Ctor();
+      const now = ctx.currentTime;
+
+      const createOsc = (
+        type: OscillatorType,
+        startFreq: number,
+        endFreq: number,
+        gainPeak: number,
+        startTime: number,
+        duration: number,
+      ) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.frequency.setValueAtTime(startFreq, startTime);
+        osc.frequency.exponentialRampToValueAtTime(endFreq, startTime + duration);
+
+        gain.gain.setValueAtTime(0.0001, startTime);
+        gain.gain.exponentialRampToValueAtTime(gainPeak, startTime + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+        osc.start(startTime);
+        osc.stop(startTime + duration + 0.02);
+      };
+
+      // Sharp electric burst + fast descending buzz to match proton shot start.
+      createOsc("square", 1850, 420, 0.12, now, 0.16);
+      createOsc("sawtooth", 900, 180, 0.09, now + 0.03, 0.2);
+
+      const noiseLen = Math.ceil(ctx.sampleRate * 0.12);
+      const noiseBuffer = ctx.createBuffer(1, noiseLen, ctx.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < noiseLen; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+
+      const noise = ctx.createBufferSource();
+      const bandPass = ctx.createBiquadFilter();
+      const noiseGain = ctx.createGain();
+      bandPass.type = "bandpass";
+      bandPass.frequency.setValueAtTime(1450, now);
+      bandPass.Q.value = 1.1;
+
+      noise.buffer = noiseBuffer;
+      noise.connect(bandPass);
+      bandPass.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+
+      noiseGain.gain.setValueAtTime(0.0001, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.08, now + 0.02);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+
+      noise.start(now);
+      noise.stop(now + 0.14);
+    } catch {
+      // Ignore audio failures silently (browser policy / unsupported APIs)
+    }
+  };
+
+  const playBeamHitSound = () => {
+    try {
+      const Ctor =
+        globalThis.AudioContext ||
+        (globalThis as unknown as { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext;
+
+      if (!Ctor) {
+        return;
+      }
+
+      const ctx = new Ctor();
+      const now = ctx.currentTime;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.frequency.setValueAtTime(420, now);
+      osc.frequency.exponentialRampToValueAtTime(980, now + 0.12);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.12, now + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+
+      osc.start(now);
+      osc.stop(now + 0.2);
+    } catch {
+      // Ignore audio failures silently (browser policy / unsupported APIs)
+    }
+  };
+
+  const playBeamMissSound = () => {
+    try {
+      const Ctor =
+        globalThis.AudioContext ||
+        (globalThis as unknown as { webkitAudioContext?: typeof AudioContext })
+          .webkitAudioContext;
+
+      if (!Ctor) {
+        return;
+      }
+
+      const ctx = new Ctor();
+      const now = ctx.currentTime;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "sine";
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.frequency.setValueAtTime(300, now);
+      osc.frequency.exponentialRampToValueAtTime(120, now + 0.2);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.08, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+
+      osc.start(now);
+      osc.stop(now + 0.24);
     } catch {
       // Ignore audio failures silently (browser policy / unsupported APIs)
     }
@@ -346,6 +487,8 @@ export const Ghostbusters = () => {
     if (isCaughtRef.current || isCatching) return;
     if (beamPhase !== "idle") return;
 
+    playProtonShotSound();
+
     const clickX = e.clientX;
     const clickY = e.clientY;
 
@@ -373,6 +516,7 @@ export const Ghostbusters = () => {
       // After brief "active" phase → flash → catch
       beamTimeoutRef.current = setTimeout(() => {
         setBeamPhase("hit");
+        playBeamHitSound();
         beamTimeoutRef.current = setTimeout(() => {
           setBeamPhase("idle");
           setBeamTarget(null);
@@ -383,6 +527,7 @@ export const Ghostbusters = () => {
       // Miss → fade beam
       beamTimeoutRef.current = setTimeout(() => {
         setBeamPhase("miss");
+        playBeamMissSound();
         beamTimeoutRef.current = setTimeout(() => {
           setBeamPhase("idle");
           setBeamTarget(null);
@@ -457,6 +602,7 @@ export const Ghostbusters = () => {
     stopBackgroundMusic();
     setIsActive(false);
     setIsManualMode(false);
+    setIsGhostbustersDayDialogOpen(false);
     setIsCaught(false);
     setIsCatching(false);
     setIsTrapMovingToButton(false);
@@ -470,6 +616,7 @@ export const Ghostbusters = () => {
 
   const activateGhostbustersMode = (manual = false) => {
     setIsActive(true);
+    setIsGhostbustersDayDialogOpen(false);
     if (manual) setIsManualMode(true);
     const caughtToday = localStorage.getItem(CAUGHT_KEY);
     const caughtDate = localStorage.getItem(CAUGHT_DATE_KEY);
@@ -497,8 +644,11 @@ export const Ghostbusters = () => {
       localStorage.getItem(GHOSTBUSTERS_MANUAL_ACTIVATION_DATE_KEY),
     );
 
-    if (isGhostbustersDay() || manualActivation) {
-      activateGhostbustersMode(manualActivation && !isGhostbustersDay());
+    const ghostbustersDay = isGhostbustersDay();
+    if (manualActivation) {
+      activateGhostbustersMode(!ghostbustersDay);
+    } else if (ghostbustersDay) {
+      setIsGhostbustersDayDialogOpen(true);
     }
 
     const onManualActivation = () => {
@@ -507,6 +657,7 @@ export const Ghostbusters = () => {
         GHOSTBUSTERS_MANUAL_ACTIVATION_DATE_KEY,
         getGhostbustersStorageDay(),
       );
+      setIsGhostbustersDayDialogOpen(false);
       // Manual activation comes from a click/tap, so we try to play during that gesture.
       void playBackgroundMusic();
       activateGhostbustersMode(true);
@@ -552,8 +703,53 @@ export const Ghostbusters = () => {
 
   if (!isGhostbustersDay() && !isActive) return null;
 
+  const handleGhostbustersDayDialogConfirm = () => {
+    setIsGhostbustersDayDialogOpen(false);
+    // Force fresh start on Ghostbusters Day after explicit user confirmation.
+    localStorage.removeItem(CAUGHT_KEY);
+    localStorage.removeItem(CAUGHT_DATE_KEY);
+    setIsCaught(false);
+    // Click on OK counts as user gesture, so start music right away.
+    void playBackgroundMusic();
+    activateGhostbustersMode(false);
+  };
+
   return (
     <>
+      {isGhostbustersDayDialogOpen && (
+        <div className={styles.dialogOverlay}>
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="ghostbusters-day-title"
+            className={styles.dialog}
+          >
+            <Image
+              src="/static/ghostbusters/ghostbusters-logo.svg"
+              alt="Ghostbusters logo"
+              width={86}
+              height={86}
+              className={styles.dialogLogo}
+              priority
+              unoptimized
+            />
+            <h2 id="ghostbusters-day-title" className={styles.dialogTitle}>
+              Today is Ghostbusters Day!
+            </h2>
+            <p className={styles.dialogText}>
+              Ready to catch Slimer? Press OK to fire up the proton beam.
+            </p>
+            <button
+              type="button"
+              className={styles.dialogButton}
+              onClick={handleGhostbustersDayDialogConfirm}
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      )}
+
       {isActive && (
         <>
           {!isCaught && !isCatching && (

@@ -17,6 +17,16 @@ export default async function ProjectsPage() {
       <h1>Projects</h1>
       <div className={styles.projects}>
         <Teaser
+          title={"ASCII Smuggler"}
+          url={`${config.urls.projects}/ascii-smuggler`}
+          tags={["tools", "security", "unicode"]}
+          date={"2026-06-10"}
+          description={
+            "Convert ASCII text to Unicode Tag Characters which ends up as invisible text, or decode hidden tags."
+          }
+        />
+
+        <Teaser
           title={"Tabuu"}
           description={"My favorite card game, but to play online!"}
           url={"https://tabuu.danielzotti.it"}

@@ -2,7 +2,7 @@
 @use "@scss/mixins/drop-shadow";
 
 .pageContainer {
-  & > h1 {
+  &>h1 {
     margin-top: 0;
   }
 }
@@ -151,6 +151,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--text-muted-color);
 }
 
 .downloadButtons {
@@ -177,7 +178,7 @@
   min-height: 100px;
   height: 100px;
 
-  > pre {
+  >pre {
     padding: variables.$margin-default;
     margin: 0;
     word-break: break-all;
