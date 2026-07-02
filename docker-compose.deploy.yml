@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         - configuration=${CONFIGURATION}
+        - GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}
     container_name: danielzotti-next_${CONFIGURATION}
     image: dz/danielzotti-next_${CONFIGURATION}
     expose:

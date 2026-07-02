@@ -1,19 +1,21 @@
 "use client";
 
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { ReactNode, useCallback, useEffect, useState } from "react";
 import styles from "./cookie-manager.module.scss";
 import { getCookie, setCookie } from "src/utils/cookie";
 import { config } from "src/config";
 import { Button } from "src/shared/components/ui/button/button";
+import { useTranslations } from "next-intl";
 
 interface CookieManagerProps {
   policy: ReactNode;
 }
 
 export const CookieManager = ({ policy }: CookieManagerProps) => {
+  const t = useTranslations("cookieManager");
   const [hasRepliedToCookie, setHasRepliedToCookie] = useState<
     boolean | undefined
-  >();
+  >(undefined);
   const [isCookiePolicyOpen, setIsCookiePolicyOpen] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,18 +25,29 @@ export const CookieManager = ({ policy }: CookieManagerProps) => {
 
   const handleLearnMore = useCallback(() => {
     setIsCookiePolicyOpen(true);
-    document!.querySelector("html")!.style.overflow = "hidden";
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      htmlElement.style.overflow = "hidden";
+    }
   }, []);
 
   const handleCloseLearnMore = useCallback(() => {
     setIsCookiePolicyOpen(false);
-    document!.querySelector("html")!.style.overflow = "unset";
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      htmlElement.style.overflow = "unset";
+    }
   }, []);
 
   const handleReply = useCallback((hasAccepted: "true" | "false") => {
     setCookie(config.cookieAccept, hasAccepted);
     setCookie(config.cookieDate, new Date().toString());
-    window.location.href = "";
+    setHasRepliedToCookie(true);
+    setIsCookiePolicyOpen(false);
+    const htmlElement = document.querySelector("html");
+    if (htmlElement) {
+      htmlElement.style.overflow = "unset";
+    }
   }, []);
 
   const handleReject = useCallback(() => {
@@ -45,7 +58,19 @@ export const CookieManager = ({ policy }: CookieManagerProps) => {
     handleReply("true");
   }, [handleReply]);
 
-  if (hasRepliedToCookie || hasRepliedToCookie === undefined) {
+  const text = t.rich("text", {
+    policyLink: (chunks) => (
+      <button
+        className={styles.policyLink}
+        onClick={handleLearnMore}
+        type="button"
+      >
+        {chunks}
+      </button>
+    ),
+  });
+
+  if (hasRepliedToCookie === undefined || hasRepliedToCookie) {
     return <></>;
   }
 
@@ -56,36 +81,27 @@ export const CookieManager = ({ policy }: CookieManagerProps) => {
           <div className={styles.cookiePolicyContentContainer}>
             <div className={styles.closeButton}>
               <Button variant="secondary" onClick={handleCloseLearnMore}>
-                close
+                {t("close")}
               </Button>
             </div>
             <div className={styles.cookiePolicyContent}>{policy}</div>
             <div className={styles.buttonContainer}>
               <Button variant="secondary" onClick={handleReject}>
-                Reject
+                {t("reject")}
               </Button>
-              <Button onClick={handleAccept}>Accept</Button>
+              <Button onClick={handleAccept}>{t("accept")}</Button>
             </div>
           </div>
         </div>
       )}
       <div className={styles.bannerContainer}>
         <div className="container">
-          <p>
-            I personally love cookies 🍪 but not everyone has a sweet tooth like
-            me! With the buttons below you can either accept the{" "}
-            <span className={styles.policyLink} onClick={handleLearnMore}>
-              cookie policy
-            </span>{" "}
-            or not. I encourage you to accept it, since I just use Google
-            Analytics cookie to better understand the user&apos;s behavior on my
-            website. Thanks! 🥹
-          </p>
+          <p>{text}</p>
           <div className={styles.buttonContainer}>
             <Button variant="outline" onClick={handleReject}>
-              Reject
+              {t("reject")}
             </Button>
-            <Button onClick={handleAccept}>Accept</Button>
+            <Button onClick={handleAccept}>{t("accept")}</Button>
           </div>
         </div>
       </div>

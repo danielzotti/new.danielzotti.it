@@ -1,0 +1,195 @@
+@use "@scss/variables";
+@use "@scss/mixins/drop-shadow";
+
+.pageContainer {
+  &>h1 {
+    margin-top: 0;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.text {
+  resize: none;
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  background-color: var(--text-bg-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+
+  @media (max-width: variables.$xs-max) {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+.colorOptions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @media (max-width: variables.$xs-max) {
+    width: 100%;
+    gap: 12px;
+    justify-content: space-between;
+  }
+}
+
+.colorLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  @media (max-width: variables.$xs-max) {
+    flex: 1;
+    min-width: 100px;
+  }
+
+  input[type="color"] {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--text-color);
+    border-radius: var(--border-radius);
+    padding: 3px;
+    background: none;
+    cursor: pointer;
+    line-height: 1;
+
+    @media (max-width: variables.$xs-max) {
+      width: 100%;
+      height: 50px;
+    }
+  }
+}
+
+.logoOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: variables.$xs-max) {
+    width: 100%;
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+
+  input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+}
+
+.logoUpload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+  align-items: center;
+
+  @media (max-width: variables.$xs-max) {
+    width: 100%;
+    flex-direction: column;
+
+    :global(button) {
+      width: 100%;
+    }
+  }
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.svg {
+  display: block;
+  position: relative;
+  aspect-ratio: 1;
+  width: 100%;
+  max-width: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  width: 20%;
+  position: absolute;
+}
+
+.svgContainer {
+  max-width: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--text-muted-color);
+}
+
+.downloadButtons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+
+  @media (max-width: variables.$xs-max) {
+    width: 100%;
+    flex-direction: column;
+
+    :global(button) {
+      width: 100%;
+    }
+  }
+}
+
+.svgCode {
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  resize: vertical;
+  min-height: 100px;
+  height: 100px;
+
+  >pre {
+    padding: variables.$margin-default;
+    margin: 0;
+    word-break: break-all;
+    white-space: break-spaces;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: auto;
+  }
+}
+
+.error {
+  color: #e14d4d;
+  font-weight: 600;
+}

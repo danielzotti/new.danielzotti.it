@@ -1,21 +1,24 @@
 "use client";
 
 import MarkdownToJsx from "markdown-to-jsx";
-import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import codeStyle from "react-syntax-highlighter/dist/esm/styles/hljs/vs2015";
 
 interface MarkdownLinkProps {
-  title: string;
-  href: string;
+  title?: string;
+  href?: string;
   children: any;
 }
 
 export const MarkdownLink = ({ title, href, children }: MarkdownLinkProps) => {
+  if (!href) {
+    return <>{children}</>;
+  }
+
   return (
-    <Link title={title} href={href} target="_blank">
+    <a href={href} rel="noreferrer" target="_blank" title={title}>
       {children}
-    </Link>
+    </a>
   );
 };
 

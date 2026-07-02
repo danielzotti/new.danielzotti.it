@@ -1,0 +1,5 @@
+@use "@scss/common";
+
+.articles {
+  @extend .teaser-list;
+}

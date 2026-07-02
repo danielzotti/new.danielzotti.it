@@ -1,0 +1,23 @@
+@use "@scss/mixins/button";
+
+.languageSelector {
+  @include button.reset;
+  color: var(--navbar-text-color);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 6px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.flag {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.locale {
+  font-size: 0.75em;
+  line-height: 1em;
+  text-transform: uppercase;
+}

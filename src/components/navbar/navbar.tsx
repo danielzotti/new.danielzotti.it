@@ -4,30 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { config } from "src/config";
+import { getLocaleFromPathname, localizePath } from "src/i18n";
 import styles from "./navbar.module.scss";
 import logo from "public/static/images/brand/danielzotti-logo-medium.webp";
 import { ThemeSelector } from "src/components/theme-selector/theme-selector";
+import { LanguageSelector } from "src/components/language-selector/language-selector";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCallback, useState } from "react";
-
-const items: NavbarItem[] = [
-  {
-    path: config.urls.blog,
-    label: "Blog",
-  },
-  {
-    path: config.urls.projects,
-    label: "Projects",
-  },
-  {
-    path: config.urls.openSource,
-    label: "Open Source",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export const Navbar = () => {
   const pathName = usePathname();
+  const locale = getLocaleFromPathname(pathName || "/");
+  const t = useTranslations("navbar");
+
+  const items: NavbarItem[] = [
+    {
+      path: config.urls.aboutMe,
+      label: t("aboutMe"),
+    },
+    {
+      path: config.urls.blog,
+      label: t("blog"),
+    },
+    {
+      path: config.urls.projects,
+      label: t("projects"),
+    },
+    {
+      path: config.urls.openSource,
+      label: t("openSource"),
+    },
+  ];
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const toggleMenu = useCallback(() => {
@@ -41,7 +50,10 @@ export const Navbar = () => {
       <div className="container">
         <div className={styles.wrapper}>
           <div className={styles.logo}>
-            <Link href={config.urls.home} title="Go to home page">
+            <Link
+              href={localizePath(config.urls.home, locale)}
+              title={t("homeTitle")}
+            >
               <Image
                 className="dz-navbar__logo"
                 src={logo}
@@ -56,14 +68,19 @@ export const Navbar = () => {
             {items.map((item) => (
               <Link
                 key={item.path}
-                href={item.path}
+                href={localizePath(item.path, locale)}
                 className={`${styles.item} ${
-                  pathName?.startsWith(item.path) ? "active" : ""
+                  pathName?.startsWith(localizePath(item.path, locale))
+                    ? "active"
+                    : ""
                 }`}
               >
                 {item.label}
               </Link>
             ))}
+            <div className={styles.languageSelector}>
+              <LanguageSelector />
+            </div>
             <div className={styles.themeSelector}>
               <ThemeSelector />
             </div>
@@ -71,7 +88,7 @@ export const Navbar = () => {
           <button
             className={styles.hamburger}
             onClick={toggleMenu}
-            aria-label="Menu hamburger"
+            aria-label={t("hamburger")}
           >
             {!isOpen && <FontAwesomeIcon icon={faBars} />}
             {isOpen && <FontAwesomeIcon icon={faTimes} />}

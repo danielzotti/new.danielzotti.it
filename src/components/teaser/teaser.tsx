@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type JSX } from "react";
 import { toFormattedDate } from "../../utils/date";
 import styles from "./teaser.module.scss";
@@ -8,7 +10,8 @@ import {
   faTags,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useDate } from "src/hooks/useDate";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPathname, localizePath } from "src/i18n";
 
 export interface TeaserProps {
   title: string;
@@ -27,8 +30,12 @@ export const Teaser = ({
   date,
   target = "_self",
 }: TeaserProps): JSX.Element => {
+  const pathname = usePathname() || "/";
+  const locale = getLocaleFromPathname(pathname);
+  const href = url.startsWith("http") ? url : localizePath(url, locale);
+
   return (
-    <Link className={`dz-teaser ${styles.wrapper}`} href={url} target={target}>
+    <Link className={`dz-teaser ${styles.wrapper}`} href={href} target={target}>
       {target === "_blank" && (
         <div className={styles.newWindow}>
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
@@ -45,7 +52,7 @@ export const Teaser = ({
       {date && (
         <p className={styles.date}>
           <FontAwesomeIcon icon={faCalendar} />
-          &nbsp;{toFormattedDate(date)}
+          &nbsp;{toFormattedDate(date, locale)}
         </p>
       )}
     </Link>

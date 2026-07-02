@@ -1,0 +1,61 @@
+.about {
+  display: grid;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+.hero {
+  p {
+    max-width: 1000px;
+  }
+}
+
+.subtitle {
+  color: var(--accent-color);
+  font-weight: 400;
+  font-size: clamp(1.15em, 2vw, 1.75em);
+}
+
+.quote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: clamp(14px, 2vw, 24px);
+  font-style: italic;
+  color: var(--text-color-secondary);
+}
+
+.section {
+  margin-bottom: clamp(10px, 2vw, 30px);
+}
+
+.sectionIntro {
+  max-width: 1000px;
+  color: var(--text-color-secondary);
+}
+
+.grid {
+  display: grid;
+  gap: clamp(18px, 2.5vw, 30px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+}
+
+.card {
+  border: 1px solid var(--accent-color);
+  border-radius: var(--border-radius);
+  background: rgba(45, 170, 225, 0.08);
+  padding: clamp(14px, 2vw, 24px);
+  transition: transform var(--transition-duration) ease-in-out;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: clamp(8px, 1vw, 14px);
+    font-size: clamp(1.2em, 1.8vw, 1.8em);
+  }
+
+  p {
+    margin-bottom: 0;
+    font-size: clamp(1em, 1.3vw, 1.4em);
+  }
+}

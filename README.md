@@ -58,8 +58,9 @@ I also use this website for testing and trying new technologies (which can be fo
 - [x] Syntax Highlight for code
 - [x] Sort articles by date ASC
 - [x] Offline status (with desaturated colors and images)
+- [x] Transparent navbar on top in Home Page
+- [x] Multilanguage support (EN/IT)
 - [ ] Improve accessibility
-- [ ] Transparent navbar on top in Home Page
 - [ ] Improve Open source section with preview in teasers
 - [ ] Filter articles by category
 - [ ] New UI graphic

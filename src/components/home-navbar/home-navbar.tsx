@@ -2,21 +2,13 @@
 
 import styles from "./home-navbar.module.scss";
 import { Navbar } from "src/components/navbar/navbar";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const HomeNavbar = () => {
-  const navbarContainerRef = useRef<HTMLDivElement>(null);
   const [isNavbarVisible, setIsNavbarVisible] = useState<boolean>(false);
 
   const checkNavbarVisibility = useCallback(() => {
-    if (!navbarContainerRef.current) {
-      return;
-    }
-    if (window.scrollY >= navbarContainerRef.current?.offsetTop) {
-      setIsNavbarVisible(true);
-    } else {
-      setIsNavbarVisible(false);
-    }
+    setIsNavbarVisible(window.scrollY >= 300);
   }, []);
 
   useEffect(() => {
@@ -30,10 +22,7 @@ export const HomeNavbar = () => {
   }, [checkNavbarVisibility]);
 
   return (
-    <div
-      className={`${styles.navbar} ${isNavbarVisible ? "is-visible" : ""}`}
-      ref={navbarContainerRef}
-    >
+    <div className={`${styles.navbar} ${isNavbarVisible ? "is-visible" : ""}`}>
       <Navbar />
     </div>
   );

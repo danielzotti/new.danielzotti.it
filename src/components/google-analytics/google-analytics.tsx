@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { pageview } from "src/utils/google-analytics";
@@ -9,7 +9,6 @@ import { getCookie } from "src/utils/cookie";
 
 export const GoogleAnalytics = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [hasAcceptedCookie, setHasAcceptedCookie] = useState<boolean>(false);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export const GoogleAnalytics = () => {
       }
       pageview(pathname);
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   useEffect(() => {
     if (getCookie(config.cookieAccept) === "true") {

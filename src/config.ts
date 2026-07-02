@@ -1,4 +1,5 @@
 import path from "path";
+import { githubSelectedRepos } from "./data/github-selected-repos";
 
 const baseUrl = "https://www.danielzotti.it";
 
@@ -28,6 +29,11 @@ export const config = {
   cookieDate: "danielzotti_cookie_date",
   themes: ["light", "dark", "os default"],
   themeLocalStorageName: "danielzotti_theme",
+  localeCookieName: "danielzotti_locale",
+  locales: {
+    default: "en",
+    supported: ["en", "it"],
+  },
   colors: {
     black: "#0f0f0f",
     blue: "#2daae1",
@@ -41,6 +47,7 @@ export const config = {
   },
   urls: {
     home: "/",
+    aboutMe: "/about-me",
     blog: "/blog",
     openSource: "/open-source",
     projects: "/projects",
@@ -49,50 +56,7 @@ export const config = {
   github: {
     user: "danielzotti",
     token: process.env.GITHUB_ACCESS_TOKEN,
-    selectedRepos: [
-      {
-        slug: "new-danielzotti-it",
-        name: "new.danielzotti.it",
-        humanName: "www.danielzotti.it",
-      },
-      {
-        slug: "fake-3d-website",
-        name: "fake-3d-website-next",
-        humanName: "Fake 3D Website",
-      },
-      {
-        slug: "slide-roulette",
-        name: "slide-roulette",
-        humanName: "Slide Roulette",
-      },
-      {
-        slug: "me-danielzotti-it",
-        name: "me.danielzotti.it",
-        humanName: "My (old) Personal Website",
-      },
-      {
-        slug: "chrome-notepad",
-        name: "chrome-notepad",
-        humanName: "Chrome Notepad",
-      },
-      {
-        slug: "danielzotti-telegram-bot",
-        name: "danielzotti-telegram-bot",
-        humanName: "Daniel Zotti Telegram Bot",
-      },
-      {
-        slug: "ng-filemanager",
-        name: "ng-filemanager",
-      },
-      {
-        slug: "ng-textarea-autoresize",
-        name: "ng-textarea-autoresize",
-      },
-      {
-        slug: "spacecar",
-        name: "spacecar",
-      },
-    ],
+    selectedRepos: githubSelectedRepos,
     repo: "https://github.com/danielzotti/new.danielzotti.it",
   },
   apis: {
@@ -151,4 +115,5 @@ export const config = {
     // 'https://fonts.googleapis.com/icon?family=Material+Icons',
     // 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,1,200'
   ],
+  localFontPaths: ["/static/90s/times-pixelated.woff"],
 };

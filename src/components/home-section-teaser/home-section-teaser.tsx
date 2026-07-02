@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
+import { getLocaleFromPathname, localizePath } from "src/i18n";
 import styles from "./home-section-teaser.module.scss";
 
 export interface TeaserProps {
@@ -15,9 +19,13 @@ export const HomeSectionTeaser = ({
   path,
   target = "_self",
 }: TeaserProps) => {
+  const pathname = usePathname() || "/";
+  const locale = getLocaleFromPathname(pathname);
+  const localizedPath = path.startsWith("http") ? path : localizePath(path, locale);
+
   return (
     <Link
-      href={path}
+      href={localizedPath}
       target={target}
       className={`dz-section-teaser ${styles.teaserContainer}`}
     >

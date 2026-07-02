@@ -1,15 +1,27 @@
-import { readFileSync, readdirSync } from "fs";
+import { existsSync, readFileSync, readdirSync } from "fs";
 import matter from "gray-matter";
-import { config } from "src/config";
-import { ArticleMetadata } from "src/models/blog.models";
+import { config } from "../config";
+import { ArticleMetadata } from "../models/blog.models";
 import { DateTime } from "luxon";
+import type { Locale } from "../i18n";
 
-export const getArticle = (slug: string) => {
+const getLocalizedArticlePath = (slug: string, locale: Locale): string => {
+  const defaultPath = `${config.folders.articles}/${slug}.md`;
+  const localizedPath = `${config.folders.articles}/${slug}.${locale}.md`;
+
+  if (locale !== "en" && existsSync(localizedPath)) {
+    return localizedPath;
+  }
+
+  return defaultPath;
+};
+
+export const getArticle = (slug: string, locale: Locale = "en") => {
   try {
     if (slug.startsWith("_")) {
       return;
     }
-    const file = readFileSync(`${config.folders.articles}/${slug}.md`, "utf-8");
+    const file = readFileSync(getLocalizedArticlePath(slug, locale), "utf-8");
 
     const matterResult = matter(file);
     return {
@@ -20,14 +32,15 @@ export const getArticle = (slug: string) => {
   }
 };
 
-export const getArticleContent = (slug: string) => {
-  return getArticle(slug)?.content;
+export const getArticleContent = (slug: string, locale: Locale = "en") => {
+  return getArticle(slug, locale)?.content;
 };
 
 export const getArticleMetadata = (
   slug: string,
+  locale: Locale = "en",
 ): ArticleMetadata | undefined => {
-  const markdown = getArticle(slug);
+  const markdown = getArticle(slug, locale);
 
   if (!markdown) {
     return;
@@ -35,7 +48,7 @@ export const getArticleMetadata = (
 
   const {
     data: { title, date, description, tags },
-  } = matter(markdown);
+  } = markdown;
 
   const articleDate = DateTime.fromFormat(date, config.dates.luxon.article);
   const todayDate = DateTime.now();
@@ -52,13 +65,18 @@ export const getArticleMetadata = (
   };
 };
 
-export const getArticleMetadataList = (): Array<ArticleMetadata> => {
+export const getArticleMetadataList = (
+  locale: Locale = "en",
+): Array<ArticleMetadata> => {
   const files = readdirSync(config.folders.articles);
   const markdownFilenames = files.filter(
-    (file) => file.endsWith(".md") && !file.startsWith("_"),
+    (file) =>
+      file.endsWith(".md") && !file.startsWith("_") && !file.endsWith(".it.md"),
   );
   const articles = markdownFilenames
-    .map((filename) => getArticleMetadata(filename?.replace(".md", "")))
+    .map((filename) =>
+      getArticleMetadata(filename?.replace(".md", ""), locale),
+    )
     .filter((file) => !!file) as ArticleMetadata[];
   return articles.filter((file) => {
     const articleDate = DateTime.fromFormat(

@@ -1,12 +1,14 @@
 {
   "name": "daniel-zotti-next",
-  "version": "2.15.0",
+  "version": "3.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack -p 3087",
-    "build": "next build",
-    "serve": "serve out -p 3087",
-    "build-and-serve": "npm run build && serve out -p 3087",
+    "prebuild": "jiti scripts/generate-open-source-data.ts",
+    "build": "next build --webpack",
+    "start": "next start -p 3087",
+    "start:docker": "next start -H 0.0.0.0 -p 3000",
+    "build-and-start": "npm run build && npm run start",
     "docker:start:local": "docker-compose --file docker-compose.local.yml up --build nextjs",
     "docker:start:server": "CONFIGURATION=production docker-compose --file docker-compose.server.yml up --build nextjs",
     "eslint": "eslint --fix .",
@@ -27,6 +29,7 @@
     "luxon": "^3.3.0",
     "markdown-to-jsx": "^7.2.1",
     "next": "^16.2.7",
+    "next-intl": "^4.13.0",
     "octokit": "^4.1.2",
     "qrcode-svg": "^1.1.0",
     "react": "^19.2.0",
@@ -38,6 +41,7 @@
     "typescript": "5.7.3"
   },
   "devDependencies": {
+    "@ducanh2912/next-pwa": "^10.2.9",
     "@types/gtag.js": "0.0.12",
     "@types/node": "22.18.13",
     "@types/react": "19.2.2",
@@ -50,8 +54,15 @@
     "eslint-plugin-prettier": "^5.5.4",
     "http-server": "^14.1.1",
     "jiti": "^2.6.1",
-    "next-pwa": "^5.6.0",
     "prettier": "^3.6.2"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "8.5.16"
+    },
+    "@rollup/plugin-terser": {
+      "serialize-javascript": "7.0.7"
+    }
   },
   "browser": {
     "fs": false

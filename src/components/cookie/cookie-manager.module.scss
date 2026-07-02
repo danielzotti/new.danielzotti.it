@@ -61,4 +61,11 @@
 
 .policyLink {
   @extend .link;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-color);
 }

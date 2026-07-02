@@ -1,7 +1,7 @@
 import "src/scss/_variables-css.scss";
 import "src/scss/styles.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { ReactNode, Suspense } from "react";
+import { ReactNode } from "react";
 import { HeadFonts } from "src/components/head-fonts/head-fonts";
 import { Offline } from "src/components/offline/offline";
 import Pwa from "src/components/pwa/pwa";
@@ -25,6 +25,10 @@ import { Easter } from "src/components/special/easter/easter";
 import { PieDay } from "src/components/special/pie-day/pie-day";
 import { KonamiCrt } from "../components/special/konami-crt/konami-crt";
 import { Ghostbusters } from "src/components/special/ghostbusters/ghostbusters";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
+import { defaultLocale, isLocale, type Locale } from "src/i18n";
+import { getMarkdownContentByPath } from "src/utils/markdown";
 
 configFa.autoAddCss = false;
 
@@ -36,9 +40,6 @@ export const metadata: Metadata = {
   metadataBase: new URL(config.baseUrl),
   title: config.title,
   description: config.description,
-  alternates: {
-    canonical: config.baseUrl,
-  },
   openGraph: {
     title: config.title,
     siteName: config.title,
@@ -72,39 +73,45 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
+  const locale = await getLocale();
+  const htmlLang: Locale = isLocale(locale) ? locale : defaultLocale;
+  const messages = await getMessages();
+  const cookiePolicyPath = `${config.folders.contents}/cookie-policy.md`;
+  const cookiePolicyContent = getMarkdownContentByPath(cookiePolicyPath, htmlLang);
+
   return (
-    <html lang="en">
+    <html lang={htmlLang} suppressHydrationWarning>
       <head>
         <HeadFonts />
-        <Suspense fallback={null}>
-          <GoogleAnalytics />
-          <HotjarAnalytics />
-        </Suspense>
+        <GoogleAnalytics />
+        <HotjarAnalytics />
       </head>
       <body>
-        <SvgFilters />
-        <Nineties />
-        <Xmas />
-        <ValentinesDay />
-        <WomensDay />
-        <Easter />
-        <Halloween />
-        <AprilsFool />
-        <PieDay />
-        <Ghostbusters />
-        <KonamiCrt />
-        <ThemeContextProvider>
-          <main className={styles.mainContent}>
-            {children}
-            <Offline />
-          </main>
-          <Pwa />
-          <Welcome />
-          <Cookie />
-        </ThemeContextProvider>
+        <NextIntlClientProvider messages={messages}>
+          <SvgFilters />
+          <Nineties />
+          <Xmas />
+          <ValentinesDay />
+          <WomensDay />
+          <Easter />
+          <Halloween />
+          <AprilsFool />
+          <PieDay />
+          <Ghostbusters />
+          <KonamiCrt />
+          <ThemeContextProvider>
+            <main className={styles.mainContent}>
+              {children}
+              <Offline />
+            </main>
+            <Pwa />
+            <Welcome />
+            <Cookie policyContent={cookiePolicyContent} />
+          </ThemeContextProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

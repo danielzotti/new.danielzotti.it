@@ -1,42 +1,33 @@
-# Stage 0, "build-stage", based on Node.js, to build and compile Next App
-
-# base image
 FROM node:20.10.0-alpine AS build-stage
 
-# create & set working directory
 WORKDIR /app
 
-# copy package.json and package-lock.json into workdir /app
 COPY package*.json ./
 
-# install dependencies
-RUN npm install
+RUN npm ci
 
-# copy source files
 COPY . .
 
 ARG configuration
+ARG GITHUB_ACCESS_TOKEN
 
-# run the build inside workdir /app with output path /app/dist
+ENV GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN
+
 RUN npm run build
 
-# Stage 2, based on NodeJS, to have only the compiled app, ready for production with SSR
 FROM node:20.10.0-alpine AS serve-stage
 
-WORKDIR app
+WORKDIR /app
 
-# Install serve
-RUN npm install -g serve@14.2.0
+ENV NODE_ENV=production
 
-# copy dependency definitions
 COPY --from=build-stage /app/package.json ./
-
-# copy (build-stage)/app/dist in /app
+COPY --from=build-stage /app/node_modules ./node_modules
+COPY --from=build-stage /app/.next ./.next
 COPY --from=build-stage /app/public ./public
-COPY --from=build-stage /app/out ./out
+COPY --from=build-stage /app/src/contents ./src/contents
+COPY --from=build-stage /app/src/app/[locale]/projects ./src/app/[locale]/projects
 
-# Expose the port the app runs in
 EXPOSE 3000
 
-# Serve the app
-CMD serve out
+CMD ["npm", "run", "start:docker"]

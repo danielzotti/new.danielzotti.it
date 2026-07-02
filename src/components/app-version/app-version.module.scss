@@ -2,23 +2,23 @@
   display: inline-block;
   z-index: 10;
   font-size: 14px;
-  position: absolute;
+  position: fixed;
   text-align: center;
   color: var(--white);
   transform-origin: center;
   background-color: var(--red);
-  top: 25px;
+  bottom:0;
   right: 25px;
   padding: 5px 100px;
   box-shadow: 0 0 10px var(--red);
   cursor: var(--cursor-pointer);
-  transform: translate(50%, -50%) rotate(45deg);
+  transform: translate(50%, -50%) rotate(-45deg);
   border: none;
 
   &:hover,
   &:focus,
   &:active {
-    transform: translate(50%, -50%) rotate(45deg);
+    transform: translate(50%, -50%) rotate(-35deg);
     color: var(--white);
   }
 }

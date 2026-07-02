@@ -1,16 +1,16 @@
 .navbar {
   position: sticky;
-  top: -1px;
+  top: 0;
   z-index: 1;
-  transition: opacity 0s ease-in-out;
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
+
+  img {
+    opacity: 0;
+    transition: opacity var(--navbar-transition-duration) ease-in-out;
+  }
 
   &:global(.is-visible) {
-    opacity: 1;
-    pointer-events: all;
-    user-select: unset;
-    transition: opacity var(--navbar-transition-duration) ease-in-out;
+    img {
+      opacity: 1;
+    }
   }
 }

@@ -1,17 +1,18 @@
 import { config } from "src/config";
 import { Metadata } from "next";
+import { Locale, localizePath, supportedLocales } from "src/i18n";
 
 export const buildMetadata = ({
   title,
   description,
-  url,
-  canonical,
+  path,
+  locale,
   image,
 }: {
   title: string;
   description?: string;
-  url: string;
-  canonical?: string;
+  path: string;
+  locale: Locale;
   image?: {
     url: string;
     width: number;
@@ -19,16 +20,25 @@ export const buildMetadata = ({
     alt?: string;
   };
 }): Metadata => {
+  const canonical = `${config.baseUrl}${localizePath(path, locale)}`;
+  const languages = Object.fromEntries(
+    supportedLocales.map((supportedLocale) => [
+      supportedLocale,
+      `${config.baseUrl}${localizePath(path, supportedLocale)}`,
+    ]),
+  );
+
   return {
     title,
     description,
     alternates: {
-      canonical: canonical ? canonical : url,
+      canonical,
+      languages,
     },
     openGraph: {
       title: title,
       siteName: config.title,
-      url,
+      url: canonical,
       type: "article",
       images: [
         image
